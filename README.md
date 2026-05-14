@@ -69,22 +69,18 @@ Paper-Reading-Notes/
 ### 方式一：使用脚本（推荐）
 
 ```bash
-# 为新论文创建笔记文件
-python scripts/new_paper.py --title "Attention Is All You Need" --topic NLP
+① 创建笔记
+   python scripts/new_paper.py --title "xxx" --topic NLP
+   → 自动在 papers/NLP/ 建文件，并在 index.md 插入占位行
 
-# 导出所有论文为 BibTeX
-python scripts/export.py --format bibtex --output refs.bib
+② 填写笔记
+   在 papers/NLP/xxx.md 里填状态、评分、标签、总结等内容
 
-# 查看阅读统计
-python scripts/stats.py
+③ 同步更新
+   python scripts/stats.py --update-dashboard
+   → 重新扫描所有笔记，同时刷新 index.md 和 dashboard.md
+
 ```
-
-### 方式二：手动创建
-
-1. 复制 `template.md` 到对应领域目录，例如 `papers/NLP/`
-2. 按模板填写论文信息
-3. 在 `index.md` 添加一行索引记录
-4. （可选）在 `topics/` 对应的主题文件中添加引用
 
 ---
 
