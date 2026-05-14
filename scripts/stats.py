@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
-stats.py - 扫描所有论文笔记，生成统计报告，可选更新 dashboard.md
+stats.py - 扫描所有论文笔记，生成统计报告，可选更新 dashboard.md 和 index.md
 
 用法:
     python scripts/stats.py              # 打印统计报告到终端
-    python scripts/stats.py --update-dashboard  # 同时更新 dashboard.md
+    python scripts/stats.py --update-dashboard  # 同时更新 dashboard.md 和 index.md
 """
 
 import argparse
@@ -60,8 +60,16 @@ def parse_paper(filepath: Path) -> dict | None:
 
     read_date = extract(r'\*\*阅读日期\*\*\s*\|\s*(\d{4}-\d{2}-\d{2})')
 
-    # 提取所有标签
-    tags = re.findall(r'`(#\w+)`', text)
+    # 提取所有标签（跳过模板占位标签）
+    tags = [t for t in re.findall(r'`(#\w+)`', text)
+            if t not in ("#NLP", "#CV", "#Multimodal", "#RL", "#ML",
+                         "#Transformer", "#Diffusion", "#GAN", "#VAE",
+                         "#RLHF", "#LoRA", "#MoE", "#RAG",
+                         "#TextGeneration", "#ImageGeneration",
+                         "#ObjectDetection", "#VQA",
+                         "#MustRead", "#Influential", "#Practical",
+                         "#Theoretical", "#Survey")
+            or status]  # 有状态说明已实际填写，保留标签
 
     # 从路径推断领域
     topic = filepath.parent.name
@@ -74,6 +82,7 @@ def parse_paper(filepath: Path) -> dict | None:
         "rating": rating,
         "read_date": read_date,
         "tags": tags,
+        "summary": extract(r'## 一句话总结\s*\n+> (.+)'),
     }
 
 
@@ -244,6 +253,115 @@ def update_dashboard(stats: dict, papers: list[dict]):
     print(f"[✓] 已更新 dashboard.md")
 
 
+def update_index(stats: dict, papers: list[dict]):
+    """重新生成 index.md 的【快速统计】和【全量论文列表】两个区块"""
+    today = date.today().isoformat()
+    bts = stats["by_topic_status"]
+
+    # ── 快速统计表 ──────────────────────────────────────────────
+    def tc(topic, key):
+        return bts.get(topic, {}).get(key, 0)
+
+    total_row = lambda t: (
+        f"| [{t}](papers/{t}/README.md)"
+        f" | {stats['topics'].get(t, 0)}"
+        f" | {tc(t,'已读')}"
+        f" | {tc(t,'在读')}"
+        f" | {tc(t,'待读')} |"
+    )
+    grand = stats["total"]
+    done  = stats["status"].get("已读", 0)
+    ing   = stats["status"].get("在读", 0)
+    pend  = stats["status"].get("待读", 0)
+
+    stats_block = (
+        "| 领域 | 总数 | 已读 | 在读 | 待读 |\n"
+        "|------|------|------|------|------|\n"
+        + "\n".join(total_row(t) for t in TOPICS)
+        + f"\n| **合计** | **{grand}** | **{done}** | **{ing}** | **{pend}** |"
+    )
+
+    # ── 全量论文列表（按阅读日期倒序，无日期排最后）──────────────
+    sorted_papers = sorted(
+        papers,
+        key=lambda p: p["read_date"] or "0000-00-00",
+        reverse=True,
+    )
+
+    def paper_row(p):
+        stars  = "⭐" * p["rating"] if p["rating"] else "—"
+        status = STATUS_EMOJI.get(p["status"], p["status"] or "—")
+        year   = p["read_date"][:4] if p["read_date"] else "—"
+        title  = f"[{p['title']}]({p['file']})"
+        tags   = " ".join(f"`{t}`" for t in p["tags"][:3]) or "—"
+        summary = (p["summary"][:40] + "…") if len(p.get("summary","")) > 40 else (p.get("summary") or "—")
+        return f"| {stars} | {status} | {year} | {title} | {p['topic']} | {tags} | {summary} |"
+
+    list_rows = "\n".join(paper_row(p) for p in sorted_papers) if sorted_papers else (
+        "| — | — | — | — | — | — | — |"
+    )
+
+    list_block = (
+        "| 评分 | 状态 | 年份 | 标题 | 领域 | 标签 | 一句话总结 |\n"
+        "|------|------|------|------|------|------|-----------|\n"
+        + list_rows
+    )
+
+    # ── 高分精选 ─────────────────────────────────────────────────
+    top_papers = [p for p in sorted_papers if p["rating"] >= 5]
+    top_block = (
+        "\n".join(f"- [{p['title']}]({p['file']}) — {p.get('summary','')[:50]}"
+                  for p in top_papers)
+        or "_暂无 5 星论文_"
+    )
+
+    # ── 待读清单 ──────────────────────────────────────────────────
+    pending_papers = [p for p in papers if p["status"] == "待读"]
+    pending_rows = "\n".join(
+        f"| 🟡 中 | {p['read_date'] or '—'} | [{p['title']}]({p['file']}) | {p['topic']} | |"
+        for p in pending_papers
+    ) or "| — | — | — | — | — |"
+
+    content = f"""# 📋 论文总索引
+
+> 所有论文一览 · 按阅读日期倒序排列 · 由 `scripts/stats.py` 自动更新
+
+---
+
+## 快速统计
+
+{stats_block}
+
+---
+
+## 📚 全量论文列表
+
+{list_block}
+
+---
+
+## 🔖 高分精选（⭐⭐⭐⭐⭐）
+
+{top_block}
+
+---
+
+## 📌 待读清单
+
+| 优先级 | 年份 | 标题 | 领域 | 加入原因 |
+|--------|------|------|------|---------|
+{pending_rows}
+
+---
+
+*返回 [主页](README.md) · 查看 [统计仪表盘](dashboard.md)*
+
+*最后更新：{today}*
+"""
+    INDEX_PATH.write_text(content, encoding="utf-8")
+    print(f"[✓] 已更新 index.md")
+
+
 def main():
     parser = argparse.ArgumentParser(description="生成论文阅读统计")
     parser.add_argument("--update-dashboard", action="store_true", help="同时更新 dashboard.md")
@@ -255,6 +373,7 @@ def main():
 
     if args.update_dashboard:
         update_dashboard(stats, papers)
+        update_index(stats, papers)
 
     return 0
 
