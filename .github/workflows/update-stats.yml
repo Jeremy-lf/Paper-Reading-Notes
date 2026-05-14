@@ -1,0 +1,35 @@
+name: 📊 Auto Update Stats
+
+on:
+  push:
+    paths:
+      - 'papers/**/*.md'
+  schedule:
+    # 每周日 UTC 00:00 自动更新
+    - cron: '0 0 * * 0'
+  workflow_dispatch:
+
+jobs:
+  update-stats:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run stats update
+        run: python scripts/stats.py --update-dashboard
+
+      - name: Commit updated stats
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add dashboard.md index.md papers/*/README.md
+          git diff --staged --quiet || git commit -m "📊 Auto-update reading stats [skip ci]"
+          git push
