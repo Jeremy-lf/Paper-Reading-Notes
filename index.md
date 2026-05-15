@@ -13,9 +13,9 @@
 | [Multimodal](papers/Multimodal/README.md) | 0 | 0 | 0 | 0 |
 | [RL](papers/RL/README.md) | 0 | 0 | 0 | 0 |
 | [ML](papers/ML/README.md) | 0 | 0 | 0 | 0 |
-| [AIGC](papers/AIGC/README.md) | 0 | 0 | 0 | 0 |
+| [AIGC](papers/AIGC/README.md) | 1 | 0 | 0 | 0 |
 | [Other](papers/Other/README.md) | 0 | 0 | 0 | 0 |
-| **合计** | **2** | **1** | **0** | **1** |
+| **合计** | **3** | **1** | **0** | **1** |
 
 ---
 
@@ -23,6 +23,7 @@
 
 | 评分 | 状态 | 年份 | 标题 | 领域 | 标签 | 一句话总结 |
 |------|------|------|------|------|------|-----------|
+| ⭐⭐⭐⭐ | ⏭️ | 2026 | [UniWorld-V1: High-Resolution Semantic Encoders for Unified Visual Understanding and Generation](papers/AIGC/2025_Lin_UniWorld-V1_High-Resolution_Semantic_Encoders_for_.md) | AIGC | `#AIGC` `#Multimodal` `#Diffusion` | 通过实验揭示 GPT-4o-Image 依赖语义编码器而非 VAE 的内在机制，… |
 | ⭐⭐⭐⭐⭐ | ✅ | 2026 | [Attention Is All You Need](papers/NLP/2017_Unknown_Attention_Is_All_You_Need.md) | NLP | `#NLP` `#Transformer` `#Influential` | 完全抛弃 RNN/CNN，仅用自注意力机制构建序列模型，在机器翻译任务上超越此前… |
 | ⭐⭐⭐ | ⬜ | 2026 | [论文笔记模板](papers/NLP/2017_Vaswani_Attention_Is_All_You_Need.md) | NLP | `#NLP` `#CV` `#Multimodal` | <!-- 用一句话概括这篇论文解决了什么问题，以及核心方案 --> |
 
