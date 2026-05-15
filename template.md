@@ -22,7 +22,7 @@
 
 ### 标签
 <!-- 从以下选择，可多选 -->
-**领域**: `#NLP` `#CV` `#Multimodal` `#RL` `#ML`
+**领域**: `#NLP` `#CV` `#Multimodal` `#RL` `#ML` `#AIGC`
 **方法**: `#Transformer` `#Diffusion` `#GAN` `#VAE` `#RLHF` `#LoRA` `#MoE` `#RAG`
 **任务**: `#TextGeneration` `#ImageGeneration` `#ObjectDetection` `#VQA`
 **质量**: `#MustRead` `#Influential` `#Practical` `#Theoretical` `#Survey`

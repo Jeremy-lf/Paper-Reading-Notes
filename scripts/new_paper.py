@@ -14,7 +14,7 @@ import sys
 from datetime import date
 from pathlib import Path
 
-TOPICS = ["NLP", "CV", "Multimodal", "RL", "ML", "Other"]
+TOPICS = ["NLP", "CV", "Multimodal", "RL", "ML", "AIGC", "Other"]
 
 ROOT = Path(__file__).parent.parent
 TEMPLATE_PATH = ROOT / "template.md"

@@ -17,7 +17,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).parent.parent
 PAPERS_DIR = ROOT / "papers"
-TOPICS = ["NLP", "CV", "Multimodal", "RL", "ML", "Other"]
+TOPICS = ["NLP", "CV", "Multimodal", "RL", "ML", "AIGC", "Other"]
 
 
 def parse_paper(filepath: Path) -> dict | None:

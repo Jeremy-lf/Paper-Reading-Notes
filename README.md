@@ -125,7 +125,7 @@ Paper-Reading-Notes/
 ## 🏷️ 标签体系
 
 ### 领域标签
-`#NLP` `#CV` `#Multimodal` `#RL` `#ML` `#Other`
+`#NLP` `#CV` `#Multimodal` `#RL` `#ML` `#AIGC` `#Other`
 
 ### 方法标签
 `#Transformer` `#Diffusion` `#GAN` `#VAE` `#RL` `#RAG` `#RLHF` `#LoRA` `#MoE`

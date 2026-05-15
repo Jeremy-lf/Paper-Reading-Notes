@@ -27,7 +27,7 @@ STATUS_EMOJI = {
     "略读": "⏭️",
 }
 
-TOPICS = ["NLP", "CV", "Multimodal", "RL", "ML", "Other"]
+TOPICS = ["NLP", "CV", "Multimodal", "RL", "ML", "AIGC", "Other"]
 
 
 def parse_paper(filepath: Path) -> dict | None:

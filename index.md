@@ -13,6 +13,7 @@
 | [Multimodal](papers/Multimodal/README.md) | 0 | 0 | 0 | 0 |
 | [RL](papers/RL/README.md) | 0 | 0 | 0 | 0 |
 | [ML](papers/ML/README.md) | 0 | 0 | 0 | 0 |
+| [AIGC](papers/AIGC/README.md) | 0 | 0 | 0 | 0 |
 | [Other](papers/Other/README.md) | 0 | 0 | 0 | 0 |
 | **合计** | **2** | **1** | **0** | **1** |
 
