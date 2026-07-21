@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arxiv 多模态论文日报 - 2026-07-05</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', sans-serif; background: #f5f7fa; color: #333; line-height: 1.6; }
+  .container { max-width: 960px; margin: 0 auto; padding: 40px 20px; }
+  .header { text-align: center; margin-bottom: 40px; }
+  .header h1 { font-size: 28px; color: #1a1a2e; margin-bottom: 8px; }
+  .header .date { font-size: 16px; color: #666; }
+  .header .stats { display: inline-flex; gap: 20px; margin-top: 16px; flex-wrap: wrap; justify-content: center; }
+  .header .stat { background: #fff; border-radius: 8px; padding: 10px 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); font-size: 14px; color: #555; }
+  .header .stat strong { color: #4361ee; font-size: 20px; }
+  .paper { background: #fff; border-radius: 12px; padding: 24px 28px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); transition: box-shadow 0.2s; border-left: 4px solid #4361ee; }
+  .paper:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.12); }
+  .paper .title { font-size: 18px; font-weight: 600; color: #1a1a2e; margin-bottom: 8px; }
+  .paper .title a { color: #1a1a2e; text-decoration: none; }
+  .paper .title a:hover { color: #4361ee; }
+  .paper .meta { font-size: 13px; color: #888; margin-bottom: 12px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  .paper .meta .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: 500; }
+  .tag-code { background: #d4edda; color: #155724; }
+  .tag-no-code { background: #f0f0f0; color: #999; }
+  .tag-vlm { background: #e8daef; color: #6c3483; }
+  .tag-benchmark { background: #d5f5e3; color: #1e8449; }
+  .tag-reasoning { background: #d6eaf8; color: #2471a3; }
+  .tag-generation { background: #fdebd0; color: #b9770e; }
+  .tag-retrieval { background: #fadbd8; color: #c0392b; }
+  .tag-agent { background: #e8f8f5; color: #1abc9c; }
+  .tag-audio { background: #fef9e7; color: #b7950b; }
+  .tag-3d { background: #ebf5fb; color: #2e86c1; }
+  .paper .abstract { font-size: 14px; color: #555; line-height: 1.7; }
+  .paper .links { margin-top: 12px; display: flex; gap: 10px; flex-wrap: wrap; }
+  .paper .links a { font-size: 13px; padding: 4px 12px; border-radius: 6px; text-decoration: none; font-weight: 500; }
+  .link-arxiv { background: #4361ee; color: #fff !important; }
+  .link-arxiv:hover { background: #3a56d4; }
+  .link-code { background: #28a745; color: #fff !important; }
+  .link-code:hover { background: #218838; }
+  .link-project { background: #6c757d; color: #fff !important; }
+  .link-project:hover { background: #5a6268; }
+  .section-title { font-size: 20px; color: #1a1a2e; margin: 36px 0 20px; padding-left: 12px; border-left: 4px solid #4361ee; }
+  .footer { text-align: center; margin-top: 40px; font-size: 13px; color: #aaa; }
+  @media (max-width: 600px) {
+    .header .stats { flex-direction: column; align-items: center; }
+    .paper { padding: 18px 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>Arxiv 多模态论文日报</h1>
+    <div class="date">2026 年 7 月 5 日（共 25 篇相关论文）</div>
+    <div class="stats">
+      <div class="stat">收录论文 <strong>25</strong> 篇</div>
+      <div class="stat">含代码仓库 <strong>5</strong> 篇</div>
+      <div class="stat">覆盖方向 <strong>7</strong> 个</div>
+    </div>
+  </div>
+
+  <div class="section-title" style="border-left-color: #6c3483;">VLM / MLLM</div>
+
+  <div class="paper" style="border-left-color: #6c3483;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.02371" target="_blank">VisionAId: An Offline-First Multimodal Android Assistant for People with Visual Impairment, Featuring Personalized Object Retrieval</a></div>
+    <div class="meta">
+      <span>Cristian-Gabriel Florea, Stelian Spînu</span>
+      <span class="tag tag-vlm">VLM / MLLM</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">提出 VisionAId，一款离线优先的多模态 Android 助手，面向视障人群提供实时视觉辅助与个性化物体检索。该系统将普通智能手机转化为可离线运行的视觉助手，兼顾隐私与可用性。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.02371" target="_blank">arXiv</a>
+    </div>
+  </div>
+
+  <div class="paper" style="border-left-color: #6c3483;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.02083" target="_blank">DeepGaze3.5-VL: Modeling Scanpaths via Autoregressive Token Prediction</a></div>
+    <div class="meta">
+      <span>Susmit Agrawal, Matthias Bethge, Matthias Kümmerer</span>
+      <span class="tag tag-vlm">VLM / MLLM</span>
+      <span class="tag tag-code">有代码</span>
+    </div>
+    <div class="abstract">提出 DeepGaze3.5-VL，通过自回归 token 预测建模人类场景浏览的扫描路径（scanpath）。模型结合视觉语言表征，在 MIT、COCO-FV 和 Daemons 等数据集上训练，用于理解人类视觉注意力的时序动态。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.02083" target="_blank">arXiv</a>
+      <a class="link-code" href="https://github.com/matthias-k/DeepGaze" target="_blank">GitHub</a>
+    </div>
+  </div>
+
+  <div class="paper" style="border-left-color: #6c3483;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.01978" target="_blank">Multimodal Knowledge Edit-Scoped Generalization for Online Recursive MLLM Editing</a></div>
+    <div class="meta">
+      <span>Siyuan Li, Youyuan Zhang, Ruitong Liu, Junxi Wang, Jing Li</span>
+      <span class="tag tag-vlm">VLM / MLLM</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">研究在线多模态知识编辑问题，提出 ScopeEdit 框架，以有界开销持续注入视觉-文本修正，同时最小化对无关行为的干扰。工作聚焦 MLLM 在动态知识更新场景下的范围泛化能力。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.01978" target="_blank">arXiv</a>
+    </div>
+  </div>
+
+  <div class="paper" style="border-left-color: #6c3483;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.02300" target="_blank">Search-based Testing of Vision Language Models for In-Car Scene Understanding</a></div>
+    <div class="meta">
+      <span>Lev Sorokin, Chen Yang, Ken E. Friedl, Andrea Stocco</span>
+      <span class="tag tag-vlm">VLM / MLLM</span>
+      <span class="tag tag-benchmark">基准</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">提出 ISU-Test，结合渲染与搜索测试方法，评估车载场景理解中的视觉语言模型。该工作面向自动驾驶舱内感知任务，检验 VLM 在受控合成场景下的鲁棒性与失败模式。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.02300" target="_blank">arXiv</a>
+    </div>
+  </div>
+
+  <div class="section-title" style="border-left-color: #2471a3;">多模态理解与推理</div>
+
+  <div class="paper" style="border-left-color: #2471a3;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.02089" target="_blank">ESC: Emotional Self-Correction for Reliable Vision-Language Models</a></div>
+    <div class="meta">
+      <span>Tien-Huy Nguyen, Minh-Nhat Nguyen, Nguyen Nhat Huy, Hung Viet Nguyen 等</span>
+      <span class="tag tag-reasoning">推理</span>
+      <span class="tag tag-vlm">VLM / MLLM</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">提出 ESC（Emotional Self-Correction），利用情感信号触发视觉语言模型的自我纠正，促使模型进行更谨慎、反思性的推理，从而提升 VLM 的可靠性。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.02089" target="_blank">arXiv</a>
+    </div>
+  </div>
+
+  <div class="paper" style="border-left-color: #2471a3;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.02509" target="_blank">ReContext: Recursive Evidence Replay as LLM Harness for Long-Context Reasoning</a></div>
+    <div class="meta">
+      <span>Yanjun Zhao, Ruizhong Qiu, Tianxin Wei, Yuanchen Bei, Zhining Liu 等</span>
+      <span class="tag tag-reasoning">推理</span>
+      <span class="tag tag-code">有代码</span>
+    </div>
+    <div class="abstract">提出 ReContext，通过递归证据回放机制增强大语言模型的长上下文推理能力。方法利用模型内部相关性信号，循环回放关键证据，缓解长文本推理中的信息遗忘问题。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.02509" target="_blank">arXiv</a>
+      <a class="link-code" href="https://github.com/Yanjun-Zha/ReContext" target="_blank">GitHub</a>
+    </div>
+  </div>
+
+  <div class="paper" style="border-left-color: #2471a3;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.01774" target="_blank">Subliminal Clocks: Latent Time Modelling in Diffusion Language Models</a></div>
+    <div class="meta">
+      <span>Maximo Rulli, Thomas Fontanari, Simone Petruzzi, Federico Alvetreti 等</span>
+      <span class="tag tag-reasoning">推理</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">探讨扩散语言模型（DLM）内部是否存在隐式时间表征。研究发现 DLM 虽未被显式赋予时间步条件，但仍编码去噪进度信息，并探讨该信息在下游任务中的潜在作用。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.01774" target="_blank">arXiv</a>
+    </div>
+  </div>
+
+  <div class="section-title" style="border-left-color: #1e8449;">多模态基准与评测</div>
+
+  <div class="paper" style="border-left-color: #1e8449;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.02269" target="_blank">AnyGroundBench: A Specialized-Domain Benchmark for Video Grounding in Vision-Language Models</a></div>
+    <div class="meta">
+      <span>Rintaro Otsubo, Ryo Fujii, Reina Ishikawa, Taiki Kanaya, Kanta Sawafuji 等</span>
+      <span class="tag tag-benchmark">基准</span>
+      <span class="tag tag-vlm">VLM / MLLM</span>
+      <span class="tag tag-code">有数据</span>
+    </div>
+    <div class="abstract">提出 AnyGroundBench，一个面向动物、工业、体育、手术和公共安全等专业领域的视频时序定位基准。实验表明，现有模型在专业领域的零样本泛化和上下文学习适应上均存在明显不足。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.02269" target="_blank">arXiv</a>
+      <a class="link-code" href="https://huggingface.co/datasets/rinost081/AnyGroundBench" target="_blank">数据集</a>
+    </div>
+  </div>
+
+  <div class="section-title" style="border-left-color: #c0392b;">多模态检索与信息抽取</div>
+
+  <div class="paper" style="border-left-color: #c0392b;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.02284" target="_blank">FlowCIR: Semantic Transport via Flow Matching for Zero-Shot Composed Image Retrieval</a></div>
+    <div class="meta">
+      <span>Zhenqi He, Ziqi Jiang, Yuanpei Liu, Yanghao Wang, Teng Wang, Long Chen</span>
+      <span class="tag tag-retrieval">检索</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">提出 FlowCIR，一种基于流匹配（flow matching）的语义迁移方法，用于零样本组合图像检索（ZS-CIR）。方法通过自然语言指令编辑参考图像特征，无需领域特定的三元组标注即可检索目标图像。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.02284" target="_blank">arXiv</a>
+    </div>
+  </div>
+
+  <div class="paper" style="border-left-color: #c0392b;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.01814" target="_blank">MMIR-TCM: Memory-Integrated Multimodal Inference and Retrieval for TCM Clinical Decision Support</a></div>
+    <div class="meta">
+      <span>Lihui Luo, Joongwon Chae, Ziyan Chen, Yang Liu, Siyi Cheng 等</span>
+      <span class="tag tag-retrieval">检索</span>
+      <span class="tag tag-vlm">VLM / MLLM</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">提出 MMIR-TCM，一个面向中医临床决策支持的记忆增强多模态推理与检索系统。工作整合多模态数据与外部记忆，旨在提升中医诊断的客观性与可复现性。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.01814" target="_blank">arXiv</a>
+    </div>
+  </div>
+
+  <div class="section-title" style="border-left-color: #1abc9c;">Agent 与具身智能</div>
+
+  <div class="paper" style="border-left-color: #1abc9c;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.02479" target="_blank">EAGLE-360: Embodied Active Global-to-Local Exploration in 360°</a></div>
+    <div class="meta">
+      <span>Jingtao Xu, Zizhuo Lin, Jianwen Sun, Yi Yang, Yawei Luo</span>
+      <span class="tag tag-agent">Agent</span>
+      <span class="tag tag-vlm">VLM / MLLM</span>
+      <span class="tag tag-code">有代码</span>
+    </div>
+    <div class="abstract">提出 EAGLE-360，一个基于多模态大语言模型的具身主动探索智能体，在 360° 全景环境中实现从全局到局部的主动目标搜索。方法利用 MLLM 的语义理解能力规划探索路径，提升开放环境中的导航效率。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.02479" target="_blank">arXiv</a>
+      <a class="link-code" href="https://github.com/Sansju/EAGLE-360" target="_blank">GitHub</a>
+    </div>
+  </div>
+
+  <div class="paper" style="border-left-color: #1abc9c;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.02507" target="_blank">What LLM Agents Say When No One Is Watching: Social Structure and Latent Objective Emergence in Multi-Agent Debates</a></div>
+    <div class="meta">
+      <span>Arman Ghaffarizadeh, Danyal Mohaddes, Aliakbar Izadkhah, Shahriar Noroozizadeh</span>
+      <span class="tag tag-agent">Agent</span>
+      <span class="tag tag-reasoning">推理</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">研究多智能体辩论场景中大语言模型智能体的社会结构与潜在目标涌现。工作揭示角色、受众与关系上下文如何塑造模型表达策略，为理解多智能体交互中的隐式行为提供实证分析。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.02507" target="_blank">arXiv</a>
+    </div>
+  </div>
+
+  <div class="paper" style="border-left-color: #1abc9c;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.02440" target="_blank">EvoPolicyGym: Evaluating Autonomous Policy Evolution in Interactive Environments</a></div>
+    <div class="meta">
+      <span>Zhilin Wang, Han Song, Runzhe Zhan, Jusen Du, Jiacheng Chen 等</span>
+      <span class="tag tag-agent">Agent</span>
+      <span class="tag tag-benchmark">基准</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">提出 EvoPolicyGym，一个用于评估交互环境中自主策略演化的基准套件。工作将策略改进过程从单一最终得分中解耦，支持对智能体通过反馈迭代优化可执行策略的能力进行细粒度评估。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.02440" target="_blank">arXiv</a>
+    </div>
+  </div>
+
+  <div class="paper" style="border-left-color: #1abc9c;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.02255" target="_blank">AgenticSTS: A Bounded-Memory Testbed for Long-Horizon LLM Agents</a></div>
+    <div class="meta">
+      <span>Xiangchen Cheng, Yunwei Jiang, Jianwen Sun, Zizhen Li, Chuanhao Li 等</span>
+      <span class="tag tag-agent">Agent</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">提出 AgenticSTS，以《Slay the Spire 2》为测试床研究长程 LLM 智能体的有界记忆问题。工作将记忆视为决定未来决策可见信息的契约，分析不同记忆约束对长程规划的影响。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.02255" target="_blank">arXiv</a>
+    </div>
+  </div>
+
+  <div class="paper" style="border-left-color: #1abc9c;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.02329" target="_blank">Grounded Autonomous Research: A Fault-Tolerant LLM Pipeline from Corpus to Manuscript in Frontier Computational Physics</a></div>
+    <div class="meta">
+      <span>Haonan Huang</span>
+      <span class="tag tag-agent">Agent</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">提出一个容错式自主研究 pipeline，利用大语言模型从 11,083 篇计算物理文献中自动提炼、校准并生成研究手稿。工作展示了 LLM 智能体在前沿科学发现全流程中的潜力与风险。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.02329" target="_blank">arXiv</a>
+    </div>
+  </div>
+
+  <div class="section-title" style="border-left-color: #b9770e;">多模态生成</div>
+
+  <div class="paper" style="border-left-color: #b9770e;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.02517" target="_blank">WorldDirector: Building Controllable World Simulators with Persistent Dynamic Memory</a></div>
+    <div class="meta">
+      <span>Hanlin Wang, Hao Ouyang, Qiuyu Wang, Wen Wang, Qingyan Bai, Ka Leong Cheng 等</span>
+      <span class="tag tag-generation">生成</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">提出 WorldDirector，一个高可控的视频世界模型框架，支持持久动态物体记忆与无限制视角探索。方法通过持久化对象状态实现长程一致的世界仿真，适用于可控视频生成与交互式场景模拟。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.02517" target="_blank">arXiv</a>
+      <a class="link-project" href="https://worlddirector.github.io/" target="_blank">项目页</a>
+    </div>
+  </div>
+
+  <div class="paper" style="border-left-color: #b9770e;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.02516" target="_blank">Alignment Is All You Need For X-to-4D Generation</a></div>
+    <div class="meta">
+      <span>Qiaowei Miao, Kehan Li, Yawei Luo, Yi Yang</span>
+      <span class="tag tag-generation">生成</span>
+      <span class="tag tag-3d">3D</span>
+      <span class="tag tag-code">有代码</span>
+    </div>
+    <div class="abstract">提出 Align4D，一个统一的 X-to-4D 生成框架，强调多模态控制下的对齐机制。方法通过对象、相机与运动的对齐，实现从图像、文本等多种输入到高质量 4D 内容的生成。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.02516" target="_blank">arXiv</a>
+      <a class="link-code" href="https://github.com/emorynlp/align4d" target="_blank">GitHub</a>
+    </div>
+  </div>
+
+  <div class="paper" style="border-left-color: #b9770e;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.02375" target="_blank">Representation Distribution Matching for One-Step Visual Generation</a></div>
+    <div class="meta">
+      <span>Lan Feng, Wuyang Li, Eloi Zablocki, Matthieu Cord, Alexandre Alahi</span>
+      <span class="tag tag-generation">生成</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">系统梳理 Representation Distribution Matching（RDM）范式的设计空间，用于在冻结预训练编码器下训练一步图像生成器。方法通过匹配生成样本与参考样本的特征分布，实现高效单步视觉生成。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.02375" target="_blank">arXiv</a>
+    </div>
+  </div>
+
+  <div class="paper" style="border-left-color: #b9770e;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.02317" target="_blank">NEvo: Neural-Guided Evolutionary Video Synthesis for Dynamic Visual Selectivity</a></div>
+    <div class="meta">
+      <span>Yingtian Tang, Sogand Salehi, Ming Zhou, Amir Zamir, Leyla Isik, Martin Schrimpf</span>
+      <span class="tag tag-generation">生成</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">提出 NEvo，一种神经引导的进化视频合成框架，用于生成针对视觉皮层不同脑区优化的动态刺激。该方法将神经编码模型与进化搜索结合，拓展了从静态图像到动态视频的神经选择性研究。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.02317" target="_blank">arXiv</a>
+    </div>
+  </div>
+
+  <div class="paper" style="border-left-color: #b9770e;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.02290" target="_blank">DisciplineGen-1M: A Large-Scale Dataset for Multidisciplinary Visual Generation and Editing</a></div>
+    <div class="meta">
+      <span>Zhaokai Wang, Mingxin Liu, Zirun Zhu, Ziqian Fan, Yiguo He 等</span>
+      <span class="tag tag-generation">生成</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">构建 DisciplineGen-1M，一个面向多学科知识密集型视觉生成与编辑的大规模数据集。工作针对图表、示意图等专业图像生成中的可靠性问题，提供配对标题与编辑指令，推动跨学科视觉内容生成。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.02290" target="_blank">arXiv</a>
+    </div>
+  </div>
+
+  <div class="paper" style="border-left-color: #b9770e;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.02220" target="_blank">DetailAnywhere: Fashion Detail Generation via Cross-Modal Feature Alignment Distillation</a></div>
+    <div class="meta">
+      <span>Zijun Li, Yimin Zhou, Jia Sun, Honglie Wang, Pengcheng Wei 等</span>
+      <span class="tag tag-generation">生成</span>
+      <span class="tag tag-vlm">VLM / MLLM</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">提出 DetailAnywhere，一种面向时尚电商的跨模态特征对齐蒸馏方法，用于生成服装细节区域（如领口、袖口、面料纹理）。工作填补了现有虚拟试衣与商品图生成中对局部细节可控生成的研究空白。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.02220" target="_blank">arXiv</a>
+    </div>
+  </div>
+
+  <div class="paper" style="border-left-color: #b9770e;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.02075" target="_blank">HandsOnWorld: Unconstrained Egocentric Video Generation with Camera-Disentangled Hand Control</a></div>
+    <div class="meta">
+      <span>Yushuo Chen, Xiaoyu Shi, Xiaoshi Wu, Xintao Wang, Pengfei Wan, Yebin Liu</span>
+      <span class="tag tag-generation">生成</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">提出 HandsOnWorld，一个无需多视角或标记动作捕捉的手控第一人称视频生成框架。方法将相机运动与手部动作解耦，实现无约束的以自我为中心的视频内容生成。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.02075" target="_blank">arXiv</a>
+    </div>
+  </div>
+
+  <div class="section-title" style="border-left-color: #2e86c1;">3D 视觉语言</div>
+
+  <div class="paper" style="border-left-color: #2e86c1;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.02515" target="_blank">PointDiT: Pixel-Space Diffusion for Monocular Geometry Estimation</a></div>
+    <div class="meta">
+      <span>Haofei Xu, Rundi Wu, Philipp Henzler, Nikolai Kalischek, Michael Oechsle 等</span>
+      <span class="tag tag-3d">3D</span>
+      <span class="tag tag-generation">生成</span>
+      <span class="tag tag-code">有代码</span>
+    </div>
+    <div class="abstract">提出 PointDiT，一种极简的像素空间 Diffusion Transformer，用于单目几何估计。方法从单张图像和高斯噪声出发，通过扩散模型恢复精细的三维几何结构，在复杂薄结构重建上表现优异。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.02515" target="_blank">arXiv</a>
+      <a class="link-project" href="https://haofeixu.github.io/pointdit/" target="_blank">项目页</a>
+    </div>
+  </div>
+
+  <div class="paper" style="border-left-color: #2e86c1;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.02301" target="_blank">InvSplat: Inverse Feed-Forward Scene Splatting</a></div>
+    <div class="meta">
+      <span>Polina Karpikova, Wenjing Bian, Haofei Xu, Hendrik Lensch, Andreas Geiger</span>
+      <span class="tag tag-3d">3D</span>
+      <span class="tag tag-generation">生成</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">提出 InvSplat，一种前馈式逆场景高斯泼溅方法，从图像中联合恢复三维几何与具有物理意义的材质属性。方法输出结构化的 3D 高斯表示，支持重光照与新视角合成。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.02301" target="_blank">arXiv</a>
+    </div>
+  </div>
+
+  <div class="paper" style="border-left-color: #2e86c1;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.02407" target="_blank">Text-Driven 3D Indoor Scene Synthesis in Non-Manhattan Environments</a></div>
+    <div class="meta">
+      <span>Xianhui Meng, Zirui Song, Yuchen Zhang, Li Zhang, Yongxuan Lv 等</span>
+      <span class="tag tag-3d">3D</span>
+      <span class="tag tag-generation">生成</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">提出 SPG-Layout，一个面向非曼哈顿环境的文本驱动三维室内场景合成框架。方法利用物体分布统计先验与分层布局策略，生成几何一致、物理可信的复杂室内场景，并构建 500 个非曼哈顿环境基准。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.02407" target="_blank">arXiv</a>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>自动生成 · QoderWork Arxiv 多模态论文追踪 · 2026-07-05</p>
+  </div>
+</div>
+</body>
+</html>
