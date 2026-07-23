@@ -1,0 +1,239 @@
+# Arxiv 多模态论文日报 · 2026-07-23
+
+日期：2026 年 7 月 23 日
+
+- 收录论文：**35** 篇
+- 含代码仓库：**4** 篇
+- 覆盖方向：**8** 个
+
+## VLM / MLLM
+
+### [Look Less, Think Faster: Joint Token-Compute Adaptation for Multimodal LLMs](https://arxiv.org/abs/2607.20357)
+
+**作者：** Pengcheng Wang, Zhiquan Wang, Jayoung Lee et al.  |  **方向：** VLM / MLLM  |  **代码：** 暂无代码
+
+SmartVL 是一个联合自适应推理框架，同时调节视觉 token 数量与语言模型计算量，以在给定延迟预算内优化精度-效率权衡。该方法通过共享预算编码与可微延迟估计器联合训练视觉 token 控制器和 LLM 计算控制器，在多模态推理任务上取得了显著的加速-精度平衡提升。
+
+### [Test-Time Training for Modality Order Consistency in Vision-Language Models](https://arxiv.org/abs/2607.20351)
+
+**作者：** Aditi Gupta, Yossi Gandelsman  |  **方向：** VLM / MLLM  |  **代码：** 暂无代码
+
+研究发现视觉语言模型对图像与问题的输入顺序高度敏感，通常图像优先提示明显优于问题优先。作者提出一种测试时训练方法，通过学习模态顺序一致性来缩小两种输入顺序之间的性能差距，并进一步提升较强分支的表现，揭示了顺序偏差集中在网络中层表征分裂区域。
+
+### [Multimodal Large Language Models for Remote Sensing Image Understanding: Domain-Specific or General-Purpose?](https://arxiv.org/abs/2607.20284)
+
+**作者：** Qiwei Ma, Chunping Qiu, Xinjun Cheng et al.  |  **方向：** VLM / MLLM  |  **代码：** 暂无代码
+
+该研究系统梳理并诊断评估了面向遥感图像理解的 MLLM，对比了遥感领域专用模型与通用计算机视觉 MLLM 在多个视觉语言任务上的差异。实验结果表明通用模型在多数任务上仍具竞争力，但领域适配在特定遥感场景中能够带来额外收益。
+
+### [ENTRAP-VL: A Taxonomic Probe for Dual Contextual Entrainment in Vision-Language Models](https://arxiv.org/abs/2607.20092)
+
+**作者：** Karan Goyal, Afreen Hossain, Debojyoti Das et al.  |  **方向：** VLM / MLLM  |  **代码：** 暂无代码
+
+ENTRAP-VL 提出了一个手动构建的数据集与分类体系，用于研究视觉语言模型中的双重上下文诱导（entrainment）现象。该工作分别构建了文本诱导与视觉诱导两种测试流，帮助量化无关文本或视觉上下文对模型输出的偏见影响。
+
+### [Memory-Augmented Multimodal Large Language Models for Small Object Understanding in Streaming Aerial Videos](https://arxiv.org/abs/2607.19857)
+
+**作者：** Penglei Sun, Yehua Huang, Zhuoli Tao et al.  |  **方向：** VLM / MLLM  |  **代码：** 暂无代码
+
+该工作发布了 DroneEyes 无人机小目标数据集，并提出了 SkyAnchor MLLM。模型通过语义感知 token 路由器保留微小空中目标的细节信息，并借助分层记忆银行在流式无人机视频中维持对目标的持续理解，在 referring segmentation 任务上取得显著提升。
+
+### [Dual Adversarial Fine-tuning for Enhancing Robustness of Large Vision Language Model](https://arxiv.org/abs/2607.18958)
+
+**作者：** Sibo Wang, Jie Zhang, Shiguang Shan et al.  |  **方向：** VLM / MLLM  |  **代码：** 暂无代码
+
+该研究提出了一种双重对抗微调框架，通过在输入扰动与特征扰动两个层面联合优化，提升大型视觉语言模型在零样本分类、图像描述与视觉问答等多模态任务上的鲁棒性。
+
+## 推理
+
+### [Toward Reliable RGB-D Semantic Segmentation: Handling Missing Modalities via Condition Dropout](https://arxiv.org/abs/2607.20326)
+
+**作者：** Xuchen Zhu, Yajuan Wei, Shuang Hao et al.  |  **方向：** 推理  |  **代码：** 暂无代码
+
+针对 RGB-D 语义分割中某一模态可能缺失的问题，作者提出 Condition Dropout（ConD）两阶段持续训练方法。该方法冻结预训练 RGB-D 模型的原始编码器，通过零初始化特征注入训练副本编码器，使模型在完整、仅 RGB 或仅深度输入下均能稳定工作。
+
+### [ChronoStitch: Training-Free Composition of Visual KV Memories for Long-Horizon Temporal Reasoning](https://arxiv.org/abs/2607.19547)
+
+**作者：** Santiram Tiwari, Nishant Sinha, Kunal Kislay  |  **方向：** 推理  |  **代码：** 暂无代码
+
+ChronoStitch 提出了一种无需训练的长视频推理方法，通过将独立视频块的视觉 key-value 缓存重新对齐到全局三轴多模态 RoPE 坐标系，并选择性地重计算偏离较大的 token，实现长时程视觉记忆的正确组合。
+
+### [PercepCap: Video Captioner with Structured Spatio-Temporal Perception](https://arxiv.org/abs/2607.20389)
+
+**作者：** Yifan Xu, Zihao Wang, Zhixiao Wang et al.  |  **方向：** 推理  |  **代码：** 暂无代码
+
+PercepCap 是一个视频描述生成框架，首先显式输出包含目标轨迹与时序事件的感知轨迹，再基于该证据生成最终描述。该方法采用两阶段训练策略：监督微调将模型从直接描述转换为感知-描述链，再使用强化学习联合奖励感知轨迹与最终描述质量。
+
+## 基准
+
+### [MV-Bench: Benchmarking Multimodal Large Language Models for Coordinated Multi-View Interface Construction](https://arxiv.org/abs/2607.19910)
+
+**作者：** Yue Zhao, Hongxu Liu, Feiyu Wang et al.  |  **方向：** 基准  |  **代码：** 暂无代码
+
+MV-Bench 是首个评估多模态大语言模型根据 Tableau 工作簿规范构建协调多视图交互界面的基准。该基准从视觉保真度、数据绑定正确性与交互完整性三个维度衡量模型在数据可视化生成任务上的表现。
+
+### [DRGBT-1K: A Large-scale High-quality Benchmark for Dynamic RGBT Tracking](https://arxiv.org/abs/2607.19772)
+
+**作者：** Zhaodong Ding, Chenglong Li, Zeyu Ding et al.  |  **方向：** 基准  |  **代码：** 暂无代码
+
+DRGBT-1K 是一个面向动态变化的 RGB-thermal 目标跟踪大规模高质量基准，涵盖多观测平台与真实场景。该基准为评估模态动态变化下的跟踪算法提供了标准化数据与评测协议。
+
+### [ExpertVerse: A General-Purpose Benchmark for Expert-Level Reasoning in Knowledge-Intensive Visual Synthesis](https://arxiv.org/abs/2607.19341)
+
+**作者：** Yuan Wang, Yongchao Du, Mengting Chen et al.  |  **方向：** 基准  |  **代码：** 暂无代码
+
+ExpertVerse 构建了一个包含 1,611 条专家标注实例的通用基准，用于评估多模态生成模型在知识密集型视觉推理、编辑与组合任务上的表现。该工作还提出了一个推理模型作为强基线。
+
+### [MeetingToM: Evaluating Multimodal LLMs on Theory-of-Mind Reasoning in Multi-Party Meetings](https://arxiv.org/abs/2607.19235)
+
+**作者：** Ziyi Wang, Yuhang Wu, Dongxu Piao et al.  |  **方向：** 基准  |  **代码：** 暂无代码
+
+MeetingToM 是一个评估多模态大语言模型在多方会议中心智理论推理能力的基准。任务涵盖个体层面、二元关系与群体层面推理，包括伪共识检测等复杂社交推理场景。
+
+### [Two-Level Meta-Rubrics for Evaluating Open-Ended Generation: GAMUT, a Benchmark for Factual Completeness](https://arxiv.org/abs/2607.19322)
+
+**作者：** Xilun Chen, Zhaleh Feizollahi, Ross Goodwin et al.  |  **方向：** 基准  |  **代码：** 暂无代码
+
+GAMUT 提出了两级元评分标准用于评估开放域多模态生成中的事实完整性。该基准覆盖可穿戴影像等领域，通过结构化评分衡量模型生成长文本回答时的事实完整度。
+
+### [PathAgentBench: Benchmarking Evidence-Seeking Vision-Language Models on Whole-Slide Pathology Image](https://arxiv.org/abs/2607.19261)
+
+**作者：** Dankai Liao, Tianyi Zhang, Yufeng Wu et al.  |  **方向：** 基准  |  **代码：** 暂无代码
+
+PathAgentBench 是一个病理学视觉语言模型基准，以诊断树形式组织多放大倍率下的证据解释、检索、定位与多尺度推理任务，覆盖超过 1,800 张全切片图像。
+
+### [Computational Humor with Multimodal LLMs: Methods, Datasets, Evaluation, and Challenges](https://arxiv.org/abs/2607.19011)
+
+**作者：** Tuo Liang, Zhe Hu, Disheng Liu et al.  |  **方向：** 基准  |  **代码：** 暂无代码
+
+该综述系统梳理了多模态大语言模型在视觉幽默理解（表情包、漫画等）方面的方法、数据集、评测指标与挑战，围绕识别、解释、推理与生成四个维度进行了全面总结。
+
+## 检索
+
+### [Diverse-Intent Multi-Turn Fashion Image Retrieval](https://arxiv.org/abs/2607.20291)
+
+**作者：** Mingqiang Tang, Haokun Wen, Meng Liu et al.  |  **方向：** 检索  |  **代码：** 暂无代码
+
+该研究提出了一个多轮时尚图像检索基准，涵盖多样化意图的对话查询，并设计了一种将多轮多模态查询直接对齐到时尚图像嵌入空间的模型，提升了复杂对话场景下的检索准确性。
+
+### [VizRAG: Enhancing Retrieval-Augmented Generation with Hypergraph Visualization](https://arxiv.org/abs/2607.19830)
+
+**作者：** Yanbin Wei, Yang Chen, Renling Gan et al.  |  **方向：** 检索  |  **代码：** 暂无代码
+
+VizRAG 将超图可视化引入检索增强生成系统，利用多模态大模型的视觉感知能力理解文本集合中的高阶关系，从而在问答等任务中更好地利用结构化检索证据。
+
+### [From P&ID Drawings to Process Graphs: A Multimodal Language Model Approach](https://arxiv.org/abs/2607.19568)
+
+**作者：** Baikai Zhu, Samuel Duong, Javal Vyas et al.  |  **方向：** 检索  |  **代码：** 暂无代码
+
+该工作提出了一个基于多模态大语言模型的两阶段流程，从管道仪表图（P&ID）中抽取设备标签并推断工艺流程拓扑。该方法是工业文档信息抽取与知识图谱构建的初步尝试。
+
+### [Mitigating Modality and Language-Style Gaps for Zero-Shot Video Moment Retrieval](https://arxiv.org/abs/2607.19027)
+
+**作者：** Jihyun Lee, Cheol-Ho Cho, Woojin Jun et al.  |  **方向：** 检索  |  **代码：** 暂无代码
+
+该研究提出 Self-SiMS 方法用于零样本视频时刻检索，通过视频自相似性避免噪声查询-帧相似度，并引入查询感知 MLLM 推理阶段来锐化文本-视频对齐，缓解了模态与语言风格差异带来的检索鸿沟。
+
+### [TAP-RAG: Task-Aware Policy Control for Long-Document Multimodal Question Answering](https://arxiv.org/abs/2607.18917)
+
+**作者：** Zhong Ji, Keqi Jin, Yan Zhang et al.  |  **方向：** 检索  |  **代码：** 暂无代码
+
+TAP-RAG 是一个任务感知策略控制的检索增强生成框架，针对长文档多模态问答任务，根据预测的查询需求融合文本、视觉与结构证据，提升了复杂文档问答的准确性。
+
+### [Now You See the Hate: Adaptive View Retrieval for Hidden Hateful Illusions](https://arxiv.org/abs/2607.19061)
+
+**作者：** Qianpu Chen, Derya Soydaner  |  **方向：** 检索  |  **代码：** 暂无代码
+
+该研究提出自适应视角检索方法，用于检测隐藏在多模态内容中的仇恨幻觉。作者认为鲁棒的多模态内容审核需要先恢复隐藏含义，再判断其危害性，从而在有害内容识别任务上取得改进。
+
+## Agent
+
+### [Closing the Lab-to-Store Gap: A Data-Efficient Post-Training and Experience-Driven Learning VLA Framework for Retail Humanoids](https://arxiv.org/abs/2607.20345)
+
+**作者：** Roger Sala Sisó, Tiago Silvério, Jakob Sand et al.  |  **方向：** Agent  |  **代码：** 暂无代码
+
+DEED 是一个面向零售人形机器人的视觉-语言-动作（VLA）框架，通过数据高效的后训练与基于经验的学习闭环，将实验室策略迁移到真实的超市补货任务。该工作在 Unitree G1-Edu 与 GR00T N1.6 模型上验证了系统级部署效果。
+
+### [EA-Nav: Learning Safe Visual Navigation Policies with Embodiment Awareness](https://arxiv.org/abs/2607.19880)
+
+**作者：** Jialu Zhang, Yong Du, Xianda Guo et al.  |  **方向：** Agent  |  **代码：** 暂无代码
+
+EA-Nav 提出了一种具身感知模仿学习方法，将几何与多模态线索注入导航策略，以提升机器人在复杂环境中的安全避障与 traversability 判断能力。
+
+### [Silent Failures in Multimodal Agentic Search: A Diagnostic Taxonomy and Cross-Judge Evaluation](https://arxiv.org/abs/2607.19793)
+
+**作者：** Zhengxian Wu, Junjie Gao, Kai Yang  |  **方向：** Agent  |  **代码：** [Code](https://github.com/DingWu1021/silent-failures-multimodal-agentic-search)
+
+该研究提出了多模态智能搜索代理中隐性失败的诊断分类体系，并构建了跨评判模型的评估协议。作者在多种模型与评判者之间系统比较了搜索代理的轨迹，揭示了当前多模态代理在错误检测方面的盲区。
+
+### [Symbol and Footprint Database for Electronic Components by Agentic Recognition and Generation](https://arxiv.org/abs/2607.19767)
+
+**作者：** Yichen Shi, Yuzhi Liu, Zhuofu Tao et al.  |  **方向：** Agent  |  **代码：** 暂无代码
+
+该工作利用多模态智能代理识别并生成 PCB 元器件符号与封装，构建可自动扩展的元器件数据库。代理通过视觉理解文档与电路板图像，自动化完成传统上依赖人工的元件库维护流程。
+
+### [RIME: Enabling Large-Scale Agentic Post-Production](https://arxiv.org/abs/2607.19605)
+
+**作者：** Noah Schaffer, Nikhil Singh  |  **方向：** Agent  |  **代码：** 暂无代码
+
+RIME 提出了一套用于大规模代理式音频后期制作的框架与 POEMS 工具包，通过生成真实的编辑指令数据来训练多模态代理完成音乐编辑任务。实验表明监督微调后的多模态 LLM 在音频编辑代理任务上有明显提升。
+
+### [Agentic Real2Sim: Physics-based World Modeling with Vision-Language Agents](https://arxiv.org/abs/2607.19190)
+
+**作者：** Guanxiong Chen, Qianjun Xia, Jiawei Peng et al.  |  **方向：** Agent  |  **代码：** 暂无代码
+
+Agentic Real2Sim 利用视觉语言代理将真实世界中物体与机器人交互的记录转换为可运行的物理仿真。该框架覆盖刚体、可变形体与人形运动场景，为从真实数据构建物理一致的世界模型提供了新思路。
+
+## 生成
+
+### [MTVDiff: Multimodal Conditional Latent Diffusion for Enhanced Thermal-to-Visible Face Translation](https://arxiv.org/abs/2607.19886)
+
+**作者：** Zhiyuan Xia, Haojie Li, Jingyu Lin et al.  |  **方向：** 生成  |  **代码：** 暂无代码
+
+MTVDiff 提出了一种多模态条件潜在扩散模型，利用深度图与文本引导将热成像人脸翻译为可见光人脸，同时保持身份一致性。该方法在跨模态人脸生成任务上取得了更好的视觉质量与身份保持效果。
+
+### [Appearance Pointers -- Multimodal Region Control of Diffusion Transformers](https://arxiv.org/abs/2607.19344)
+
+**作者：** Rahul Sajnani, Yulia Gryaditskaya, Radomír Měch et al.  |  **方向：** 生成  |  **代码：** 暂无代码
+
+Appearance Pointers 引入紧凑的外观指针 token，使扩散 Transformer 能够在用户指定的掩码区域应用文本或图像外观线索，而无需重新训练基础模型。该方法实现了细粒度的多模态区域控制图像生成与编辑。
+
+### [Mage-Flow: An Efficient Native-Resolution Foundation Model for Image Generation and Editing](https://arxiv.org/abs/2607.19064)
+
+**作者：** Xinjie Zhang, Peng Zhang, Shicheng Zheng et al.  |  **方向：** 生成  |  **代码：** [Code](https://github.com/microsoft/Mage)
+
+Mage-Flow 是一个 40 亿参数的原生分辨率图像生成与编辑基础模型，采用原生分辨率多模态扩散 Transformer 与高效 Mage-VAE。该模型支持文本到图像生成与图像编辑，并提供了 Turbo 变体以进一步加速推理。
+
+### [Pathologist Attention-Aligned Report Generation for Prostate Histopathology](https://arxiv.org/abs/2607.19624)
+
+**作者：** Ruoyu Xue, Suryakant Singh, Souradeep Chakraborty et al.  |  **方向：** 生成  |  **代码：** [Code](https://github.com/cvlab-stonybrook/Pathologist-Attention-Aligned-Report-Generation)
+
+该研究采集了病理学家在全切片图像上的注视数据，并引入注意力对齐损失训练前列腺癌报告生成模型。实验表明对齐病理学家视觉注意力不仅提升了自然语言评价指标，还增强了诊断要素的准确性。
+
+## 音频
+
+### [Multimodal Speaker Verification as a Threat to Speaker Anonymization](https://arxiv.org/abs/2607.19636)
+
+**作者：** Ashi Garg, Cristina Aggazzotti, Leibny Paola García-Perera et al.  |  **方向：** 音频  |  **代码：** 暂无代码
+
+该研究表明，即使语音经过匿名化处理，结合声学、韵律与语言学线索的多模态说话人验证仍能在跨 utterance 场景下提升识别率。该工作揭示了当前语音匿名化方案在面对多模态攻击时的潜在脆弱性。
+
+## 3D
+
+### [D3VL: Understanding Driving Scenes from 3D Time Series Data and Video with Language Models](https://arxiv.org/abs/2607.19528)
+
+**作者：** Heesang Han, A. Lynn Abbott, Abhijit Sarkar  |  **方向：** 3D  |  **代码：** [Code](https://github.com/heesangh/D3VL-and-WaymoQA)
+
+D3VL 是一个面向自动驾驶的多模态大语言模型框架，融合 2D 视频与 3D LiDAR/立体相机时序数据来回答驾驶场景问题。该工作还发布了 Waymo QA 数据集扩展，在 KITTI QA 任务上取得了性能提升。
+
+### [A Unified Tokenization Framework for Pain Recognition using Heterogeneous 3D Modalities](https://arxiv.org/abs/2607.19716)
+
+**作者：** Stefanos Gkikas, Christian Arzate Cruz, Valentina Becchetti et al.  |  **方向：** 3D  |  **代码：** 暂无代码
+
+该研究提出了一个统一的 tokenization 框架，用于整合疼痛识别中的异构 3D 行为与脑电数据。通过单一 pipeline 处理多种 3D 模态，该方法在 AI4Pain 基准上取得了领先的疼痛识别性能。
+
+---
+
+**论文总数统计：** 本次日报共收录 35 篇多模态相关论文，其中 4 篇已提供代码仓库，覆盖 8 个研究方向。
+
+_自动生成 · QoderWork Arxiv 多模态论文追踪 · 2026-07-23_
