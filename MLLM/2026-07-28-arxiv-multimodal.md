@@ -1,0 +1,391 @@
+# Arxiv 多模态论文日报 - 2026-07-28
+
+> 注：7 月 24–25 日 arXiv 无新公告，本报告收录最近两个公告日（7 月 22–23 日）的多模态论文。
+
+**收录论文**：61 篇　**含代码仓库**：13 篇　**覆盖方向**：8 个
+
+## VLM / MLLM
+
+### [MedGame: Storytelling Gamification Empowered by Large Language Models for Medical Education](https://arxiv.org/abs/2607.21570)
+
+Qian Wu, Xinrong Zhou, Zizhan Ma et al.　`VLM / MLLM`　[Code](https://github.com/med-air/MedGame)
+
+本文提出 MedGame，一个将静态临床病例转化为可执行叙事游戏的医学教育框架，通过 Medical Narrative Designer 与 Story Director 双引擎实现病例驱动的临床决策学习轨迹。研究同时发布包含 5000 例病例的 MedGame Bench 基准，实验表明任务定向微调能显著提升开源大模型在医学叙事生成与故事导演任务上的表现，并让学生感到比纯文本学习更具参与感与实用性。
+
+### [Out-of-Distribution Detection in Wireless Multimodal Foundation Models for 6G ISAC](https://arxiv.org/abs/2607.21455)
+
+Mohammad Farzanullah, Akram Bin Sediq, Ali Afana et al.　`VLM / MLLM`
+
+本文针对 6G ISAC 中无线多模态基础模型（WMFM）的分布外（OOD）检测问题，提出 WMFM-OOD 框架。该方法在联合潜空间中构建几何化的基站原型以刻画正常无线环境的流形结构，并通过温度缩放的概率评分机制区分正常样本与协变量偏移异常。在 DeepVerse6G 数据集上，WMFM-OOD 取得 0.8824 的 AUROC，并将 FPR95 降低约 17%，为安全关键网络提供了初步的 OOD 检测能力。
+
+### [Multi-Task Learning for Heterogeneous Prediction from Video Game State with Transfer Learning](https://arxiv.org/abs/2607.21290)
+
+Jonas Peché, Aliaksei Tsishurou, Alexander Zap et al.　`VLM / MLLM`
+
+本文将多任务学习（MTL）应用于基于视频游戏状态数据的异质预测任务，提出一个融合光栅化视觉输入、全局对局上下文与单位状态信息的多模态共享架构。在大型《坦克世界》数据集上的实验比较了单任务与多任务训练、混合损失加权与冲突梯度处理、有限目标数据下的预训练微调以及地图间结构化环境迁移，验证了多任务训练在提升泛化与降低推理成本方面的潜力。
+
+### [C-PTQ: Fisher-weighted Channel-wise Sensitivity for Post-training Quantization of MLLMs](https://arxiv.org/abs/2607.21076)
+
+Jiameng Li, Han Zhou, Matthew B. Blaschko　`VLM / MLLM`
+
+本文提出C-PTQ，一种面向多模态大语言模型的通道级后训练量化方法，采用Fisher加权目标近似Hessian灵敏度，将量化误差与任务损失敏感相对齐，从而保护离群通道。在Qwen2.5-VL、InternVL2和LLaVA-OV等模型上的8个基准测试中，C-PTQ在无需LoRA等辅助模块的情况下取得了先进性能。
+
+### [Beyond Independent Optimization: Compression, MoE Routing, and Quantization Interactions in Multimodal Edge Intelligence](https://arxiv.org/abs/2607.20981)
+
+Jay Gor, Karm Dave, Akshita Abrol et al.　`VLM / MLLM`
+
+本文综述多模态边缘智能中视觉token压缩、视频token处理、KV缓存优化、MoE路由与低比特量化等技术的相互作用，指出压缩、路由与量化会相互影响特征分布、专家利用与模态退化。作者提出时序路由一致性指标用于诊断视频MoE模型，并展望了路由感知压缩、跨模态缓存管理与硬件协同设计等方向。
+
+### [Look Less, Think Faster: Joint Token-Compute Adaptation for Multimodal LLMs](https://arxiv.org/abs/2607.20357)
+
+Pengcheng Wang, Zhiquan Wang, Jayoung Lee et al.　`VLM / MLLM`
+
+本文提出了SmartVL，一个联合优化视觉令牌数量与LLM计算量的多模态大语言模型自适应推理框架。方法通过视觉侧令牌控制器动态选择信息性视觉令牌，并通过LLM侧计算控制器自适应调整语言模型计算，两者通过共享预算编码与可微延迟估计器进行端到端协同训练。在多个MLLM基准上的实验表明，SmartVL在准确率-效率帕累托前沿上持续优于现有的独立自适应方法，有效降低了推理成本。
+
+## 推理
+
+### [MIRROR: Learning from the Other View for Multi-Modal Reasoning](https://arxiv.org/abs/2607.21552)
+
+Wen Ye, Yuxiao Qu, Aviral Kumar et al.　`推理`
+
+本文提出 MIRROR（Modality-Informed Reciprocal Reasoning Optimization），一种基于强化学习的多模态推理方法，通过跨视图自监督让模型从不同模态视图中互补学习。研究构建 ODA-Data 几何数据集，发现同一问题在文本、图像或图文组合视图下会触发不同推理路径与失败模式。MIRROR 以最佳视图为教师、通过反向 KL 对齐其他视图，在几何推理基准上取得优于标准 RL 的准确率与跨模态一致性。
+
+### [When Are Reasoning-Based Guardrails Not Efficient? ResponseGuard: A Fast Vision-Language Guard for Real-Time Moderation](https://arxiv.org/abs/2607.21401)
+
+Dongbin Na　`推理`　[Code](https://github.com/ndb796/ResponseGuard)
+
+本文提出 ResponseGuard，一种无链式推理的快速视觉-语言内容护栏，可在单次前向传播中从请求、响应与图像的聚合表示中直接判断有害性。相比现有的 3B 推理式护栏，2B 的 ResponseGuard 在响应有害性检测上性能更优，且推理时延降低约 150 倍，并能在流式生成过程中逐句拦截有害回答。研究进一步发现，现有推理式护栏几乎不将注意力投向图像，二者差距可能源于冻结视觉编码器而非缺少思维链。
+
+### [Multimodal Pretraining for Generalizable EEG Representation Learning](https://arxiv.org/abs/2607.21384)
+
+Targol Bakhtiarvand, Jugal Kalita, Adham Atyabi　`推理`
+
+本文提出一种面向癫痫检测的多模态 EEG 基础模型，将 Mamba 原始信号编码器、ViT 时频编码器与轻量文本编码器映射到共享嵌入空间，并通过掩码建模、跨视图对比对齐与时序一致性损失进行无监督预训练。在 CHB-MIT 等数据集上，最优单模型达到 0.874 AUROC，集成模型 0.878 AUROC，跨被试留一法平均平衡准确率为 0.558，展现了良好的癫痫检测、场景适应与可解释定位能力。
+
+### [HalluScope: Fine-grained Hallucination Diagnosis for Multimodal Large Language Models](https://arxiv.org/abs/2607.21105)
+
+Weilin Jin, Mingyu Wang, Wenbo Li et al.　`推理`
+
+本文针对多模态大语言模型幻觉问题，提出细粒度幻觉诊断任务，要求同时检测、分类并解释幻觉内容，并构建HalluScope-30K数据集，训练出HalluScope-4B/8B诊断模型。实验表明细粒度诊断能相互促进，并可指导Qwen3-VL、LLaVA等目标模型自我纠正幻觉。
+
+### [Geo3R: Mitigating Spatial Reasoning Hallucination in Multimodal Large Language Models](https://arxiv.org/abs/2607.21085)
+
+Mingyu Wang, Weilin Jin, Wenbo Li et al.　`推理`
+
+本文将多模态大模型在空间关系推理中的失败归纳为空间推理幻觉，并提出无需训练、即插即用的Geo3R框架，利用几何证据与结构化三维推理抑制由视角、朝向和视点变化引发的幻觉。在3个基准、18项任务上的实验显示，Geo3R可跨多种MLLM有效降低空间幻觉。
+
+### [MVEI & EmObserver: Empowering MLLM-Oriented Visual Emotional Intelligence via Emotion Statement Judgement](https://arxiv.org/abs/2607.21061)
+
+Daiqing Wu, Dongbao Yang, Jiashu Yao et al.　`推理`　[Code](https://github.com/wdqqdw/EmObserver)
+
+本文提出面向多模态大语言模型的视觉情感智能评测任务“情绪陈述判断（ESJ）”，并构建MVEI基准与INSETS-462k训练数据，在此之上训练了EmObserver模型。实验显示EmObserver在情感理解、泛化能力与推理可信度方面均优于现有方法。
+
+### [LivePhys: Transforming Static Physics Problems into Interactive Simulations via a Scan-to-Play Framework](https://arxiv.org/abs/2607.20990)
+
+Xiaowei Dai, Ziyu Luo, Xiangwen Zhang et al.　`推理`
+
+本文提出LivePhys扫描即玩框架，将静态教材物理题转化为可执行、可交互的力学仿真；系统解耦多模态感知与物理感知推理，利用多模态大语言模型推断实体、参数与约束，再由物理引擎驱动一致的空间交互。实验表明LivePhys在仿真可执行性、空间准确性与交互保真度上显著优于通用多模态模型，并能降低学习者认知负荷。
+
+### [DINO-VPT: Hierarchical Visual Prompt Tuning for Joint Physical-Digital Face Anti-Spoofing](https://arxiv.org/abs/2607.20900)
+
+Pierre Gallin-Martel, Mika Feng, Koichi Ito et al.　`推理`
+
+本文提出DINO-VPT，一种面向物理与数字攻击统一人脸反欺诈的分层视觉提示微调方法，通过提示路由网络根据输入特征动态注入提示，在无需多模态融合与文本编码器的情况下解耦多样化伪造痕迹。在UniAttackData上的实验表明，该视觉专用方案性能优于基于VLM的方法。
+
+### [Enhancing Explainable Cardiac Diagnosis with Guide-Grounded Multimodal LLMs](https://arxiv.org/abs/2607.20814)
+
+Hai-Nam Duy Vuong, Duy-Anh Bui, Trong-Nghia Nguyen et al.　`推理`　[Code](https://github.com/NonomiyaIzumi/XAI_ECG)
+
+该研究提出了一种基于指南引导的多模态大语言模型框架，用于提升心电图（ECG）自动诊断报告的可解释性与临床一致性。方法上，模型将12导联ECG图像、Grad-CAM热图、CNN预测事实包与离线构建的权威ECG解读指南共同输入多模态LLM，生成结构化诊断报告。在PTB-XL完整测试集上，该方法将生成印象的平均BERTScore从0.818提升至0.953，同时保持了有竞争力的分类性能，表明注入临床知识可有效缓解幻觉并增强报告可信度。
+
+### [Adaptive Confidence-weighted Expansion for Trustworthy Multi-Omics Multimodal Fusion](https://arxiv.org/abs/2607.20742)
+
+Mohammad Raahemi, Ali Sekhavati, Alireza Maleki et al.　`推理`
+
+本文提出了自适应置信加权扩展（ACE）框架，以提升多模态融合模型在噪声或信息不足数据流下的可信度。ACE通过模态内相关性生成互补新模态以扩展多模态空间，并采用双层置信机制在融合前自适应地按可靠性重加权各模态，同时对最终决策估计全局信任分数。在BRCA、KIPAN、LGG和ROSMAP四个多组学数据集上，ACE在分类性能和置信度校准方面均显著优于现有最先进方法，展现出更强的稳定性与鲁棒性。
+
+### [Multimodal Large Language Models for Remote Sensing Image Understanding: Domain-Specific or General-Purpose?](https://arxiv.org/abs/2607.20284)
+
+Qiwei Ma, Chunping Qiu, Xinjun Cheng et al.　`推理`
+
+本文系统综述并诊断评估了多模态大语言模型在遥感图像场景理解（RSISU）任务上的表现，对比了遥感专用模型与通用计算机视觉MLLM。研究从技术演进、模型设计、多模态学习、训练数据及下游能力等维度展开分析，并在多种RSISU基准上比较了两类模型的性能。结果表明，通用CV-MLLM在多个任务上可与甚至超越遥感专用模型，揭示了通用模型的强大迁移能力，同时指出了当前模型在空间关系推理、细粒度理解等方面的局限。
+
+### [Forecasting the Number of Harvest-ready Fruits of Sweet Peppers Using Multimodal Time-Series Data](https://arxiv.org/abs/2607.19975)
+
+Enrico Pallotta, Mohamed Farag, Esra Guclu et al.　`推理`
+
+本文构建了一个包含691株甜椒、4837张图像、跨两个生长季节的多模态时间序列数据集，并提出了融合DinoV3图像特征与数值计数测量的深度学习框架。模型利用LSTM捕捉温室监测中常见的不规则采样时间依赖，并通过深度集成与高斯负对数似然提供校准的不确定性估计。实验显示，该多模态方法相比 persistence 基线在2022和2023季节分别将RMSE降低33%和38%，数据集与代码将公开以促进可复现研究。
+
+### [Memory-Augmented Multimodal Large Language Models for Small Object Understanding in Streaming Aerial Videos](https://arxiv.org/abs/2607.19857)
+
+Penglei Sun, Yehua Huang, Zhuoli Tao et al.　`推理`
+
+本文面向无人机在线视频流中的小目标理解，提出SkyAnchor多模态大语言模型，并构建首个像素级开放词汇航拍小目标指代分割数据集DroneEyes。方法上设计语义感知令牌路由以在压缩视觉令牌预算下保留小目标细节，同时引入层次化记忆库维持流式场景中的目标一致性。该工作从数据与方法两方面缓解了高空小目标易丢失与历史帧上下文难以保留的难题。
+
+## 基准
+
+### [MemTools: A Unified Research Framework for Interoperable Agent Memory](https://arxiv.org/abs/2607.21404)
+
+Chengfeng Zhao, Jinhui Chen, Sirui Liang et al.　`基准`　[Code](https://github.com/JJJAYYYZhao/MemTools-public)
+
+本文提出 MemTools，一个用于智能体记忆系统互操作性的研究框架，通过声明式数据契约解耦记忆生命周期各阶段，并隔离基准数据集与执行协议以支持可控评估。框架提供统一计算接口协调符号、神经与多模态记忆表示，实验表明其可在不同系统间灵活组装组件、复用评估协议并协调异构记忆类型，为记忆机制的系统化研究奠定基础。
+
+### [Unlearning Under Imbalance: Benchmarking Fairness in Multimodal LLM Unlearning](https://arxiv.org/abs/2607.21300)
+
+Lorenzo Orsingher, Thomas De Min, Massimiliano Mancini et al.　`基准`
+
+本文关注多模态大模型在类别不平衡场景下的机器遗忘问题，提出首个面向不平衡遗忘请求的视觉问答基准 FAIRGET，以及兼顾遗忘效果与公平性的 FAUN 方法。FAUN 通过偏差感知激活转向机制处理不均衡的遗忘数据，在 FAIRGET 与现有 FIUBench 上的实验显示其在遗忘质量与公平性方面均有提升，揭示了真实世界遗忘请求中的人口学偏差风险。
+
+### [CRAG-MM-Diagnostics: Enabling Stage-Wise Analysis of Knowledge-Intensive VQA](https://arxiv.org/abs/2607.21155)
+
+Hanseok Oh, Parishad BehnamGhader, Benno Krojer et al.　`基准`　[Code](https://github.com/McGill-NLP/crag-mm-diagnostics)
+
+本文提出 CRAG-MM-Diagnostics，一个面向知识密集型视觉问答（KI-VQA）的阶段式诊断基准，将任务拆分为语言视觉定位、目标识别与知识检索推理三个阶段。研究在稠密模型与检索增强 VLMs 上开展细粒度评测，发现知识检索与推理是当前主要瓶颈，同时目标识别与图像检索整合文本线索也存在明显不足。基于这些发现，作者进一步提出将视觉定位模块前置的 grounded bimodal RAG 流程，使 GPT-5 与 Qwen 的准确率分别提升 13.3 与 8.5 个百分点。
+
+### [Do Pathology Vision-Language Models Truly See Pathology?](https://arxiv.org/abs/2607.21065)
+
+Chengyang Zhang, Wenchuan Zhang, Bo Li et al.　`基准`
+
+本文揭示病理视觉语言模型在VQA基准评估中被忽视的三类问题：视觉证据非必需、域训练与视觉绑定增益不匹配、注意力图缺乏查询特异性，并提出PathBind基准（含VQA、教学图谱与区域定位三个子集）。对18个代表性VLM的评估表明，当前模型在答案准确率与视觉语义绑定之间仍存在显著鸿沟。
+
+### [ViSTR-Bench: Can MLLMs Reason from Continuous Visual Cues in Dynamic Scenes?](https://arxiv.org/abs/2607.20868)
+
+Han Li, Si Liu, Zehao Huang et al.　`基准`　[Code](https://github.com/buaa-colalab/ViSTR-Bench)
+
+本文构建视觉时空推理基准ViSTR-Bench，评估多模态大语言模型在动态场景中基于连续视觉线索进行定性推理的能力，涵盖运动感知、空间关系、结果预测与物理动力学4大类15子任务、共1340对视频问答。对主流闭源与开源MLLM的评测显示，模型在复杂时空推理上仍显著落后于人类水平。
+
+### [Ocular Verification for Virtual Reality](https://arxiv.org/abs/2607.20790)
+
+Husanpreet Singh, Robert Tran, Ayushree Kharel et al.　`基准`
+
+本文针对VR头显中非约束条件采集的眼部生物识别问题，系统评估了ISO/IEC 29794-6虹膜质量指标在VRBiom数据集上的适用性及其局限。研究利用生成模型缓解了离轴注视、非均匀光照和镜面反射等数据特异性挑战，并开展了虹膜与眼周单模态识别及分数级融合实验。结果表明，多模态融合相比单模态虹膜识别可将等错误率（EER）降低约11%，评估脚本将在接收后公开。
+
+### [ENTRAP-VL: A Taxonomic Probe for Dual Contextual Entrainment in Vision-Language Models](https://arxiv.org/abs/2607.20092)
+
+Karan Goyal, Afreen Hossain, Debojyoti Das et al.　`基准`
+
+本文提出了ENTRAP-VL，一个用于探测视觉-语言模型（VLM）中上下文诱导现象的Taxonomic双模态评测工具。该工具围绕 depicted image 和 textual query 手工构建了1500个样本、八个类别，从关联性与真实性两个维度区分文本诱导流与视觉诱导流。研究不针对特定模型做排名，而是提供了一套可复现的评测协议与数据集，以促进社区对VLM中上下文诱导问题的系统研究，数据集将公开发布。
+
+### [Development of an automated, reliable, and clinically meaningful artificial intelligence (AI) tool for diagnosing cardiac disease from conventional cardiovascular magnetic resonance (CMR) images](https://arxiv.org/abs/2607.20087)
+
+Sina Amirrajab, Volker Vehof, Michael Bietenbeck et al.　`基准`　[Code](https://github.com/sinaamirrajab/CMR_CVD)
+
+本文开发了一种基于常规心血管磁共振（CMR）图像的自动化心血管疾病（CVD）AI诊断工具，并配套了自动数据整理流程。该流程利用开源本地LLM从叙述性CMR报告中提取诊断标签，并对电影序列和晚期钆增强序列进行预处理，随后微调DINO、VST和UMedPT三种视觉基础模型。在包含1067名患者的独立测试集上，多模型多模态集成策略对肥厚型心肌病和心脏淀粉样变性的AUC分别达到0.959和0.966，代码与训练权重已公开。
+
+### [MV-Bench: Benchmarking Multimodal Large Language Models for Coordinated Multi-View Interface Construction](https://arxiv.org/abs/2607.19910)
+
+Yue Zhao, Hongxu Liu, Feiyu Wang et al.　`基准`
+
+本文提出了MV-Bench，一个用于评估多模态大语言模型构建协调多视图界面能力的基准。该基准以Tableau工作簿为真值，将其转换为可执行的网页界面，包含92个基础界面和1048个实例。实验显示，顶尖模型在视觉布局复现上达到约75%的准确率，但在数据绑定和交互完整性方面分别仅约22%和12%，揭示了当前MLLM在复杂界面协调生成上的显著不足。
+
+### [DRGBT-1K: A Large-scale High-quality Benchmark for Dynamic RGBT Tracking](https://arxiv.org/abs/2607.19772)
+
+Zhaodong Ding, Chenglong Li, Zeyu Ding et al.　`基准`　[Code](https://github.com/dongdong2061/DRGBT)
+
+本文发布DRGBT-1K，一个面向动态RGBT跟踪的大规模高质量基准。该基准包含1,045组真实场景序列和79.5万对RGBT帧，涵盖无人机与手持设备采集的多种场景、视角变化、模态切换与目标外观不连续。作者提供密集边界框、目标类别、挑战属性、帧级模态与平台标签等细粒度标注，并在统一协议下评估了20余种跟踪器，同时发布未对齐版本UGVT-1K与在线评测平台。
+
+## 检索
+
+### [UnDA: Unpaired Domain Alignment for Cross-Modal Knowledge Transfer in Medical Imaging](https://arxiv.org/abs/2607.21546)
+
+Rafsan Jany, Shadab Tanjeed Ahmad, Ahsan Bulbul et al.　`检索`
+
+本文提出 UnDA，一种面向医学影像的 anchor-guided 无配对跨模态知识蒸馏框架，旨在无需配对数据即可将源模态的结构化知识迁移到目标模态。方法包含 backbone-agnostic 的 Alignment Module、基于预测置信度的 Uncertainty-Weighted Optimal Transport（UCT-OT）以及 ProtoNCE 原型约束，以抑制噪声监督并保持全局判别性。在严格无配对设置的代表性分割任务上，UnDA 在目标模态的精度与边界质量上均取得一致提升。
+
+### [GroupVideo: Multi-Identity Customized Text-to-Video Generation](https://arxiv.org/abs/2607.21027)
+
+Xinyang Song, Libin Wang, Jianxin Sun et al.　`检索`
+
+本文提出GroupVideo框架，基于视频扩散Transformer实现多身份定制化文本到视频生成，通过视觉对齐与语义对齐提供稳定身份参考，并引入ID定位模块缓解身份混淆与“复制粘贴”现象。研究还构建了包含2万段视频的多身份视频数据集，实验表明生成视频在身份一致性与动作自然度上优于现有方法。
+
+### [Controllable and Content-Based Recommendations](https://arxiv.org/abs/2607.20938)
+
+Fırat Öncel, Jihoon Jeong, Emiliano Penaloza et al.　`检索`
+
+本文提出可控且基于内容的推荐框架CCBR，利用文本用户画像替代传统稠密隐向量，通过文本瓶颈机制为协同过滤模型注入可解释性与可控性。在图像、音频与视频数据集上的实验表明，CCBR在保持与传统隐向量模型相当性能的同时，支持用户通过文本或多模态编辑干预推荐结果。
+
+### [Diverse-Intent Multi-Turn Fashion Image Retrieval](https://arxiv.org/abs/2607.20291)
+
+Mingqiang Tang, Haokun Wen, Meng Liu et al.　`检索`
+
+本文提出了Diverse-Intent Multi-Turn Fashion（DIM-Fashion）基准和FashionAM框架，以解决真实场景中多轮时尚图像检索中意图多样化和回退行为复杂的问题。DIM-Fashion从13个时尚检索数据集构建了26K多轮会话，涵盖7项任务；FashionAM则通过MLLM-VLP直接将多模态对话查询与时尚图库嵌入空间对齐，避免了中间文本化带来的细粒度视觉信息损失。实验验证了FashionAM相较于现有方法的有效性，数据集与代码将在接收后公开。
+
+### [VizRAG: Enhancing Retrieval-Augmented Generation with Hypergraph Visualization](https://arxiv.org/abs/2607.19830)
+
+Yanbin Wei, Yang Chen, Renling Gan et al.　`检索`
+
+本文提出VizRAG，首个支持视觉超图结构感知的检索增强生成系统。现有超图RAG框架主要局限于文本中心范式，未能充分利用多模态大语言模型的视觉感知能力；VizRAG通过将超图的可视化表示融入RAG流程，使模型能够利用n元关系与结构信息。实验表明VizRAG显著优于多个强基线，验证了超图可视化在RAG中的有效性。
+
+### [Symbol and Footprint Database for Electronic Components by Agentic Recognition and Generation](https://arxiv.org/abs/2607.19767)
+
+Yichen Shi, Yuzhi Liu, Zhuofu Tao et al.　`检索`
+
+本文提出SFgen，一个基于多模态大语言模型的智能体系统，用于自动识别与生成电子元器件的原理图符号与PCB封装。该系统在符号生成上达到86%准确率、封装生成上达到80%准确率，并据此构建持续增长的数据库SFnet，目前已覆盖1,000个组件。该工作旨在为自动化PCB设计与生成提供丰富且可识别的元件库基础。
+
+### [Now You See the Hate: Adaptive View Retrieval for Hidden Hateful Illusions](https://arxiv.org/abs/2607.19061)
+
+Qianpu Chen, Derya Soydaner　`检索`
+
+本文将隐藏仇恨幻觉检测建模为感知检索问题，提出自适应视图检索框架。该方法为图像与隐藏信息模板构建互补视图库，自适应选择可信视图、恢复隐藏信息并校准其危害性。在HatefulIllusion测试集上，基于冻结CLIP编码器达到93.2%的平衡准确率，显著优于原始视图基线与固定变换策略，表明稳健的多模态审核需要先恢复隐藏含义再作判断。
+
+## Agent
+
+### [OpenForgeRL: Train Harness-native Agents in Any Environment](https://arxiv.org/abs/2607.21557)
+
+Xiao Yu, Baolin Peng, Ruize Xu et al.　`Agent`
+
+本文提出 OpenForgeRL，一个支持在真实 harness（如 Claude Code、Codex、OpenClaw）与多样化环境中端到端训练 AI 代理的开源框架。该框架通过轻量级代理记录 harness 模型调用并转化为标准 RL 训练数据，同时利用 Kubernetes 编排每个 rollout 的远程容器，实现训练与推理解耦。实验显示，仅使用数百至数千任务，OpenForgeClaw 与 OpenForgeGUI 在多个工具/浏览器/计算机使用基准上超越同规模开源基线，甚至媲美更大模型。
+
+### [RL-MACRO: A Cybernetic Closed-Loop Intelligence Framework for Multimodal Adaptive Robotic Craniotomy](https://arxiv.org/abs/2607.21113)
+
+Xiao Zhang, Jiaxuan Li, Renzhen Le et al.　`Agent`
+
+本文提出面向自主机器人颅骨切除术的RL-MACRO闭环智能框架，通过CNN-LSTM观测器融合力觉与音频反馈以隐式估计切削温度，并基于离线隐式Q学习策略实时调节进给速度、主轴转速与切削深度。在牛肋骨与离体山羊头骨实验中，该方法能有效感知组织变化、抑制力/温度越限并实现不规则骨面的安全平稳切削。
+
+### [Human-Inspired Framework for Robotic Craniotomy: Integrating Multimodal Fusion and Adaptive Trajectory Adjustment](https://arxiv.org/abs/2607.21058)
+
+Renzhen Le, Xiao Zhang, Di Wu et al.　`Agent`
+
+本文提出受人类手术启发的闭环机器人颅骨切除框架，将术前规划与术中执行相结合，通过自适应双轮廓融合生成贴合复杂颅骨几何的轨迹，并融合力觉与声学数据实现骨突破检测。在牛肋骨实验中突破预测准确率达97%、检测延迟约0.048秒，4例离体颅骨试验均未损伤硬脑膜。
+
+### [EmoAgent-R1: Towards Multimodal Emotion Understanding with Reinforcement Learning-based Dynamic Agent Specialization](https://arxiv.org/abs/2607.21013)
+
+Lihuang Fang, Yuchen Zou, kebin Jin et al.　`Agent`
+
+本文提出EmoAgent-R1框架，通过基于强化学习的动态智能体特化提升多模态情绪理解能力，采用冷启动合成思维链与智能体路由数据，并设计渐进式组相对策略优化（P-GRPO）将稀疏奖励转化为细粒度token级信号。在MER基准上的实验验证了该方法在推理能力与优化稳定性方面的优势。
+
+### [URF: A Unified Robot Control-Policy Framework for Stable Contact Aware Manipulation](https://arxiv.org/abs/2607.20912)
+
+Jiyou Shin, Youngjin Seo, Jaeseog Won et al.　`Agent`
+
+本文提出统一机器人控制策略框架URF，将柔顺动作预测与统一阻抗-导纳控制相结合，根据多模态观测预测虚拟目标、刚度矩阵与阻抗-导纳切换比例，以在刚性接触中平衡轨迹跟踪精度与接触柔顺性。在翻面与压线任务中，URF显著提升了完成率并减少了力冲击、力波动、工具断裂与保护性停机。
+
+### [EA-Nav: Learning Safe Visual Navigation Policies with Embodiment Awareness](https://arxiv.org/abs/2607.19880)
+
+Jialu Zhang, Yong Du, Xianda Guo et al.　`Agent`
+
+本文提出EA-Nav，一种基于模仿学习的具身感知安全视觉导航框架，解决跨具身设置下同一观测对应不同动作导致的歧义问题。预训练阶段从互联网视频构建跨具身导航数据集，并将具身几何作为条件令牌；微调阶段通过解耦架构注入多模态信息，并采用轨迹增强生成高风险样本以训练空间感知与风险校正模块。实验表明该方法在不同具身配置下均有效提升导航性能。
+
+### [Clinical Pathways as Safety Specifications for Physical AI in Hospital Wards](https://arxiv.org/abs/2607.19827)
+
+Gabriele Franchini, Giulio Mallardi, Michele De Carolis et al.　`Agent`
+
+本文将临床路径重新诠释为医疗具身智能体的运行时安全规范，以保障医院病房等真实环境中物理AI系统的安全性。作者提出一种概念性机器人架构，集成可穿戴传感器、智能医疗设备与辅助机器人，并由运行时安全监控器评估多模态生理与系统信号。该监控器结合时序预测、不确定性感知推理与基于约束的验证，识别生理偏离、硬件故障及数据篡改等安全风险。
+
+### [Silent Failures in Multimodal Agentic Search:A Diagnostic Taxonomy and Cross-Judge Evaluation](https://arxiv.org/abs/2607.19793)
+
+Zhengxian Wu, Junjie Gao, Kai Yang　`Agent`
+
+本文研究多模态智能搜索系统中的“静默失败”问题，提出包含模态捷径、幻影 grounding、错误证据正确回答、过度检索洗白、跨模态矛盾和来源幻觉六类诊断分类法。作者构建统一的ReAct风格轨迹级诊断流程，同时评估答案正确性与证据 grounding 质量。在MMSearch-Plus上的跨模型实验表明，表面准确率会系统性高估真实轨迹级正确率，且静默失败随模型能力变化而转移而非消失。
+
+## 生成
+
+### [M$^3$-Gen: Interpretable Multimodal Generation of Gene Expression Profiles Using Clinical and Imaging Data](https://arxiv.org/abs/2607.21343)
+
+Francesca Pia Panaccione, Carlo Sgaravatti, Marco Venere　`生成`　[Code](https://github.com/CarloSgaravatti/M3-Gen)
+
+本文提出 M³-Gen，一种可解释的多模态基因表达谱生成框架，基于组织病理图像与临床元数据，利用对比学习构建跨模态共享潜空间，并引导生成对抗网络生成生物学上合理的基因表达谱。在 TCGA 数据集上的验证表明，生成谱系具有真实性与功能意义，且注意力机制可定位对特定基因表达模式影响最大的图像区域，为低成本、保护隐私的多模态生物医学研究提供了新工具。
+
+### [MedDiT4SR: Tri-Stream Joint Adaptation of Pre-Trained Diffusion Transformers for Medical Image Super-Resolution](https://arxiv.org/abs/2607.20598)
+
+Zhi Chen, Le Zhang　`生成`
+
+本文提出了MedDiT4SR，一种将预训练多模态扩散Transformer适配到医学图像超分辨率的三流联合适应框架。该方法将低分辨率（LR）图像、噪声潜在变量和文本表征整合到同一多模态DiT块中，并引入超分辨率适配器聚合尺度相关的局部令牌，以及语义对齐精修器利用提示条件语义信息校准LR响应。在领域内和跨模态跨数据集设置下的实验表明，MedDiT4SR能有效将大规模预训练DiT模型迁移到多种医学成像域的超分辨率任务中。
+
+### [SHFormer: Dynamic Spectral Filtering Convolutional Neural Network and High-pass Kernel Generation Transformer for Adaptive MRI Reconstruction](https://arxiv.org/abs/2607.20159)
+
+Sriprabha Ramanarayanan, Rahul G. S., Mohammad Al Fahim et al.　`生成`　[Code](https://github.com/sriprabhar/SHFormer)
+
+本文提出了SHFormer，一种结合动态谱滤波卷积神经网络与高通透核生成Transformer的MRI重建方法，用于自适应地捕捉高频细节并提升未见场景泛化能力。模型通过谱滤波机制选择性地关注关键频率信息，并生成高通透核增强高频表征，弥补了传统注意力机制偏重低频的不足。实验在监督、自监督和扩散训练等多种设置下验证，在未见数据集上取得了约1 dB PSNR和0.01 SSIM的最佳提升。
+
+### [Antigen-specific Antibody Multi-modal Foundation Model for Functional Antibody Design](https://arxiv.org/abs/2607.20057)
+
+Xiaoliang Shi, Zichen Wang, Runze Ma et al.　`生成`　[Code](https://github.com/XL-S224/AAMFM)
+
+本文提出了AAMFM，一种抗原特异性抗体多模态基础模型，用于学习抗原上下文条件下的抗体序列与结构统一表征。模型通过跨模态适配器整合抗原几何界面和表位注释信息，并采用校准的直接偏好优化（Cal-DPO）利用强结构先验中的偏好信号来引导功能相关抗体设计。实验表明，AAMFM在功能性抗体设计任务上达到了最先进性能，为抗原特异性抗体工程提供了新的基础模型范式。
+
+### [MTVDiff: Multimodal Conditional Latent Diffusion for Enhanced Thermal-to-Visible Face Translation](https://arxiv.org/abs/2607.19886)
+
+Zhiyuan Xia, Haojie Li, Jingyu Lin et al.　`生成`
+
+本文提出MTVDiff，一种融合深度与文本信息的多模态隐空间扩散框架，用于热成像到可见光人脸翻译。该方法通过双分支交叉注意力融合、门控文本-视觉特征对齐与空间特征变换，在保持身份特征的同时缓解几何不连续与属性失配。在MCXFace和SpeakingFaces数据集上，其FID最高降低48.3%，Rank-1准确率最高提升8.9%，显著优于现有GAN与扩散方法。
+
+### [Mage-Flow: An Efficient Native-Resolution Foundation Model for Image Generation and Editing](https://arxiv.org/abs/2607.19064)
+
+Xinjie Zhang, Peng Zhang, Shicheng Zheng et al.　`生成`　[Code](https://github.com/microsoft/Mage)
+
+本文提出Mage-Flow，一个40亿参数的高效原生分辨率生成栈，用于文本到图像生成与指令式图像编辑。其核心包括轻量高保真Mage-VAE与基于整流流匹配的原生分辨率多模态扩散Transformer，并配合原生分辨率打包与CUDA核融合实现约2.5倍端到端训练吞吐提升。Turbo变体在单张A100上仅需0.59秒生成1024²图像、1.02秒完成编辑，兼顾性能与低延迟交互。
+
+### [Rarity-Aware Discrete Diffusion with Spatially Consistent Decoding for Photo-Realistic Image Super-Resolution](https://arxiv.org/abs/2607.17612)
+
+Ao Li, Yapeng Du, Yi Xin et al.　`生成`
+
+本文提出DiMOO-SR，一种面向真实感图像超分的稀有性感知多模态离散扩散框架。针对视觉令牌长尾分布与并行解码空间不一致问题，训练阶段采用逆频率采样优先学习稀有但感知关键的令牌，推理阶段通过空间一致性排序利用局部邻域一致性精炼令牌置信度。实验表明，DiMOO-SR在少量并行解码步数下即可获得有竞争力的感知质量，展现了离散扩散在生成式超分中的潜力。
+
+### [Pixel-Space Diffusion Transformers](https://arxiv.org/abs/2607.17585)
+
+Renye Yan, Jikang Cheng, You Wu et al.　`生成`
+
+本文系统综述像素空间扩散Transformer（pDiT），探讨其在高保真图像生成与统一多模态建模中的方法与挑战。相比潜在扩散模型，像素空间扩散直接对原始像素建模，消除了VAE瓶颈并支持端到端优化，但也带来噪声调度、损失加权、令牌效率与可扩展架构等高维建模难题。文章从架构设计、连续生成机制与统一多模态建模三个视角梳理进展，并展望未来发展方向。
+
+## 音频
+
+### [Toward Generalizable Cognitive Impairment Detection with Speech-Based Multimodal Large Language Models](https://arxiv.org/abs/2607.21496)
+
+Yingchao Huang, Xin Wang, Yuhan Su et al.　`音频`
+
+本文提出一种基于开源大语言模型的多模态认知障碍（CI）检测框架，融合语音音频与自动转录文本的嵌入，无需访问原始敏感数据即可完成分类。在 ADReSS20 与 ADReSSo21 基准上的实验显示，该方法达到 92.4% 的 CI 分类准确率，持续优于单模态基线，并展现出更强的跨数据集泛化能力，为规模化、非侵入式认知筛查提供了可行方案。
+
+### [An Evaluation Framework for Structured Audio Captions Validated by Controlled Perturbations](https://arxiv.org/abs/2607.21424)
+
+Liang-Yuan Wu, Sripathi Sridhar, Mark Cartwright et al.　`音频`
+
+本文提出一个面向结构化音频描述的多轴评估框架，基于 AudioCards 数据集从标签集、描述、逻辑推理、数值测量与频谱轮廓五个维度评估生成质量。方法结合 LLM 评判语义细节与确定性计算指标衡量声学偏差，并通过可控扰动协议验证其区分同义改写与真实语义/声学破坏的能力，为自动化音频字幕的细粒度评测提供了系统方案。
+
+### [Quality-Aware Multimodal Fusion Reveals Implicit Identity in Valence-Arousal Features](https://arxiv.org/abs/2607.21347)
+
+Jisu Kim, Benjamin S. Riggan　`音频`
+
+本文提出 Quality-Aware Adaptive Fusion（QAAF），一种面向视频人脸识别的质量感知多模态融合方法，将 valence-arousal（VA）预测作为前置任务，通过学习的软门控与质量相关 dropout 自适应调整音视频的模态贡献。在 Aff-wild2 上，QAAF 的 VA 预测 CCC 达 0.472，并在缺失模态时表现出较强鲁棒性；更重要的是，仅经 VA 任务训练的表征即可作为软生物特征辅助 ArcFace，在 AFEW-VA 与 YTF 上降低等错误率并显著减少误接受。
+
+### [OPOD: On-Policy Omni Distillation](https://arxiv.org/abs/2607.20918)
+
+Tong Zhao, Yuyang Hu, Reed Li et al.　`音频`
+
+本文提出OPOD（在线策略全模态蒸馏），通过将学生模型的每个回答路由到对应文本、图像或音频教师，并仅保留教师置信度高于学生的反馈，独立加权各模态影响以训练单一全模态模型。在12个基准、三种模型规模上的实验显示，OPOD在平均得分上超越最强对比方法，且部署时仅需一个模型。
+
+### [Deepfake News Detection: A Multimodal Framework Integrating LipNet, DeepSpeech and ResNET for Enhanced Audio-Visual Analysis](https://arxiv.org/abs/2607.20579)
+
+Ameena Khan, Muhammad Ahsan Aziz, Muhammad Junaid Asif et al.　`音频`
+
+本文提出了一种融合唇部运动、语音内容和视频帧特征的多模态深度伪造新闻检测框架。方法使用LipNet和DeepSpeech2分别提取唇动与音频特征，利用BlazeFace检测人脸并以ResNet18提取面部特征，随后将特征向量拼接并输入随机森林、MLP和LSTM等分类器进行集成决策。在FakeAVCeleb数据集上的实验显示，采用增强音频特征的方法达到了94%的准确率，优于现有的多模态集成基线，验证了该框架在实际检测中的潜力。
+
+### [ETPDesigner: Multi-Agent Orchestration for Interactive Multimodal Electronic Theater Program](https://arxiv.org/abs/2607.19947)
+
+Mengtian Li, Xinru Guo, Xiaoru Lin et al.　`音频`
+
+本文提出了ETPDesigner，一个从原始戏剧剧本直接合成高质量电子剧场节目（ETP）的多智能体协作框架。系统模拟专业设计流程，通过语义剧本分析、核心海报合成、功能背景生成和角色资产分层组合等专门智能体协同工作，并引入全局风格锚定机制确保各页面视觉一致性。此外，ETPDesigner结合肖像动画、个性化语音合成和基于人格的LLM，实现了与生成虚拟角色的实时语音交互；在ETP-Pro基准上的评估证明了其在语义保真、美学一致性和交互体验方面的优越性。
+
+### [RIME: Enabling Large-Scale Agentic Music Post-Production](https://arxiv.org/abs/2607.19605)
+
+Noah Schaffer, Nikhil Singh　`音频`
+
+本文将音乐后期制作形式化为智能体任务，提出RIME框架以生成与真实制作流程对齐的“编辑指令-音频”配对数据。RIME配套POEMS工具包，整合分轨、混音与常见 studio 效果，供多模态智能体调用。作者生成3,000对数据并评估现有MLLM作为后期制作智能体的表现，揭示当前模型在细粒度音乐编辑上的持续挑战，并证明监督微调可显著提升智能体性能。
+
+## 3D
+
+### [GS-Agent: Creating 4D Physical Worlds With Generative Simulation](https://arxiv.org/abs/2607.21522)
+
+Hongxin Zhang, Chunru Lin, Junyan Li et al.　`3D`
+
+本文提出 GS-Agent，一个端到端多智能体框架，通过将物理引擎嵌入生成循环，从自然语言描述构建真实、动态、可控的 4D 物理世界。系统模拟人类创作流程，将任务分解为实体管理（3D 资产、材质、摆放、运动）与渲染配置（相机、光照），各专家代理以代码方式与物理引擎交互并迭代优化。实验表明 GS-Agent 可生成包含液体、可变形体与刚体交互的多样化物理合理场景，为 4D 世界生成提供新范式。
+
+### [STEREOFLOW: Progressive Stereo Matching with StereoDiT and Transition Flow Matching](https://arxiv.org/abs/2607.19986)
+
+Hao Wang, Haoran Geng, Xiaotong Yang et al.　`3D`
+
+本文提出了STEREOFLOW，一种将确定性匹配回归与生成式分布建模相结合的先验引导立体匹配框架。方法包含两级渐进级联匹配网络、用于建模对应不确定性的像素扩散Transformer（StereoDiT），以及用于高效优化的Transition Flow Matching目标函数。在Scene Flow、KITTI、ETH3D和Middlebury等基准上的大量实验表明，STEREOFLOW在病态区域、不连续区域和零样本泛化方面均达到了多个最先进结果。
+
+---
+
+**论文总数统计**：本次报告共收录 61 篇多模态论文，其中 13 篇提供代码仓库，覆盖 8 个研究方向。
