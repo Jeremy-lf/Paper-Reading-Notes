@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arxiv 多模态论文日报 - 2026-07-31</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', sans-serif; background: #f5f7fa; color: #333; line-height: 1.6; }
+  .container { max-width: 960px; margin: 0 auto; padding: 40px 20px; }
+  .header { text-align: center; margin-bottom: 40px; }
+  .header h1 { font-size: 28px; color: #1a1a2e; margin-bottom: 8px; }
+  .header .date { font-size: 16px; color: #666; }
+  .header .stats { display: inline-flex; gap: 20px; margin-top: 16px; flex-wrap: wrap; justify-content: center; }
+  .header .stat { background: #fff; border-radius: 8px; padding: 10px 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); font-size: 14px; color: #555; }
+  .header .stat strong { color: #4361ee; font-size: 20px; }
+  .paper { background: #fff; border-radius: 12px; padding: 24px 28px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); transition: box-shadow 0.2s; border-left: 4px solid #4361ee; }
+  .paper:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.12); }
+  .paper .title { font-size: 18px; font-weight: 600; color: #1a1a2e; margin-bottom: 8px; }
+  .paper .title a { color: #1a1a2e; text-decoration: none; }
+  .paper .title a:hover { color: #4361ee; }
+  .paper .meta { font-size: 13px; color: #888; margin-bottom: 12px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  .paper .meta .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: 500; }
+  .tag-code { background: #d4edda; color: #155724; }
+  .tag-no-code { background: #f0f0f0; color: #999; }
+  .tag-vlm { background: #e8daef; color: #6c3483; }
+  .tag-benchmark { background: #d5f5e3; color: #1e8449; }
+  .tag-reasoning { background: #d6eaf8; color: #2471a3; }
+  .tag-generation { background: #fdebd0; color: #b9770e; }
+  .tag-retrieval { background: #fadbd8; color: #c0392b; }
+  .tag-agent { background: #e8f8f5; color: #1abc9c; }
+  .tag-audio { background: #fef9e7; color: #b7950b; }
+  .tag-3d { background: #ebf5fb; color: #2e86c1; }
+  .paper .abstract { font-size: 14px; color: #555; line-height: 1.7; }
+  .paper .links { margin-top: 12px; display: flex; gap: 10px; flex-wrap: wrap; }
+  .paper .links a { font-size: 13px; padding: 4px 12px; border-radius: 6px; text-decoration: none; font-weight: 500; }
+  .link-arxiv { background: #4361ee; color: #fff !important; }
+  .link-arxiv:hover { background: #3a56d4; }
+  .link-code { background: #28a745; color: #fff !important; }
+  .link-code:hover { background: #218838; }
+  .section-title { font-size: 20px; color: #1a1a2e; margin: 36px 0 20px; padding-left: 12px; border-left: 4px solid #4361ee; }
+  .footer { text-align: center; margin-top: 40px; font-size: 13px; color: #aaa; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>Arxiv 多模态论文日报</h1>
+    <div class="date">2026 年 7 月 31 日（共 44 篇相关论文）</div>
+    <div class="stats">
+      <div class="stat">收录论文 <strong>44</strong> 篇</div>
+      <div class="stat">含代码仓库 <strong>9</strong> 篇</div>
+      <div class="stat">覆盖方向 <strong>8</strong> 个</div>
+    </div>
+  </div>
+
+  <div class="section-title" style="border-left-color: #6c3483;">VLM / MLLM 核心</div>
+
+  <div class="paper" style="border-left-color: #6c3483;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.28341" target="_blank">Capturing Token Tendencies for Training-Free Token Pruning in Multimodal Large Language Models</a></div>
+    <div class="meta">
+      <span>Jie Ma, Zhike Qiu, Jie Gao, Jiayi Ji et al.</span>
+      <span class="tag tag-vlm">VLM / MLLM</span>
+      <span class="tag tag-code">有代码</span>
+    </div>
+    <div class="abstract">提出一种无需训练的视觉 token 剪枝方法，通过追踪注意力分数在层间的演化趋势，挽救那些在浅层不重要但在深层变得关键的 token。在多个 MLLM 上将视觉 token 减少超过四分之三，同时保持模型性能。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.28341" target="_blank">arXiv</a>
+      <a class="link-code" href="https://github.com/JieMaMagic/Trend-aware-Pruning" target="_blank">GitHub</a>
+    </div>
+  </div>
+
+  <div class="paper" style="border-left-color: #6c3483;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.28336" target="_blank">Correcting What You Cannot See: Credit Assignment for Perception Distillation in Multimodal Reasoners</a></div>
+    <div class="meta">
+      <span>Feng Xiong, Leyan Xue, Hongyu Lin</span>
+      <span class="tag tag-vlm">VLM / MLLM</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">提出一种感知蒸馏的信用分配方法，通过两种失败见证诊断学生模型的失败源于感知还是推理，并对感知相关失败样本加权。在多个视觉推理基准上取得平均提升。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.28336" target="_blank">arXiv</a>
+    </div>
+  </div>
+
+  <div class="paper" style="border-left-color: #6c3483;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.28211" target="_blank">Scaling Vision-Language Models Is Not Enough to Mitigate Bias</a></div>
+    <div class="meta">
+      <span>Ioannis Sarridis, Ioannis Kompatsiaris, Symeon Papadopoulos</span>
+      <span class="tag tag-vlm">VLM / MLLM</span>
+      <span class="tag tag-code">有代码</span>
+    </div>
+    <div class="abstract">对 194 个视觉语言模型进行大规模调研，发现单纯扩大规模能提升标准准确率，但无法改善对虚假相关性的鲁棒性；而数据筛选可将对立组准确率最高提升约四分之一。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.28211" target="_blank">arXiv</a>
+      <a class="link-code" href="https://github.com/gsarridis/vlm-spurious-robustness" target="_blank">GitHub</a>
+    </div>
+  </div>
+
+  <div class="paper" style="border-left-color: #6c3483;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.28006" target="_blank">MMLDSum-LLM: Multimodal Long-Document Summarization with Visual-Alignment and Keyword-Aware</a></div>
+    <div class="meta">
+      <span>Xianpeng Zhang, Jiahua Yang, Dongyu Chen, Lei Zhang et al.</span>
+      <span class="tag tag-vlm">VLM / MLLM</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">提出多模态长文档摘要基准与模型，采用视觉对齐与关键词感知的监督微调，结合多目标奖励的 GRPO 训练。在长多模态文档上提升了摘要覆盖度与一致性。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.28006" target="_blank">arXiv</a>
+    </div>
+  </div>
+
+  <div class="paper" style="border-left-color: #6c3483;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.27952" target="_blank">LAST: The Last Query Token Guides Visual Token Pruning for Edge-Cloud Collaborative MLLM Inference</a></div>
+    <div class="meta">
+      <span>Feng Yang, Xinrui Ju, Keyang Zhang, Xiandong Meng et al.</span>
+      <span class="tag tag-vlm">VLM / MLLM</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">提出面向边云协同 MLLM 推理的视觉 token 剪枝方法，利用边缘小模型最后一层查询 token 的注意力作为相关性信号，仅保留少量 token 即可在 11 个基准上保持准确率。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.27952" target="_blank">arXiv</a>
+    </div>
+  </div>
+
+  <div class="paper" style="border-left-color: #6c3483;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.27917" target="_blank">One Anchor for All: Unified Multilingual and Multimodal Safety Alignment for LVLMs</a></div>
+    <div class="meta">
+      <span>Enyi Shi, Fei Shen, Chuancheng Shi, Linxia Zhu et al.</span>
+      <span class="tag tag-vlm">VLM / MLLM</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">发现视觉语言模型中存在跨语言、跨模态共享的少量安全神经元，通过仅更新这些神经元将英文安全监督迁移到多语言和多模态场景，在保持通用能力的同时提升安全性。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.27917" target="_blank">arXiv</a>
+    </div>
+  </div>
+
+  <div class="paper" style="border-left-color: #6c3483;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.27910" target="_blank">A Cross-Architecture Audit of Direction-Based Inference-Time Defences in Vision-Language Models</a></div>
+    <div class="meta">
+      <span>Xiangyu Yin, Tora Bodin, Rohan Menon, Chih-Hong Cheng</span>
+      <span class="tag tag-vlm">VLM / MLLM</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">在 15 个模型-层组合上系统比较 5 种基于方向的推理时防御方法，发现不存在单一最优防御，图像条件偏移对某些架构家族有效，而基于提示的残差对另一些更有效。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.27910" target="_blank">arXiv</a>
+    </div>
+  </div>
+
+  <div class="paper" style="border-left-color: #6c3483;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.27902" target="_blank">One Patch Is Enough: Reinforcement-Optimized Visual Token Grounding for MLLM-Based Scene Text Spotting</a></div>
+    <div class="meta">
+      <span>Rui Tang, Wentao Yang, Peirong Zhang, Yongxin Shi et al.</span>
+      <span class="tag tag-vlm">VLM / MLLM</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">提出面向场景文本检测的 MLLM 视觉 token 定位方法，通过强化学习为每个文本实例选择单一锚点 token，并结合方向解耦嵌入与全图解码进行边界精修。超越领先的闭源与 OCR 专用模型。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.27902" target="_blank">arXiv</a>
+    </div>
+  </div>
+
+  <div class="paper" style="border-left-color: #6c3483;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.27665" target="_blank">FedOGL: Combating Catastrophic Forgetting in Federated Open-World Multimodal Graph Learning</a></div>
+    <div class="meta">
+      <span>Zekai Chen, Haodong Lu, Shihao Li, Weiwei Ji et al.</span>
+      <span class="tag tag-vlm">VLM / MLLM</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">提出联邦开放世界多模态图学习框架，通过客户端回放与蒸馏保留历史知识，服务器端原型迁移实现跨客户端知识共享。在多个基准上将灾难性遗忘降低超过 40%。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.27665" target="_blank">arXiv</a>
+    </div>
+  </div>
+
+  <div class="paper" style="border-left-color: #6c3483;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.27260" target="_blank">Regularizing modality contribution drift in multimodal continual learning</a></div>
+    <div class="meta">
+      <span>Zhen Zhang, Jielei Chu, Bin Liu, Tianrui Li</span>
+      <span class="tag tag-vlm">VLM / MLLM</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">定义模态贡献漂移并提出正则化方法，稳定各模态在持续学习任务中的决策贡献。在类增量学习和持续视觉问答任务上验证了回放式与无回放变体的有效性。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.27260" target="_blank">arXiv</a>
+    </div>
+  </div>
+
+  <div class="paper" style="border-left-color: #6c3483;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.26947" target="_blank">Progressive Multimodal Alignment for Continual Instruction Tuning</a></div>
+    <div class="meta">
+      <span>Duzhen Zhang, Yahan Yu, Qiaoyi Su, Jiahua Dong, Tielin Zhang</span>
+      <span class="tag tag-vlm">VLM / MLLM</span>
+      <span class="tag tag-code">有代码</span>
+    </div>
+    <div class="abstract">提出持续指令微调中的渐进式多模态对齐方法，仅在检测到分布偏移时扩展投影器专家，并将原始预训练投影器作为稳定锚点。在多模态持续学习基准上取得提升。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.26947" target="_blank">arXiv</a>
+      <a class="link-code" href="https://github.com/BladeDancer957/PMA" target="_blank">GitHub</a>
+    </div>
+  </div>
+
+  <div class="paper" style="border-left-color: #6c3483;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.26608" target="_blank">Understanding Knowledge Transfer Mechanism in Heterogeneous MLLM Fusion: A Simple Linear Approach</a></div>
+    <div class="meta">
+      <span>Yinghao Hou, Jiahe Fan, Yuanhao Pu, Zongyuan Chen, Hong Xie</span>
+      <span class="tag tag-vlm">VLM / MLLM</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">用线性探针分析异构 MLLM 融合中的跨尺度知识迁移，发现增益主要集中在高层推理而非感知，主要来自语言模型侧，且在较小注入比例下即可显现。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.26608" target="_blank">arXiv</a>
+    </div>
+  </div>
+
+  <div class="paper" style="border-left-color: #6c3483;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.26596" target="_blank">Decoupled Visual Processing: Efficient Multimodal Adaptation via Modality-Specific Transformer Substitution</a></div>
+    <div class="meta">
+      <span>Mingkuan Feng, Zhengqi Wen, Jianhua Tao</span>
+      <span class="tag tag-vlm">VLM / MLLM</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">提出参数高效的多模态适配方法，将 LLM 上层解码器替换为仅处理视觉 token 的单个可训练 Transformer 块。在 LLaVA-1.5 上以远少于全量微调的可训练参数取得竞争性能。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.26596" target="_blank">arXiv</a>
+    </div>
+  </div>
+
+  <div class="section-title" style="border-left-color: #2471a3;">多模态理解与推理</div>
+
+  <div class="paper" style="border-left-color: #2471a3;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.28595" target="_blank">Beacon: Knowing When and How to Perform Agentic Visual Reasoning</a></div>
+    <div class="meta">
+      <span>Qixun Wang, Yang Shi, Letian Cheng, Zhuoran Zhang et al.</span>
+      <span class="tag tag-reasoning">推理</span>
+      <span class="tag tag-code">有代码</span>
+    </div>
+    <div class="abstract">提出视觉推理代理 Beacon，学习何时真正需要调用外部工具以及如何有效使用它们，通过必要性与能力扩展奖励进行训练。在多个基准上提升整体准确率并实现工具使用的真实增益。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.28595" target="_blank">arXiv</a>
+      <a class="link-code" href="https://github.com/NOVAglow646/Beacon" target="_blank">GitHub</a>
+    </div>
+  </div>
+
+  <div class="paper" style="border-left-color: #2471a3;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.28590" target="_blank">VAD: Attributing Visual Evidence for Target Reconstruction in Multimodal On-Policy Distillation</a></div>
+    <div class="meta">
+      <span>Kangning Zhang, Yixing Li, Shuai Shao, Qingyao Li et al.</span>
+      <span class="tag tag-reasoning">推理</span>
+      <span class="tag tag-code">有代码</span>
+    </div>
+    <div class="abstract">提出反事实视觉证据归因方法，估计教师模型修正中有多少来自视觉证据，并构建以学生为中心的监督目标。在多个视觉基准上优于直接特权视图蒸馏。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.28590" target="_blank">arXiv</a>
+      <a class="link-code" href="https://github.com/DeepExperience/VAD_Multimodal_OPD" target="_blank">GitHub</a>
+    </div>
+  </div>
+
+  <div class="paper" style="border-left-color: #2471a3;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.28375" target="_blank">HyperClaim: Fine-Grained Cross-Modal Hypergraph Reasoning for Video Misinformation Detection</a></div>
+    <div class="meta">
+      <span>Xiangbo Wang, Jiasheng Zhang, Xingtong Yu, Luoqiang Lei, Delvin Ce Zhang</span>
+      <span class="tag tag-reasoning">推理</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">提出基于超图的视频虚假声明检测器，建模查询短语、文本证据与视频帧之间的高阶交互，并聚合文本、视觉与超边状态。在三个短视频基准上取得高精度的检测效果。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.28375" target="_blank">arXiv</a>
+    </div>
+  </div>
+
+  <div class="paper" style="border-left-color: #2471a3;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.28156" target="_blank">RRM: Experience-Driven Reflective Retrieval Memory for Long-Horizon Multimodal Reasoning</a></div>
+    <div class="meta">
+      <span>Jingxiang Fan, Junbao Zhuo, Bochao Zou</span>
+      <span class="tag tag-reasoning">推理</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">面向长视频推理，提出反思式检索记忆方法，将历史任务中的检索经验蒸馏为多模态记忆图的查询级指导，并通过生命周期管理降低噪声与冗余。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.28156" target="_blank">arXiv</a>
+    </div>
+  </div>
+
+  <div class="paper" style="border-left-color: #2471a3;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.28154" target="_blank">OPLD: On-Policy Latent Distillation for Multimodal Reasoning</a></div>
+    <div class="meta">
+      <span>Shoutai Zhu, Tianyang Xu, Bin Sun, Mingyuan Xu et al.</span>
+      <span class="tag tag-reasoning">推理</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">提出 on-policy 隐式蒸馏框架，将特权思维链演示的推理过程迁移为连续隐状态，超越传统仅对齐压缩视觉特征的方式。在视觉推理基准上取得强表现。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.28154" target="_blank">arXiv</a>
+    </div>
+  </div>
+
+  <div class="paper" style="border-left-color: #2471a3;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.27830" target="_blank">Thinking Once Is Enough: Intermediate-Layer Evidence Routing for High-Resolution VQA</a></div>
+    <div class="meta">
+      <span>Zhongkuan Mao, Xianjie Liu, Tianyu Meng, Yidong Wang et al.</span>
+      <span class="tag tag-reasoning">推理</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">提出无需训练的单次前向高分辨率视觉问答方法，从中间层路由细粒度视觉证据，保留关键实体与背景上下文。在提升基准分数的同时降低内存与推理时间。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.27830" target="_blank">arXiv</a>
+    </div>
+  </div>
+
+  <div class="paper" style="border-left-color: #2471a3;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.27145" target="_blank">Explainable and Resource-Efficient Spatial Reasoning in Multimodal LLMs for Decision-Critical Applications</a></div>
+    <div class="meta">
+      <span>Piyush Jain, Kousik Dasgupta, Rajarshi Roy, Subarna Tripathi</span>
+      <span class="tag tag-reasoning">推理</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">提出面向关键决策应用的可解释且资源高效的空间推理框架，通过开放词汇检测器提取成对物体关系，并将其作为结构化证据注入基于深度提示的 MLLM。在 VSR 和 BLINK 上取得大幅提升，轻量版本可在 CPU 40 token 预算内运行。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.27145" target="_blank">arXiv</a>
+    </div>
+  </div>
+
+  <div class="paper" style="border-left-color: #2471a3;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.27066" target="_blank">Visual Credit Audit for Multimodal Spatial Reasoning</a></div>
+    <div class="meta">
+      <span>Feixiang Liu, Qiang Qiu, Lanbo Sun, Nan Wei, Huawei Shen, Xueqi Cheng</span>
+      <span class="tag tag-reasoning">推理</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">提出视觉信用审计方法，区分多模态空间推理中图像真正支持的决策与幸运猜测。实验显示 12.73%-26.25% 的正确回答实际上缺乏视觉证据支持。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.27066" target="_blank">arXiv</a>
+    </div>
+  </div>
+
+  <div class="section-title" style="border-left-color: #1e8449;">多模态基准与评测</div>
+
+  <div class="paper" style="border-left-color: #1e8449;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.28318" target="_blank">PathView-Bench: Can Multimodal Large Language Models Achieve Fine-grained Multiscale Understanding of Pathology Images?</a></div>
+    <div class="meta">
+      <span>Zongyi Chen, Yu Liang, Jie Lin, Liansheng Wang</span>
+      <span class="tag tag-benchmark">基准</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">构建病理图像细粒度多尺度理解基准，包含来自 23 个公开数据集的 14 项问答任务、6.1 万张图像和 30.8 万样本。评估显示当前最先进的 MLLM 在多项任务上仍面临挑战。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.28318" target="_blank">arXiv</a>
+    </div>
+  </div>
+
+  <div class="paper" style="border-left-color: #1e8449;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.27895" target="_blank">MMHBench: A Multi-Perspective Benchmark for Mental Health Understanding in Long-Form Videos</a></div>
+    <div class="meta">
+      <span>Jinpeng Hu, Erqiang Wang, Shan Wang, Zhuo Li et al.</span>
+      <span class="tag tag-benchmark">基准</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">提出长视频心理健康理解基准，包含 260 多个视频和 2100 个问题，涵盖第三方行为评估与第一人称视角推理。22 个 MLLM 的评估表明该任务仍极具挑战性。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.27895" target="_blank">arXiv</a>
+    </div>
+  </div>
+
+  <div class="paper" style="border-left-color: #1e8449;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.27806" target="_blank">LoMeVQA: A Comprehensive Benchmark for Longitudinal Medical VQA</a></div>
+    <div class="meta">
+      <span>Zhilin Wu, Zhangkai Ni, Chengmei Yang, Longzhen Yang et al.</span>
+      <span class="tag tag-benchmark">基准</span>
+      <span class="tag tag-code">有代码</span>
+    </div>
+    <div class="abstract">提出纵向医学 VQA 基准，包含 20 多万问答对，覆盖 5 项时序图像分析任务。通用与医学 MLLM 表现均较差，专用模型创下新高。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.27806" target="_blank">arXiv</a>
+      <a class="link-code" href="https://github.com/pepperbubble/LoMeVQA" target="_blank">GitHub</a>
+    </div>
+  </div>
+
+  <div class="paper" style="border-left-color: #1e8449;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.27637" target="_blank">MMOOC: A Comprehensive Benchmark for Out-of-Context Evaluation in Multimodal Large Language Models</a></div>
+    <div class="meta">
+      <span>Wenjie Zhu, Yabin Zhang, Wenjun Zeng, Lei Zhang</span>
+      <span class="tag tag-benchmark">基准</span>
+      <span class="tag tag-code">有代码</span>
+    </div>
+    <div class="abstract">构建大规模 MLLM 上下文外行为基准，包含 4.1 万多图像-问题对，覆盖可回答的上下文偏移与不可回答的上下文外情况。当前模型难以平衡正确回答与适当拒绝。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.27637" target="_blank">arXiv</a>
+      <a class="link-code" href="https://github.com/ZhuWenjie98/MMOOC" target="_blank">GitHub</a>
+    </div>
+  </div>
+
+  <div class="paper" style="border-left-color: #1e8449;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.27393" target="_blank">AHA-Memes: A Fine-Grained Multimodal Benchmark for Understanding Hate in Arabic Memes</a></div>
+    <div class="meta">
+      <span>Mohamed Bayan Kmainasi, Ali Ezzat Shahroor, Abul Hasnat et al.</span>
+      <span class="tag tag-benchmark">基准</span>
+      <span class="tag tag-code">有代码</span>
+    </div>
+    <div class="abstract">发布阿拉伯仇恨表情包细粒度多模态基准，含 5000 人工标注和 6.6 万银标样本。评估文本、图像、晚融合、少样本和视觉语言模型，揭示文化背景下的分析挑战。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.27393" target="_blank">arXiv</a>
+      <a class="link-code" href="https://github.com/MohamedBayan/AHA-Memes" target="_blank">GitHub</a>
+    </div>
+  </div>
+
+  <div class="paper" style="border-left-color: #1e8449;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.26769" target="_blank">See2Think: Do Multimodal Models Really Use Intermediate Visual States?</a></div>
+    <div class="meta">
+      <span>Siyu Yan, Zhuoran Yan, Haiying Xu, Panhao Zhou et al.</span>
+      <span class="tag tag-benchmark">基准</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">提出评估 MLLM 是否真正依赖中间视觉状态的基准与过程评估协议。发现渲染保真度是主要瓶颈，视觉反馈受损时准确率显著下降。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.26769" target="_blank">arXiv</a>
+    </div>
+  </div>
+
+  <div class="paper" style="border-left-color: #1e8449;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.26460" target="_blank">MultivationBench: A Benchmark for Multimodal Sequential Motivation Reasoning</a></div>
+    <div class="meta">
+      <span>Kawai Chung, Chunkit Chan, Yauwai Yim, Yuxuan Liu et al.</span>
+      <span class="tag tag-benchmark">基准</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">构建故事驱动视觉叙事中的动机推理基准，基于心理学理论框架。测试显示当前多模态模型难以在序列上下文中保持一致的动机推理。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.26460" target="_blank">arXiv</a>
+    </div>
+  </div>
+
+  <div class="section-title" style="border-left-color: #c0392b;">多模态检索与信息抽取</div>
+
+  <div class="paper" style="border-left-color: #c0392b;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.28580" target="_blank">DualG-MRAG: Decoupling Macro-Reasoning and Micro-Matching for Multimodal Retrieval-Augmented Generation</a></div>
+    <div class="meta">
+      <span>Jiacheng Tao, Qingyun Sun, Haonan Yuan, Ziwei Zhang, Jianxin Li</span>
+      <span class="tag tag-retrieval">检索</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">提出双层图框架分离全局文档推理与细粒度证据验证，使用图神经网络检索器与路径解码。在复杂多跳问题的检索召回与回答质量上均取得提升。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.28580" target="_blank">arXiv</a>
+    </div>
+  </div>
+
+  <div class="paper" style="border-left-color: #c0392b;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.28055" target="_blank">VIG-RL: Learning to Search and Insert for Verified Image Grounding</a></div>
+    <div class="meta">
+      <span>Qinhan Yu, Jun Guang, Chong Chen, Wentao Zhang</span>
+      <span class="tag tag-retrieval">检索</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">将图像搜索、选择与插入视为推理循环中的序列决策，通过强化学习奖励逐步工具使用与最终图文对齐。超越静态检索基线。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.28055" target="_blank">arXiv</a>
+    </div>
+  </div>
+
+  <div class="paper" style="border-left-color: #c0392b;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.27959" target="_blank">FiRE: Enhancing MLLMs with Fine-Grained Context Learning for Complex Image Retrieval</a></div>
+    <div class="meta">
+      <span>Bohan Hou, Haoqiang Lin, Xuemeng Song, Haokun Wen et al.</span>
+      <span class="tag tag-retrieval">检索</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">构建细粒度多模态五元组数据并设计两阶段 MLLM 调优策略，先教授上下文理解再优化查询-目标对齐。在 5 个数据集上实现显著零样本检索提升。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.27959" target="_blank">arXiv</a>
+    </div>
+  </div>
+
+  <div class="paper" style="border-left-color: #c0392b;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.27017" target="_blank">SciFigAlign: Scoring Scientific Figures by Fine-tuned Alignment of Visuals with Manuscript Evidence</a></div>
+    <div class="meta">
+      <span>Chuanzhi Xu, Zihan Deng, Huiqi Liang, Chengkun Yue et al.</span>
+      <span class="tag tag-retrieval">检索</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">提出科学图表质量评估数据集与多模态评分器，通过将图表内容锚定到手稿上下文来评估质量。微调 CLIP 与 SciBERT 后，错误率显著低于 LLM-as-judge 基线。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.27017" target="_blank">arXiv</a>
+    </div>
+  </div>
+
+  <div class="section-title" style="border-left-color: #1abc9c;">Agent 与具身智能</div>
+
+  <div class="paper" style="border-left-color: #1abc9c;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.28596" target="_blank">FA-RDP: A Frequency-Adaptive Reactive Diffusion Policy for Contact-Rich Manipulation</a></div>
+    <div class="meta">
+      <span>Lifeng Zhuo, Wendi Chen, Han Xue, Shirun Tang et al.</span>
+      <span class="tag tag-agent">Agent</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">提出频率自适应反应式扩散操作策略，在剧集中动态选择多步低频采样或单步高频采样，并引入尊重机器人动作几何的损失。在接触丰富的操作任务中提升成功率并保留多样化预接触选项。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.28596" target="_blank">arXiv</a>
+    </div>
+  </div>
+
+  <div class="paper" style="border-left-color: #1abc9c;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.28374" target="_blank">LEDGERMIND: Provenance-Constrained Multimodal Agentic Reasoning with a Structured Evidence Ledger</a></div>
+    <div class="meta">
+      <span>Enjun Du, Hange Zhou, Chenxu Du, Siyi Liu et al.</span>
+      <span class="tag tag-agent">Agent</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">提出结构化证据账本的多模态代理推理框架，将工具输出记录为可溯源条目，并通过类型化修复转换与多层 grounding 约束下游声明。提升最终准确率与轨迹忠实度。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.28374" target="_blank">arXiv</a>
+    </div>
+  </div>
+
+  <div class="paper" style="border-left-color: #1abc9c;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.28225" target="_blank">FaithEyes: Towards Faithful Tool Use via Multi-Agent Process-Image Verification</a></div>
+    <div class="meta">
+      <span>Haoqing Wang, Xingrun Xing, Wei Xia, Ziheng Li, Yehui Tang</span>
+      <span class="tag tag-agent">Agent</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">提出多智能体框架判断视觉工具产生的中间图像是否有用，并将判断反馈到推理过程中。模型可在推理时自主评估工具调用，提升准确率与工具使用忠实度。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.28225" target="_blank">arXiv</a>
+    </div>
+  </div>
+
+  <div class="paper" style="border-left-color: #1abc9c;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.27967" target="_blank">MARS-RA: Rank Aggregation for Credit Assignment via Multimodal Comparisons in Embodied Multi-Agent Cooperation</a></div>
+    <div class="meta">
+      <span>Dawei Wang, Di Zhao, Xinyuan Liu, Marci Chi Ma et al.</span>
+      <span class="tag tag-agent">Agent</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">将多智能体协作中的信用分配建模为基于大多模态模型成对比较的排序聚合任务，并将排名转换为贡献型奖励调整。在具身协作任务中促进有效合作。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.27967" target="_blank">arXiv</a>
+    </div>
+  </div>
+
+  <div class="paper" style="border-left-color: #1abc9c;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.26452" target="_blank">RLMM-Flow: A Flow-based Mobile Manipulation Framework with Latent-Space Reinforcement Learning</a></div>
+    <div class="meta">
+      <span>Shuhang Wang, Ziming Li, Hui Cheng</span>
+      <span class="tag tag-agent">Agent</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">结合基于流的演示预训练策略与隐空间强化学习，实现全身移动操作。通过 critic 预热与粗到细的隐空间引导提升成功率、避障能力与轨迹质量，同时保持快速推理。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.26452" target="_blank">arXiv</a>
+    </div>
+  </div>
+
+  <div class="section-title" style="border-left-color: #b9770e;">多模态生成</div>
+
+  <div class="paper" style="border-left-color: #b9770e;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.28611" target="_blank">Chimera: Designing and Chinchilla-Scaling Hybrid Visual Diffusion Transformers</a></div>
+    <div class="meta">
+      <span>Chongjian Ge, Hanwen Jiang, Tianyu Wang, Jiuxiang Gu et al.</span>
+      <span class="tag tag-generation">生成</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">提出混合视觉生成架构 Chimera，将文本、图像与视频 token 统一处理，结合高效注意力、卷积与稀疏专家，并给出跨宽度和深度迁移超参数的缩放配方。训练了 110 亿参数模型并评估效率、视频外推与缩放规律。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.28611" target="_blank">arXiv</a>
+    </div>
+  </div>
+
+  <div class="paper" style="border-left-color: #b9770e;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.27699" target="_blank">RefineSVG: Visual Feedback-Driven Reinforcement Learning for Image-to-SVG Generation</a></div>
+    <div class="meta">
+      <span>Shaobo Liu, Feiqiao Mao, Shuaishuai Zhou, Yan Zhan et al.</span>
+      <span class="tag tag-generation">生成</span>
+      <span class="tag tag-code">有代码</span>
+    </div>
+    <div class="abstract">提出基于视觉反馈的 MLLM 图像转 SVG 生成框架，初始生成后将 SVG 渲染并与目标图像对比产生残差图，指导修正步骤。同时引入 SVG 专用语义词汇与渐进式训练流程。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.27699" target="_blank">arXiv</a>
+      <a class="link-code" href="https://github.com/liuxiaobo66/RefineSVG" target="_blank">GitHub</a>
+    </div>
+  </div>
+
+  <div class="section-title" style="border-left-color: #b7950b;">音频多模态</div>
+
+  <div class="paper" style="border-left-color: #b7950b;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.28165" target="_blank">Piggybacking on Perception: Stealthy Concurrent Audio Prompt Injections against Multimodal LLM Agents</a></div>
+    <div class="meta">
+      <span>Mingxiao Liu, Yitong Li, Haoren Zhao, Yaoxiang Bian et al.</span>
+      <span class="tag tag-audio">音频</span>
+      <span class="tag tag-code">有代码</span>
+    </div>
+    <div class="abstract">展示可将隐藏音频指令嵌入环境声音以劫持多模态智能体，并构建多场景与攻击模式的基准。基于声源分离与跨模态一致性的防御机制可检测大部分注入攻击。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.28165" target="_blank">arXiv</a>
+      <a class="link-code" href="https://github.com/Limax666/AudioAgentSecurity" target="_blank">GitHub</a>
+    </div>
+  </div>
+
+  <div class="paper" style="border-left-color: #b7950b;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.27614" target="_blank">DualAnchor: Preserving Language Priors and Improving Lexical Fidelity in Gloss-Free Sign Language Translation</a></div>
+    <div class="meta">
+      <span>Hongbin Zhang, Junhao Liu, Xuefeng Bai, Youcheng Pan et al.</span>
+      <span class="tag tag-audio">音频</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">提出无词 Gloss 的手语翻译框架，通过两种锚定机制将多模态解码器约束到冻结 LLM 的下一 token 分布，并使用最优传输实现软视觉-文本对齐。在 PHOENIX-2014T 和 CSL-Daily 上取得强结果。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.27614" target="_blank">arXiv</a>
+    </div>
+  </div>
+
+  <div class="paper" style="border-left-color: #b7950b;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.27296" target="_blank">SKY-Piano: A Multimodal Piano Performance Dataset</a></div>
+    <div class="meta">
+      <span>Joonhyung Bae, Dawon Park, Taegyun Kwon, Yoon-Seok Choi et al.</span>
+      <span class="tag tag-audio">音频</span>
+      <span class="tag tag-code">有代码</span>
+    </div>
+    <div class="abstract">发布多模态钢琴演奏数据集 SKY-Piano，包含 11 小时专业与业余演奏者的动作捕捉、多视角视频、音频、MIDI 与 MusicXML 乐谱。提供处理后的动作数据、交互式浏览器与指法标注工具。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.27296" target="_blank">arXiv</a>
+      <a class="link-code" href="https://joonhyungbae.github.io/skypiano/" target="_blank">Project Page</a>
+    </div>
+  </div>
+
+  <div class="section-title" style="border-left-color: #2e86c1;">3D 视觉语言</div>
+
+  <div class="paper" style="border-left-color: #2e86c1;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.28050" target="_blank">IndustryForge-27B: A Domain-Enhanced Multimodal Foundation Model for Industrial CAD</a></div>
+    <div class="meta">
+      <span>Nianchen Deng, Jiaxin Ai, Tao Hu, Shu Zou et al.</span>
+      <span class="tag tag-3d">3D</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">面向工业 CAD 领域，微调 270 亿参数多模态基础模型，使其能够阅读工程图纸与 3D 视图并生成参数化建模脚本与 COM 自动化代码。在 CAD 基准上超越强闭源模型且未遗忘通用能力。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.28050" target="_blank">arXiv</a>
+    </div>
+  </div>
+
+  <div class="paper" style="border-left-color: #2e86c1;">
+    <div class="title"><a href="https://arxiv.org/abs/2607.26595" target="_blank">SpatialQ: Understanding 3D Gaussian Splatting Scene Quality via Visual-based MLLM</a></div>
+    <div class="meta">
+      <span>Jingxuan Su, Shenglin Wang, Tiesong Zhao, Ge Li, Wei Gao</span>
+      <span class="tag tag-3d">3D</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">提出基于 MLLM 的 3D Gaussian Splatting 场景质量评估框架 SpatialQ，从多视图图像、深度与点云学习 3D 感知质量特征，并使用 Qwen-based MLLM 进行可解释的质量推理。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2607.26595" target="_blank">arXiv</a>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>自动生成 · QoderWork Arxiv 多模态论文追踪 · 2026-07-31</p>
+  </div>
+</div>
+</body>
+</html>
