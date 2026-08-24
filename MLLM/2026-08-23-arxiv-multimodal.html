@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arxiv 多模态论文日报 - 2026-08-23</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', sans-serif; background: #f5f7fa; color: #333; line-height: 1.6; }
+  .container { max-width: 960px; margin: 0 auto; padding: 40px 20px; }
+  .header { text-align: center; margin-bottom: 40px; }
+  .header h1 { font-size: 28px; color: #1a1a2e; margin-bottom: 8px; }
+  .header .date { font-size: 16px; color: #666; }
+  .header .stats { display: inline-flex; gap: 20px; margin-top: 16px; flex-wrap: wrap; justify-content: center; }
+  .header .stat { background: #fff; border-radius: 8px; padding: 10px 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); font-size: 14px; color: #555; }
+  .header .stat strong { color: #4361ee; font-size: 20px; }
+  .paper { background: #fff; border-radius: 12px; padding: 24px 28px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); transition: box-shadow 0.2s; border-left: 4px solid #4361ee; }
+  .paper:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.12); }
+  .paper .title { font-size: 18px; font-weight: 600; color: #1a1a2e; margin-bottom: 8px; }
+  .paper .title a { color: #1a1a2e; text-decoration: none; }
+  .paper .title a:hover { color: #4361ee; }
+  .paper .meta { font-size: 13px; color: #888; margin-bottom: 12px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  .paper .meta .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: 500; }
+  .tag-code { background: #d4edda; color: #155724; }
+  .tag-no-code { background: #f0f0f0; color: #999; }
+  .tag-vlm { background: #e8daef; color: #6c3483; }
+  .tag-benchmark { background: #d5f5e3; color: #1e8449; }
+  .tag-reasoning { background: #d6eaf8; color: #2471a3; }
+  .tag-generation { background: #fdebd0; color: #b9770e; }
+  .tag-retrieval { background: #fadbd8; color: #c0392b; }
+  .tag-agent { background: #e8f8f5; color: #1abc9c; }
+  .tag-audio { background: #fef9e7; color: #b7950b; }
+  .tag-3d { background: #ebf5fb; color: #2e86c1; }
+  .paper .abstract { font-size: 14px; color: #555; line-height: 1.7; }
+  .paper .links { margin-top: 12px; display: flex; gap: 10px; flex-wrap: wrap; }
+  .paper .links a { font-size: 13px; padding: 4px 12px; border-radius: 6px; text-decoration: none; font-weight: 500; }
+  .link-arxiv { background: #4361ee; color: #fff !important; }
+  .link-arxiv:hover { background: #3a56d4; }
+  .link-code { background: #28a745; color: #fff !important; }
+  .link-code:hover { background: #218838; }
+  .section-title { font-size: 20px; color: #1a1a2e; margin: 36px 0 20px; padding-left: 12px; border-left: 4px solid #4361ee; }
+  .footer { text-align: center; margin-top: 40px; font-size: 13px; color: #aaa; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>Arxiv 多模态论文日报</h1>
+    <div class="date">2026 年 8 月 23 日（共 23 篇相关论文）</div>
+    <div class="stats">
+      <div class="stat">收录论文 <strong>23</strong> 篇</div>
+      <div class="stat">含代码仓库 <strong>7</strong> 篇</div>
+      <div class="stat">覆盖方向 <strong>7</strong> 个</div>
+    </div>
+  </div>
+  <div class="section-title" style="border-left-color: #6c3483;">VLM/MLLM 核心</div>
+  <div class="paper" style="border-left-color: #6c3483;">
+    <div class="title"><a href="https://arxiv.org/abs/2608.19726" target="_blank">Projector Is All You Train</a></div>
+    <div class="meta">
+      <span>Nyx Iskandar,Saathvik Selvan,Slater Victoroff</span>
+      <span class="tag tag-vlm">VLM/MLLM 核心</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">本文探讨了仅训练 projector 而冻结 MLLM 其他组件的可行性。研究发现，projector-only training 在大幅降低计算成本的同时，可达到与端到端微调相当的性能。这一发现挑战了视觉-语言对齐必须进行全模型微调的传统认知。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2608.19726" target="_blank">arXiv</a>
+    </div>
+  </div>
+  <div class="paper" style="border-left-color: #6c3483;">
+    <div class="title"><a href="https://arxiv.org/abs/2608.19598" target="_blank">PEA-DPO: Perception-Enhanced Alignment Direct Preference Optimization for MLLMs Alignment</a></div>
+    <div class="meta">
+      <span>Jiawei Feng, Jiancan Wu, Xingyu Zhu et al.</span>
+      <span class="tag tag-vlm">VLM/MLLM 核心</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">本文提出 PEA-DPO，将视觉感知信号引入 DPO 以改善 MLLM 的对齐效果。该方法通过增强视觉内容与文本偏好之间的感知对齐，同时提升感知保真度与生成质量。实验验证了 PEA-DPO 在 MLLM 对齐任务上的有效性。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2608.19598" target="_blank">arXiv</a>
+    </div>
+  </div>
+  <div class="paper" style="border-left-color: #6c3483;">
+    <div class="title"><a href="https://arxiv.org/abs/2608.19208" target="_blank">When Irrelevant Text Matters: Affine Margin Shifts inMultimodalLarge Language Models</a></div>
+    <div class="meta">
+      <span>Yinfeng Wang, Zhiyuan Yao, Zheren Fu et al.</span>
+      <span class="tag tag-vlm">VLM/MLLM 核心</span>
+      <span class="tag tag-code">有代码</span>
+    </div>
+    <div class="abstract">本文揭示了 MLLM 中无关文本引起的 affine margin shifts 现象。研究发现，即使文本不提供有效视觉信息，也可能系统性地影响模型在视觉 grounding 任务中的决策。该分析为提升 MLLM 抵抗文本干扰的鲁棒性提供了重要洞察。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2608.19208" target="_blank">arXiv</a>
+    <a class="link-code" href="https://github.com/Wangyf1998/Irrelevant_Text_Matters" target="_blank">GitHub</a>
+    </div>
+  </div>
+  <div class="paper" style="border-left-color: #6c3483;">
+    <div class="title"><a href="https://arxiv.org/abs/2608.18938" target="_blank">Breaking the weakest link to evade vision language models</a></div>
+    <div class="meta">
+      <span>Ilan Zini,Boussad Addad,Katarzyna Kapusta</span>
+      <span class="tag tag-vlm">VLM/MLLM 核心</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">本文研究针对 VLM 的对抗攻击，通过识别并攻击其最弱的感知或语言链路实现逃逸。研究表明，对脆弱模态施加微小扰动即可导致模型灾难性失败。该发现强调需要提升 VLM 跨模态的均衡鲁棒性。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2608.18938" target="_blank">arXiv</a>
+    </div>
+  </div>
+  <div class="section-title" style="border-left-color: #2471a3;">多模态理解与推理</div>
+  <div class="paper" style="border-left-color: #2471a3;">
+    <div class="title"><a href="https://arxiv.org/abs/2608.20237" target="_blank">Rule-Compliant Visual Spatial Planning forMultimodalLarge Language Models</a></div>
+    <div class="meta">
+      <span>Yu Chen, Ting Lei, Yaoyi Li et al.</span>
+      <span class="tag tag-reasoning">多模态理解与推理</span>
+      <span class="tag tag-code">有代码</span>
+    </div>
+    <div class="abstract">本文提出 RuleMaze 基准，用于评估 MLLM 在显式规则约束下的视觉空间规划能力。该任务要求模型在视觉迷宫中规划路径，并遵守组合规则（如先访问红色物体再访问蓝色物体、避开特定区域）。实验表明，当前最先进的 MLLM 在规则组合与长程规划方面仍存在明显不足，亟需针对性的训练机制。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2608.20237" target="_blank">arXiv</a>
+    <a class="link-code" href="https://github.com/oceanflowlab/RuleMaze" target="_blank">GitHub</a>
+    </div>
+  </div>
+  <div class="paper" style="border-left-color: #2471a3;">
+    <div class="title"><a href="https://arxiv.org/abs/2608.20122" target="_blank">ArmorOCR: Grounded Adversarial Visual Perception via Observation-Transferred Self-Distillation</a></div>
+    <div class="meta">
+      <span>Linhan Cao, Siyuan Li, Jun Lan et al.</span>
+      <span class="tag tag-reasoning">多模态理解与推理</span>
+      <span class="tag tag-code">有代码</span>
+    </div>
+    <div class="abstract">本文提出 ArmorOCR 框架，通过 observation-transferred self-distillation 提升 LMM 对抗性视觉文本的鲁棒性。训练过程中将干净场景的观察迁移到对抗场景，从而在抵御对抗攻击的同时保持对干净输入的识别性能。实验显示，ArmorOCR 在对抗 OCR 任务上显著提升了准确率。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2608.20122" target="_blank">arXiv</a>
+    <a class="link-code" href="https://github.com/ant-research/ArmorOCR" target="_blank">GitHub</a>
+    </div>
+  </div>
+  <div class="paper" style="border-left-color: #2471a3;">
+    <div class="title"><a href="https://arxiv.org/abs/2608.20019" target="_blank">Contrastive Mixed Prompt Learning for IncompleteMultimodalSentiment Analysis with Unseen Modality Combination</a></div>
+    <div class="meta">
+      <span>Kaixin Xu, NaiJin Liu, Yulin Kang et al.</span>
+      <span class="tag tag-reasoning">多模态理解与推理</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">本文提出对比混合提示学习框架，用于处理不完全多模态情感分析中的未见模态组合问题。该方法通过 mixed prompt tokens 与对比对齐学习模态无关表示，能够适应任意缺失模态模式。实验验证了其在随机缺失及未见模态组合场景下的泛化能力。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2608.20019" target="_blank">arXiv</a>
+    </div>
+  </div>
+  <div class="paper" style="border-left-color: #2471a3;">
+    <div class="title"><a href="https://arxiv.org/abs/2608.19971" target="_blank">Robust IncompleteMultimodalSentiment Analysis via Iterative Proxy Correction</a></div>
+    <div class="meta">
+      <span>Zhifa Geng, Subin Huang, Hao Guo et al.</span>
+      <span class="tag tag-reasoning">多模态理解与推理</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">本文提出迭代式代理修正机制，联合处理多模态情感分析中的模态缺失与标签噪声问题。通过逐步精化的伪标签，该方法在不完全监督条件下实现了更稳健的情感预测。实验表明其在真实不完美数据上具有更强的鲁棒性。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2608.19971" target="_blank">arXiv</a>
+    </div>
+  </div>
+  <div class="paper" style="border-left-color: #2471a3;">
+    <div class="title"><a href="https://arxiv.org/abs/2608.19942" target="_blank">Dynamic Gated Cross-Modal Fusion with Sarcastic-aware Contrastive Regularization forMultimodalSarcasm Detection</a></div>
+    <div class="meta">
+      <span>Hao Guo, Subin Huang, Junjie Chen et al.</span>
+      <span class="tag tag-reasoning">多模态理解与推理</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">本文提出动态门控跨模态融合结合讽刺感知对比正则化方法，用于多模态讽刺检测。该方法自适应地为语言、视觉和声学模态分配权重，并通过对比学习拉近讽刺样本、推远非讽刺样本。实验表明其能更好捕捉模态间的动态矛盾关系。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2608.19942" target="_blank">arXiv</a>
+    </div>
+  </div>
+  <div class="paper" style="border-left-color: #2471a3;">
+    <div class="title"><a href="https://arxiv.org/abs/2608.19739" target="_blank">Question-Guided Evidence Acquisition forMultimodalVisual Question Answering</a></div>
+    <div class="meta">
+      <span>Alin-Ionut Popa</span>
+      <span class="tag tag-reasoning">多模态理解与推理</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">本文提出问题引导的证据获取方法，用于增强多模态视觉问答中文档理解能力。该方法根据问题主动检索并聚合文档中的视觉证据，以应对小字、表格、视觉线索和拓扑结构等复杂元素。实验表明其在结构化及视觉丰富文档上的推理能力显著提升。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2608.19739" target="_blank">arXiv</a>
+    </div>
+  </div>
+  <div class="paper" style="border-left-color: #2471a3;">
+    <div class="title"><a href="https://arxiv.org/abs/2608.19710" target="_blank">Robust Cross-Modal Foundation Model Perception for Underwater Robots under Degraded Visual Conditions</a></div>
+    <div class="meta">
+      <span>Mohammad Arif Ul Alam</span>
+      <span class="tag tag-reasoning">多模态理解与推理</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">本文研究了水下机器人在退化视觉条件下的鲁棒跨模态基础模型感知。通过构建从清洁到极端条件的五级基准，比较了传统检测、冻结基础特征与微调多模态模型的表现。结果表明，跨模态基础模型在视觉退化环境下比单模态基线更稳健。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2608.19710" target="_blank">arXiv</a>
+    </div>
+  </div>
+  <div class="paper" style="border-left-color: #2471a3;">
+    <div class="title"><a href="https://arxiv.org/abs/2608.19355" target="_blank">GRACE: Grounded Reasoning via Adapter Composition and Evidence-Aware Calibration for Educational Visual Question Answering</a></div>
+    <div class="meta">
+      <span>Xinjin Li, Yudi Xia, Xi Zhao et al.</span>
+      <span class="tag tag-reasoning">多模态理解与推理</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">本文提出 GRACE 框架，用于教育视觉问答中的 grounded reasoning。该方法通过 adapter composition 与 evidence-aware calibration，将推理建立在相关图像区域上，并减少对语言捷径的依赖。实验提升了教育 VQA 基准上的鲁棒性与可解释性。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2608.19355" target="_blank">arXiv</a>
+    </div>
+  </div>
+  <div class="paper" style="border-left-color: #2471a3;">
+    <div class="title"><a href="https://arxiv.org/abs/2608.18937" target="_blank">MedUAG: Unified Understanding and Generation for MedicalMultimodalModels</a></div>
+    <div class="meta">
+      <span>Zijie Meng, Yuncheng Zhang, Hualiang Wang et al.</span>
+      <span class="tag tag-reasoning">多模态理解与推理</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">本文提出 MedUAG，面向医学多模态数据的统一理解与生成模型。该模型同时支持诊断推理以及医学图像/报告生成，以应对医疗领域对事实准确性与专业知识的高要求。研究为医学 MLLM 的 UAG 框架发展提供了新方向。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2608.18937" target="_blank">arXiv</a>
+    </div>
+  </div>
+  <div class="section-title" style="border-left-color: #1e8449;">多模态基准与评测</div>
+  <div class="paper" style="border-left-color: #1e8449;">
+    <div class="title"><a href="https://arxiv.org/abs/2608.19297" target="_blank">Holtercare-Bench: AMultimodalBenchmark for Evaluating Long-Term Dynamic ECG Analysis</a></div>
+    <div class="meta">
+      <span>Yihan Xie, Hanwen Cui, Runze Ye et al.</span>
+      <span class="tag tag-benchmark">多模态基准与评测</span>
+      <span class="tag tag-code">有代码</span>
+    </div>
+    <div class="abstract">本文提出 Holtercare-Bench，用于评估 MLLM 在长期动态心电图分析中的能力。该基准提供标准化任务与指标，填补了对扩展时间序列临床理解评估的空白。研究为 MLLM 在动态心电监测领域的应用提供了系统评测框架。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2608.19297" target="_blank">arXiv</a>
+    <a class="link-code" href="https://github.com/ZJU4HealthCare/Holtercare-Bench" target="_blank">GitHub</a>
+    </div>
+  </div>
+  <div class="paper" style="border-left-color: #1e8449;">
+    <div class="title"><a href="https://arxiv.org/abs/2608.19207" target="_blank">Compliance, Capability, and Conflict: BenchmarkingMultimodalLLMs under System Messages</a></div>
+    <div class="meta">
+      <span>Juan Yeo,Geewook Kim</span>
+      <span class="tag tag-benchmark">多模态基准与评测</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">本文提出一个系统评估 MLLM 在 system message 下表现的基准。该基准从指令遵循、基础能力与安全冲突三个维度出发，系统暴露模型失败模式。研究旨在为 MLLM 的安全部署提供指导。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2608.19207" target="_blank">arXiv</a>
+    </div>
+  </div>
+  <div class="paper" style="border-left-color: #1e8449;">
+    <div class="title"><a href="https://arxiv.org/abs/2608.18701" target="_blank">SoftVTBench: A Deformation-Aware Visuo-Tactile Dataset and Benchmark for Deformable-Object Manipulation</a></div>
+    <div class="meta">
+      <span>Bowen Jing, Mingxin Wang, Ruiyang Hao et al.</span>
+      <span class="tag tag-benchmark">多模态基准与评测</span>
+      <span class="tag tag-code">有代码</span>
+    </div>
+    <div class="abstract">本文提出 SoftVTBench，一个面向可形变物体操作的形变感知视触觉数据集与基准。该基准捕捉交互过程中的同步视觉与触觉信号，用于评估形变物体操作。实验表明触觉信息的引入能提升操作性能，但收益在分布内与分布外场景中有所不同。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2608.18701" target="_blank">arXiv</a>
+    <a class="link-code" href="https://github.com/TuojingAI/SoftVTBench" target="_blank">GitHub</a>
+    </div>
+  </div>
+  <div class="paper" style="border-left-color: #1e8449;">
+    <div class="title"><a href="https://arxiv.org/abs/2608.18689" target="_blank">Aslema at NADI 2026: Augmentation through Fewshot for SLU</a></div>
+    <div class="meta">
+      <span>Tajwaar Shafiq, Hunzalah Hassan Bhatti, Shammur Absar Chowdhury et al.</span>
+      <span class="tag tag-benchmark">多模态基准与评测</span>
+      <span class="tag tag-code">有代码</span>
+    </div>
+    <div class="abstract">本文介绍 Aslema 系统，参与 NADI 2026 共享任务 5 的意图识别与槽位填充。研究评估了四种 omnimodal 模型，并探索了 few-shot augmentation 在低资源阿拉伯语口语语言理解（SLU）中的应用。实验结果表明 few-shot 增强策略在该任务上具有有效性。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2608.18689" target="_blank">arXiv</a>
+    <a class="link-code" href="https://github.com/hunzed/aslema_nadi2026" target="_blank">GitHub</a>
+    </div>
+  </div>
+  <div class="section-title" style="border-left-color: #c0392b;">多模态检索与信息抽取</div>
+  <div class="paper" style="border-left-color: #c0392b;">
+    <div class="title"><a href="https://arxiv.org/abs/2608.19218" target="_blank">Time-Series Retrieval for GroundingMultimodalLanguage Models in Remaining Useful Life</a></div>
+    <div class="meta">
+      <span>Valeriu Dimidov,Raphaël Frank</span>
+      <span class="tag tag-retrieval">多模态检索与信息抽取</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">本文研究如何将多模态语言模型 grounded 于剩余使用寿命（RUL）估计任务。通过 time-series retrieval，模型能够访问历史退化模式，从而提升 RUL 预测的准确性与可解释性。实验表明基于检索的 grounding 对 PHM 任务具有实用价值。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2608.19218" target="_blank">arXiv</a>
+    </div>
+  </div>
+  <div class="section-title" style="border-left-color: #1abc9c;">Agent 与具身智能</div>
+  <div class="paper" style="border-left-color: #1abc9c;">
+    <div class="title"><a href="https://arxiv.org/abs/2608.19794" target="_blank">Towards general embodied intelligence: integrating large language models, knowledge bases, and reasoning capabilities to build the next generation of AI agents</a></div>
+    <div class="meta">
+      <span>Fujiang Yuan, Xia Huang, Lusheng Wang et al.</span>
+      <span class="tag tag-agent">Agent 与具身智能</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">本文综述了通用具身智能的新兴范式，重点探讨如何整合 LLM、知识库与推理机制以构建下一代 AI agent。文章梳理了感知-动作接地、混合符号-神经网络推理、持续学习与安全人机交互等关键挑战。最后给出了发展通用具身代理的综合路线图与开放问题。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2608.19794" target="_blank">arXiv</a>
+    </div>
+  </div>
+  <div class="paper" style="border-left-color: #1abc9c;">
+    <div class="title"><a href="https://arxiv.org/abs/2608.18878" target="_blank">DentAgent: Evidence-Centric Multi-Agent Coordination forMultimodalDental Reasoning</a></div>
+    <div class="meta">
+      <span>Zijie Meng, Xiwei Dai, Yixuan Tang et al.</span>
+      <span class="tag tag-agent">Agent 与具身智能</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">本文提出 DentAgent，一种面向多模态牙科推理的以证据为中心的多智能体协同框架。不同专业 agent 分别处理多种影像模态并协作聚合证据，从而实现多标签诊断。实验显示该系统在多标签牙科诊断上超越了资深专家。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2608.18878" target="_blank">arXiv</a>
+    </div>
+  </div>
+  <div class="section-title" style="border-left-color: #b9770e;">多模态生成</div>
+  <div class="paper" style="border-left-color: #b9770e;">
+    <div class="title"><a href="https://arxiv.org/abs/2608.19809" target="_blank">From Latent Influence to Language: Diffusion-Oriented Content Generation via Audience-Susceptible Features</a></div>
+    <div class="meta">
+      <span>Jiaying Lei, Shengqi Dang, Runqian Bai et al.</span>
+      <span class="tag tag-generation">多模态生成</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">本文提出面向扩散的内容生成框架，利用从潜在影响力动态中学习到的 audience-susceptible features 指导生成。通过将内容生成与这些特征条件化，模型能够生成更易于在目标受众网络中传播的多模态内容。该方法为社交媒体广告与品牌营销提供了新的生成策略。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2608.19809" target="_blank">arXiv</a>
+    </div>
+  </div>
+  <div class="paper" style="border-left-color: #b9770e;">
+    <div class="title"><a href="https://arxiv.org/abs/2608.19067" target="_blank">Diffusion Models for High-Dimensional Clustered Data: Intrinsic-Dimension Adaptivity via Bayesian Classification</a></div>
+    <div class="meta">
+      <span>Yuga Iguchi,Paul Fearnhead</span>
+      <span class="tag tag-generation">多模态生成</span>
+      <span class="tag tag-code">有代码</span>
+    </div>
+    <div class="abstract">本文研究扩散模型在高维聚类数据上的行为，通过贝叶斯分类刻画其对内在维度的自适应性。分析揭示了去噪过程中存在的相变现象，并指出如何利用低维流形结构设计更高效的模型。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2608.19067" target="_blank">arXiv</a>
+    <a class="link-code" href="https://github.com/YugaIgu/diffusion_models_phase_transition" target="_blank">GitHub</a>
+    </div>
+  </div>
+  <div class="section-title" style="border-left-color: #b7950b;">音频多模态</div>
+  <div class="paper" style="border-left-color: #b7950b;">
+    <div class="title"><a href="https://arxiv.org/abs/2608.19523" target="_blank">DAVSS: Distilled Audio-Visual State Space Models</a></div>
+    <div class="meta">
+      <span>Saurabhchand Bhati, Mrudula Athi, Amit S. Chhetri et al.</span>
+      <span class="tag tag-audio">音频多模态</span>
+      <span class="tag tag-no-code">暂无代码</span>
+    </div>
+    <div class="abstract">本文将 Transformer-SSM 知识蒸馏范式拓展到视听学习，提出 Distilled Audio-Visual State Space Models（DAVSS）。DAVSS 在保持与 Transformer 相当性能的同时，显著降低了计算开销。实验表明其在视听理解任务上兼具高效性与竞争力。</div>
+    <div class="links">
+      <a class="link-arxiv" href="https://arxiv.org/abs/2608.19523" target="_blank">arXiv</a>
+    </div>
+  </div>
+  <div class="footer">
+    <p>自动生成 · QoderWork Arxiv 多模态论文追踪 · 2026-08-23</p>
+  </div>
+</div>
+</body>
+</html>
