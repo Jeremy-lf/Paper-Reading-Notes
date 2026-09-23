@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arxiv 多模态论文日报 - 2026-09-23</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['"Noto Sans SC"', '"Inter"', 'system-ui', 'sans-serif'],
+        display: ['"Inter"', '"Noto Sans SC"', 'system-ui', 'sans-serif'],
+      },
+    }
+  }
+}
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Noto Sans SC', 'Inter', system-ui, sans-serif; }
+
+  /* Sidebar */
+  .sidebar-link {
+    transition: all 0.2s ease;
+    border-left: 3px solid transparent;
+  }
+  .sidebar-link:hover, .sidebar-link.active {
+    background: #f8fafc;
+    border-left-color: var(--cat-color, #3B82F6);
+  }
+  .sidebar-link .count-badge {
+    transition: transform 0.2s ease;
+  }
+  .sidebar-link:hover .count-badge {
+    transform: scale(1.1);
+  }
+
+  /* Paper card */
+  .paper-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-left: 4px solid var(--cat-color, #e2e8f0);
+  }
+  .paper-card:hover {
+    box-shadow: 0 4px 24px -4px rgba(0,0,0,0.08), 0 2px 8px -2px rgba(0,0,0,0.04);
+    transform: translateY(-1px);
+  }
+
+  /* Collapse animation */
+  .collapse-enter-active, .collapse-leave-active {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+  }
+  .collapse-enter-from, .collapse-leave-to {
+    opacity: 0;
+    max-height: 0;
+    transform: translateY(-8px);
+  }
+  .collapse-enter-to, .collapse-leave-from {
+    opacity: 1;
+    max-height: 600px;
+  }
+
+  /* Category section */
+  .category-section {
+    scroll-margin-top: 80px;
+  }
+
+  /* Tag pills */
+  .tag-pill {
+    font-size: 0.7rem;
+    letter-spacing: 0.02em;
+    padding: 2px 8px;
+    border-radius: 9999px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  /* Custom scrollbar */
+  .sidebar-scroll::-webkit-scrollbar { width: 3px; }
+  .sidebar-scroll::-webkit-scrollbar-track { background: transparent; }
+  .sidebar-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+  .sidebar-scroll::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+  /* Chevron rotation */
+  .chevron-icon {
+    transition: transform 0.3s ease;
+  }
+  .chevron-icon.rotated {
+    transform: rotate(180deg);
+  }
+
+  /* Print styles */
+  @media print {
+    .sidebar, .no-print { display: none !important; }
+    .main-content { margin-left: 0 !important; }
+    .paper-card { break-inside: avoid; }
+  }
+
+  /* Responsive sidebar overlay */
+  @media (max-width: 1023px) {
+    .sidebar-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.3);
+      z-index: 40; transition: opacity 0.3s ease;
+    }
+  }
+</style>
+</head>
+<body class="bg-gray-50/60 text-gray-800 antialiased">
+
+<div id="app">
+  <!-- Mobile sidebar overlay -->
+  <div v-if="mobileMenuOpen" class="sidebar-overlay lg:hidden" @click="mobileMenuOpen = false"></div>
+
+  <!-- Sidebar -->
+  <aside
+    class="sidebar fixed top-0 left-0 h-full w-72 bg-white border-r border-gray-100 z-50 overflow-y-auto sidebar-scroll transition-transform duration-300 lg:translate-x-0"
+    :class="mobileMenuOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'"
+  >
+    <!-- Sidebar header -->
+    <div class="sticky top-0 bg-white/95 backdrop-blur-sm border-b border-gray-100 px-5 py-4 z-10">
+      <div class="flex items-center gap-2.5">
+        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-violet-500 flex items-center justify-center">
+          <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+          </svg>
+        </div>
+        <div>
+          <h2 class="text-sm font-semibold text-gray-900">目录导航</h2>
+          <p class="text-xs text-gray-400">{{ papers.length }} 篇论文 · {{ categories.length }} 个方向</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOC links -->
+    <nav class="px-3 py-3 space-y-0.5">
+      <a
+        v-for="(cat, ci) in categories"
+        :key="cat.id"
+        :href="'#cat-' + cat.id"
+        class="sidebar-link flex items-center justify-between px-3 py-2.5 rounded-r-lg text-sm cursor-pointer"
+        :style="{ '--cat-color': cat.color }"
+        @click="mobileMenuOpen = false"
+      >
+        <span class="flex items-center gap-2.5 min-w-0">
+          <span class="w-2 h-2 rounded-full flex-shrink-0" :style="{ background: cat.color }"></span>
+          <span class="truncate text-gray-600 hover:text-gray-900">{{ cat.name }}</span>
+        </span>
+        <span class="count-badge flex-shrink-0 ml-2 text-xs font-medium px-1.5 py-0.5 rounded-full" :style="{ background: cat.color + '15', color: cat.color }">
+          {{ cat.papers.length }}
+        </span>
+      </a>
+    </nav>
+
+    <!-- Sidebar footer -->
+    <div class="px-5 py-4 border-t border-gray-100 mt-4">
+      <div class="text-xs text-gray-400 space-y-1">
+        <p>数据来源：Arxiv</p>
+        <p>收录范围：2026.09.21 - 09.22</p>
+        <p>生成时间：2026-09-23</p>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main content -->
+  <div class="lg:ml-72">
+    <!-- Header -->
+    <header class="sticky top-0 z-30 bg-white/80 backdrop-blur-md border-b border-gray-100">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+          <div class="flex items-center gap-3">
+            <!-- Mobile menu button -->
+            <button @click="mobileMenuOpen = !mobileMenuOpen" class="lg:hidden p-2 -ml-2 rounded-lg hover:bg-gray-100 transition-colors">
+              <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+              </svg>
+            </button>
+            <div>
+              <h1 class="text-lg font-bold text-gray-900 font-display tracking-tight">
+                Arxiv 多模态论文日报
+              </h1>
+              <p class="text-xs text-gray-400 -mt-0.5">2026 年 9 月 23 日 · 周一</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="hidden sm:flex items-center gap-4 text-xs text-gray-400">
+              <span class="flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+                收录 {{ papers.length }} 篇
+              </span>
+              <span class="flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                {{ codePapersCount }} 篇有代码
+              </span>
+              <span class="flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-violet-400"></span>
+                {{ categories.length }} 个方向
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero section -->
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-4">
+      <div class="bg-gradient-to-br from-slate-50 via-white to-blue-50/30 rounded-2xl border border-gray-100 p-6 sm:p-8">
+        <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+          <div>
+            <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-50 text-blue-600 text-xs font-medium mb-3">
+              <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a8 8 0 100 16 8 8 0 000-16zm1 11H9v-2h2v2zm0-4H9V5h2v4z"/></svg>
+              每日精选
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight leading-tight">
+              多模态前沿论文速递
+            </h2>
+            <p class="text-sm text-gray-500 mt-2 max-w-xl leading-relaxed">
+              自动追踪 Arxiv 最新多模态研究进展，覆盖视觉语言模型、多模态生成、3D 视觉语言、Agent 与具身智能等核心方向。收录时间范围：2026 年 9 月 21 日至 22 日。
+            </p>
+          </div>
+          <div class="flex gap-2 flex-shrink-0">
+            <div class="text-center px-4 py-2 rounded-xl bg-white border border-gray-100 shadow-sm">
+              <div class="text-2xl font-bold text-gray-900">{{ papers.length }}</div>
+              <div class="text-xs text-gray-400">论文总数</div>
+            </div>
+            <div class="text-center px-4 py-2 rounded-xl bg-white border border-gray-100 shadow-sm">
+              <div class="text-2xl font-bold text-emerald-600">{{ codePapersCount }}</div>
+              <div class="text-xs text-gray-400">开源代码</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Paper sections -->
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+      <div
+        v-for="(cat, ci) in categories"
+        :key="cat.id"
+        :id="'cat-' + cat.id"
+        class="category-section mb-10"
+      >
+        <!-- Category header -->
+        <div class="flex items-center gap-3 mb-4 mt-2">
+          <div class="w-1 h-8 rounded-full" :style="{ background: cat.color }"></div>
+          <div>
+            <h3 class="text-lg font-bold text-gray-900">{{ cat.name }}</h3>
+            <p class="text-xs text-gray-400">{{ cat.nameEn }} · {{ cat.papers.length }} 篇</p>
+          </div>
+        </div>
+
+        <!-- Paper cards -->
+        <div class="space-y-3">
+          <div
+            v-for="(paper, pi) in cat.papers"
+            :key="paper.id"
+            class="paper-card bg-white rounded-xl shadow-sm hover:shadow-md overflow-hidden"
+            :style="{ '--cat-color': cat.color }"
+          >
+            <!-- Card header (always visible) -->
+            <div
+              class="px-5 py-4 cursor-pointer select-none"
+              @click="togglePaper(paper.id)"
+            >
+              <div class="flex items-start justify-between gap-3">
+                <div class="min-w-0 flex-1">
+                  <!-- Paper number + title -->
+                  <div class="flex items-start gap-2.5">
+                    <span
+                      class="flex-shrink-0 w-6 h-6 rounded-md flex items-center justify-center text-xs font-bold text-white mt-0.5"
+                      :style="{ background: cat.color }"
+                    >
+                      {{ paper.num }}
+                    </span>
+                    <div class="min-w-0">
+                      <h4 class="text-sm font-semibold text-gray-900 leading-snug">
+                        <a
+                          :href="paper.url"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="hover:underline decoration-2 underline-offset-2"
+                          :style="{ textDecorationColor: cat.color + '60' }"
+                          @click.stop
+                        >{{ paper.title }}</a>
+                      </h4>
+                      <p class="text-xs text-gray-400 mt-1 leading-relaxed">{{ paper.authors }}</p>
+                    </div>
+                  </div>
+
+                  <!-- Tags -->
+                  <div class="flex flex-wrap items-center gap-1.5 mt-2.5">
+                    <span
+                      v-for="tag in paper.tags"
+                      :key="tag"
+                      class="tag-pill"
+                      :style="{ background: cat.color + '12', color: cat.color }"
+                    >{{ tag }}</span>
+                    <!-- Code status -->
+                    <span
+                      v-if="paper.code === 'yes'"
+                      class="tag-pill bg-emerald-50 text-emerald-600"
+                    >
+                      <a :href="paper.codeUrl" target="_blank" rel="noopener noreferrer" class="hover:underline" @click.stop>有代码</a>
+                    </span>
+                    <span
+                      v-else-if="paper.code === 'soon'"
+                      class="tag-pill bg-amber-50 text-amber-600"
+                    >即将发布</span>
+                    <span v-else class="tag-pill bg-gray-100 text-gray-400">暂无代码</span>
+                  </div>
+                </div>
+
+                <!-- Expand chevron -->
+                <button class="flex-shrink-0 p-1 rounded-md hover:bg-gray-50 transition-colors mt-0.5">
+                  <svg
+                    class="w-4 h-4 text-gray-400 chevron-icon"
+                    :class="{ rotated: expandedPapers.has(paper.id) }"
+                    fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                  >
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- Expandable abstract -->
+            <div v-show="expandedPapers.has(paper.id)" class="px-5 pb-4 pt-0">
+              <div class="border-t border-gray-50 pt-3">
+                <div class="flex items-start gap-2">
+                  <svg class="w-4 h-4 text-gray-300 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                  </svg>
+                  <p class="text-sm text-gray-600 leading-relaxed">{{ paper.abstract }}</p>
+                </div>
+                <div class="mt-3 flex items-center gap-3">
+                  <a
+                    :href="paper.url"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-1 text-xs font-medium text-gray-400 hover:text-gray-600 transition-colors"
+                  >
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                    </svg>
+                    arXiv:{{ paper.arxivId }}
+                  </a>
+                  <a
+                    v-if="paper.code === 'yes' && paper.codeUrl"
+                    :href="paper.codeUrl"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-1 text-xs font-medium text-emerald-500 hover:text-emerald-600 transition-colors"
+                  >
+                    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    查看代码
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer statistics -->
+      <footer class="mt-16 border-t border-gray-100 pt-8">
+        <div class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+          <div class="px-6 py-5 border-b border-gray-50">
+            <h3 class="text-base font-bold text-gray-900">统计概览</h3>
+            <p class="text-xs text-gray-400 mt-0.5">本日收录论文汇总数据</p>
+          </div>
+          <div class="p-6">
+            <!-- Stats grid -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
+              <div class="text-center p-3 rounded-xl bg-gray-50">
+                <div class="text-2xl font-bold text-gray-900">{{ papers.length }}</div>
+                <div class="text-xs text-gray-400 mt-0.5">论文总数</div>
+              </div>
+              <div class="text-center p-3 rounded-xl bg-emerald-50">
+                <div class="text-2xl font-bold text-emerald-600">{{ codePapersCount }}</div>
+                <div class="text-xs text-gray-400 mt-0.5">开源代码</div>
+              </div>
+              <div class="text-center p-3 rounded-xl bg-amber-50">
+                <div class="text-2xl font-bold text-amber-600">{{ soonCodePapersCount }}</div>
+                <div class="text-xs text-gray-400 mt-0.5">即将开源</div>
+              </div>
+              <div class="text-center p-3 rounded-xl bg-blue-50">
+                <div class="text-2xl font-bold text-blue-600">{{ categories.length }}</div>
+                <div class="text-xs text-gray-400 mt-0.5">研究方向</div>
+              </div>
+            </div>
+
+            <!-- Category breakdown -->
+            <div class="space-y-2">
+              <div
+                v-for="cat in categories"
+                :key="cat.id"
+                class="flex items-center gap-3"
+              >
+                <div class="w-2.5 h-2.5 rounded-full flex-shrink-0" :style="{ background: cat.color }"></div>
+                <span class="text-sm text-gray-600 flex-1 min-w-0 truncate">{{ cat.name }}</span>
+                <div class="flex items-center gap-2 flex-shrink-0">
+                  <div class="w-24 sm:w-32 h-1.5 bg-gray-100 rounded-full overflow-hidden">
+                    <div
+                      class="h-full rounded-full transition-all duration-500"
+                      :style="{ width: (cat.papers.length / papers.length * 100) + '%', background: cat.color }"
+                    ></div>
+                  </div>
+                  <span class="text-xs font-medium text-gray-400 w-6 text-right">{{ cat.papers.length }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="px-6 py-4 bg-gray-50/50 border-t border-gray-50">
+            <p class="text-xs text-gray-400 text-center">
+              Arxiv 多模态论文日报 · 自动生成于 2026-09-23 · 数据来源 arxiv.org
+            </p>
+          </div>
+        </div>
+      </footer>
+    </main>
+  </div>
+</div>
+
+<script>
+const { createApp, ref, computed, reactive, onMounted, nextTick } = Vue;
+
+createApp({
+  setup() {
+    const mobileMenuOpen = ref(false);
+    const expandedPapers = reactive(new Set());
+
+    const papers = [
+      {
+        id: 1, num: 1, arxivId: '2609.25611',
+        url: 'https://arxiv.org/abs/2609.25611',
+        title: 'Qwen3.8-Omni: Towards Native Omni-Modal Agents',
+        authors: 'Qwen Team',
+        tags: ['VLM/MLLM', 'Omni-Modal', 'Agent'],
+        code: 'yes', codeUrl: 'https://github.com/QwenLM/Qwen3-Omni',
+        abstract: '提出Qwen3.8-Omni-Flash，一个原生多模态智能体模型，面向实际多模态生产力场景。继承Qwen3.8-Next的稀疏混合专家架构，上下文窗口扩展至100万token。采用原生多模态联合训练方法，在保持强大文本能力的同时将智能体能力扩展到音频和视频领域。应用包括视频编辑、长视频翻译、音乐驱动的视频生成等。同时发布了Qwen-MM-Plugins轻量级开源插件框架和Qwen-Live-Harness实时多模态智能体框架。',
+        category: 'vlm'
+      },
+      {
+        id: 2, num: 2, arxivId: '2609.25891',
+        url: 'https://arxiv.org/abs/2609.25891',
+        title: 'BAS-OPD: Budget-Aware Selective On-Policy Self-Distillation for Fine-Grained Multimodal Perception',
+        authors: 'Zihan Chen, Hengguang Zhou, Yuan Kang, Yiming Zhang, Wenhui Fang, Zenghui Ding, Yining Sun, Cho-Jui Hsieh',
+        tags: ['VLM/MLLM', '多模态感知', '自蒸馏'],
+        code: 'no', codeUrl: '',
+        abstract: '针对多模态大语言模型（MLLM）中细粒度视觉感知的挑战，提出BAS-OPD框架。在on-policy自蒸馏（OPD）基础上引入预算感知的选择性监督分配机制，在有限查询预算下选择信息量最大的样本进行教师监督。探索了随机、不确定性和基于效用的选择策略，在保持单pass全图推理的同时大幅降低教师监督成本。',
+        category: 'vlm'
+      },
+      {
+        id: 3, num: 3, arxivId: '2609.25841',
+        url: 'https://arxiv.org/abs/2609.25841',
+        title: 'Metric-Bench: Exploring In-context Spatial Metric Reasoning in VLMs for Indoor Scenes',
+        authors: 'Yuling Xi, Haokai Zhang, Muzhi Zhu, Hao Zhong et al.',
+        tags: ['VLM/MLLM', '基准评测', '空间推理'],
+        code: 'no', codeUrl: '',
+        abstract: '提出Metric-Bench基准，通过上下文线索（图像中已知物理尺寸的参考物体）引导VLM进行度量空间推理，无需相机内参即可隐式学习2D到3D映射。同时提出MetricReasoner，一种使用结构化提示和可验证数值奖励的强化微调方法。实验显示该方法超越大型商业模型43.1%，在具身AI任务上也取得显著提升。已被ECCV接收。',
+        category: 'vlm'
+      },
+      {
+        id: 4, num: 4, arxivId: '2609.26375',
+        url: 'https://arxiv.org/abs/2609.26375',
+        title: 'KwaiMind Technical Report',
+        authors: 'Junlong Wu, Zijun Li, Yuting Hu et al. (KwaiMind Team, Kuaishou Group)',
+        tags: ['多模态生成', '图像编辑', '电商'],
+        code: 'no', codeUrl: '',
+        abstract: '快手推出的商业图像编辑系统KwaiMind，结合通用编辑能力与电商专业化。核心是包含约180万编辑对的"智能体数据引擎"，模型为多模态扩散Transformer，经过持续预训练、监督微调、偏好优化和在线强化学习。提出Ecom-Bench基准覆盖11个商业编辑任务。在线A/B测试中实际CTR提升约2.44%。',
+        category: 'generation'
+      },
+      {
+        id: 5, num: 5, arxivId: '2609.26015',
+        url: 'https://arxiv.org/abs/2609.26015',
+        title: 'VideoX-Qwen: Data-Centric Instruction-Based Video Editing',
+        authors: 'Jiahang Li, Dingbao Shao, Xinyu Chen et al.',
+        tags: ['多模态生成', '视频编辑', '指令驱动'],
+        code: 'no', codeUrl: '',
+        abstract: '提出基于指令的视频编辑框架VideoX-Qwen，解决构建大规模配对数据集和将视频生成骨干适配编辑任务两大挑战。数据管线结合专门的生成和理解模型，产出超过120万条定向编辑记录。模型采用Qwen-Wan编辑器，配合多模态语义条件和密集源视频潜在引导，在11项指标中的9项取得最佳平均分。',
+        category: 'generation'
+      },
+      {
+        id: 6, num: 6, arxivId: '2609.25821',
+        url: 'https://arxiv.org/abs/2609.25821',
+        title: 'CogenPVG: Cognitive-Enhanced Reflective Multi-Agent Framework for Persuasive Video Generation',
+        authors: 'Yuntian Xiao, Shoulong Zhang, Wenfeng Song, Yan Wang, Yi Chen, Shuai Li',
+        tags: ['多模态生成', '视频生成', '多智能体'],
+        code: 'no', codeUrl: '',
+        abstract: '提出CogenPVG多智能体框架用于说服力视频生成（PVG）。将生成过程分为论证推理、故事板规划、素材创建和后期编辑四个阶段，模拟人类视频创作者的工作流程。基于精细加工可能性模型（ELM），每个阶段配备生成器和批评器进行反思式优化。据称是首个面向"通用说服性主题"的框架。',
+        category: 'generation'
+      },
+      {
+        id: 7, num: 7, arxivId: '2609.25864',
+        url: 'https://arxiv.org/abs/2609.25864',
+        title: 'TV-AudioRemover: Joint Text-Visual Guided Sound Removal with Multi-Task Hard-Mixture Curriculum',
+        authors: 'Xinyue Guo, Jianxuan Yang, Daiguo Zhou et al.',
+        tags: ['多模态生成', '音频处理', '文本-视觉引导'],
+        code: 'no', codeUrl: '',
+        abstract: '提出TV-AudioRemover框架，解决视频编辑中视觉对象被移除但关联声音仍保留的问题。接收视觉编辑后的视频和自然语言指令，从原始音频混合中抑制被移除对象的声音。构建了百万级单对象音频-视觉数据集，提出任务令牌、泛化指令建模和模态特定全局引导等架构改进，以及多任务硬混合课程训练方案。',
+        category: 'generation'
+      },
+      {
+        id: 8, num: 8, arxivId: '2609.25832',
+        url: 'https://arxiv.org/abs/2609.25832',
+        title: 'PartLLM: A Unified Multimodal Foundation for 3D Part Segmentation',
+        authors: 'Zhe Zhu, Yiheng Zhang, Peng Li et al.',
+        tags: ['3D视觉语言', '部件分割', '多模态基础模型'],
+        code: 'no', codeUrl: '',
+        abstract: '将3D部件分割统一为"意图条件生成问题"，提出PartLLM多模态模型。将3D部件分割视为"自回归语义分解"，在给定形状和用户提示的条件下，生成语义部件假设作为掩码预测的查询。单一模型支持文本引导分割、交互式分割和可控粒度的全形状语义分解，在所有任务设置中一致超越特定任务基线。',
+        category: '3d'
+      },
+      {
+        id: 9, num: 9, arxivId: '2609.25756',
+        url: 'https://arxiv.org/abs/2609.25756',
+        title: 'MedVLA: A Hierarchical Vision-Language-Action Framework for Closed-Loop Precision Medical Robot Manipulation',
+        authors: 'Junjie Xie, Chuxuan He, Angen Ye, Yujia Song, Dapeng Zhang',
+        tags: ['Agent与具身智能', '医疗机器人', 'VLA'],
+        code: 'no', codeUrl: '',
+        abstract: '提出MedVLA分层框架，将高级多模态推理与低级功能约束执行耦合。引入可扩展的多智能体管线生成面向技能的思维链数据。在100次闭环柔性电极植入试验中达到95.0%任务成功率，大幅超越OpenVLA（8%）和π_0（15%）等代表性VLA基线，展示了结构化推理与约束功能级执行在精密医疗机器人中的实用价值。',
+        category: 'agent'
+      },
+      {
+        id: 10, num: 10, arxivId: '2609.25606',
+        url: 'https://arxiv.org/abs/2609.25606',
+        title: 'CableVLA: Simulation-Privileged Global-Local Representation Learning for Cable Routing',
+        authors: 'Zhifei Teng, Bo Feng, Xiang Zou et al.',
+        tags: ['Agent与具身智能', 'VLA', '机器人操作'],
+        code: 'no', codeUrl: '',
+        abstract: '提出CableVLA端到端多模态视觉-语言-动作框架，将仿真特权监督转化为可部署的电缆拓扑和触觉表示。TopoHead将节点级物理和电缆拓扑信息蒸馏为因果视觉上下文，TacSense从电阻阵列学习接触动力学。在345次MuJoCo评估中将成功率从62.6%提升至84.9%。',
+        category: 'agent'
+      },
+      {
+        id: 11, num: 11, arxivId: '2609.25738',
+        url: 'https://arxiv.org/abs/2609.25738',
+        title: 'OmniFysics-Nano-V2: Understanding the Physical World Across Modalities',
+        authors: 'Yizhou Liu, Jinghang Han, Kaixiang Qiu et al.',
+        tags: ['Agent与具身智能', '全模态', '物理推理'],
+        code: 'no', codeUrl: '',
+        abstract: '提出OmniFysics-Nano-V2紧凑型全模态模型，面向物理世界理解。接受图像、视频、音频、语音和文本输入，输出文本和语音。构建双分支物理感知数据管线：一支将显著对象锚定到结构化物理属性，另一支将视觉变化与声学事件对齐。采用两阶段GRPO课程从通用任务正确性推进到细粒度物理感知推理。在21个基准中的17个取得领先结果。',
+        category: 'agent'
+      },
+      {
+        id: 12, num: 12, arxivId: '2609.25860',
+        url: 'https://arxiv.org/abs/2609.25860',
+        title: 'MatchFusion: Explicit-Implicit Instance Matching for Spatio-Temporal Multimodal Autonomous Driving',
+        authors: 'Xiaoyu Li, Jiajia Fu, Long Shi et al.',
+        tags: ['多模态感知', '自动驾驶', 'LiDAR-Camera融合'],
+        code: 'no', codeUrl: '',
+        abstract: '提出MatchFusion可学习实例匹配与融合模块，用于时空多模态自动驾驶。使用几何相似度和类别一致性初始化成对亲和力，再利用实例嵌入优化关联。在nuScenes实验中，相比先前实例中心融合方法，在提升感知精度的同时将FLOPs降低55.3%、GPU内存使用降低39.3%。',
+        category: 'perception'
+      },
+      {
+        id: 13, num: 13, arxivId: '2609.25856',
+        url: 'https://arxiv.org/abs/2609.25856',
+        title: 'CMT-AD: Confidence-Guided Cross-Modal Knowledge Transfer for Multimodal Anomaly Detection',
+        authors: 'Peipeng Wang, Xiuguo Zhang, Lihua Zhang et al.',
+        tags: ['多模态感知', '异常检测', '微服务'],
+        code: 'no', codeUrl: '',
+        abstract: '针对微服务系统异常检测，提出CMT-AD方法。在单一深度聚类框架内联合建模指标和日志数据，从软聚类分布估计模态可靠性，将聚类不确定性转化为置信度分数驱动跨模态交互。引入门控中间模态和结构/语义一致性约束，在三个大规模数据集上F1-score超过0.9。',
+        category: 'perception'
+      },
+      {
+        id: 14, num: 14, arxivId: '2609.25793',
+        url: 'https://arxiv.org/abs/2609.25793',
+        title: 'WOOPS: When Point Clouds Outperform Pixels - Rethinking Zero-Shot Multimodal Anomaly Detection',
+        authors: 'Chenglin Ye, Lupeng Liu, Dongbo Yu, Jun Xiao, Yunbiao Wang',
+        tags: ['多模态感知', '异常检测', '零样本'],
+        code: 'soon', codeUrl: '',
+        abstract: '挑战了零样本多模态异常检测中RGB和点云同等可靠的常见假设。使用惩罚正常区域假阳性响应的严格指标，发现点云在零样本类别迁移下显著优于RGB。提出WOOPS可靠性感知框架，包含多视图信息解耦模块和模态可靠性校准模块，自适应加权各模态贡献。',
+        category: 'perception'
+      },
+      {
+        id: 15, num: 15, arxivId: '2609.25615',
+        url: 'https://arxiv.org/abs/2609.25615',
+        title: 'SALI-FP: Evidence-gated Multimodal Parsing and Vectorization of Architectural Floor Plans',
+        authors: 'Hongxuan Chen, Wenda Wang, Jiachen Lu et al.',
+        tags: ['多模态检索', '建筑图纸解析', '向量化'],
+        code: 'no', codeUrl: '',
+        abstract: '提出SALI-FP管线，将建筑图纸转化为可审查的语义图、对象、向量和关系记录。在11,534张多样化图纸上测试，为每张图纸生成结构化输出，覆盖752,510个有效多边形对象。提供面向CAD/BIM准备的工程化解释-几何工作流。',
+        category: 'retrieval'
+      },
+      {
+        id: 16, num: 16, arxivId: '2609.25942',
+        url: 'https://arxiv.org/abs/2609.25942',
+        title: 'DSR: Destination Support Restoration for Finite-Set Multimodal Trajectory Prediction',
+        authors: 'Fengrui Liu, Jiajun Peng, Duo Peng, Feng Liu',
+        tags: ['轨迹预测', '多模态', '机器人'],
+        code: 'no', codeUrl: '',
+        abstract: '解决机器人轨迹预测系统中固定大小候选集的模式覆盖退化问题。提出DSR因果后选择算子，在不重训主机模型或不增加假设集的情况下修复模式覆盖。在Edinburgh协议完整评估中，N=64时ADE和FDE分别降低13.36%和13.30%，且在所有5个基线配对中均取得提升。',
+        category: 'trajectory'
+      }
+    ];
+
+    const categories = [
+      {
+        id: 'vlm', name: 'VLM/MLLM 视觉语言模型', nameEn: 'Vision-Language Models',
+        color: '#3B82F6',
+        papers: papers.filter(p => p.category === 'vlm')
+      },
+      {
+        id: 'generation', name: '多模态生成', nameEn: 'Multimodal Generation',
+        color: '#10B981',
+        papers: papers.filter(p => p.category === 'generation')
+      },
+      {
+        id: '3d', name: '3D 视觉语言', nameEn: '3D Vision-Language',
+        color: '#8B5CF6',
+        papers: papers.filter(p => p.category === '3d')
+      },
+      {
+        id: 'agent', name: 'Agent 与具身智能', nameEn: 'Agent & Embodied AI',
+        color: '#F59E0B',
+        papers: papers.filter(p => p.category === 'agent')
+      },
+      {
+        id: 'perception', name: '多模态感知', nameEn: 'Multimodal Perception',
+        color: '#EF4444',
+        papers: papers.filter(p => p.category === 'perception')
+      },
+      {
+        id: 'retrieval', name: '多模态检索与信息抽取', nameEn: 'Multimodal Retrieval & Extraction',
+        color: '#EC4899',
+        papers: papers.filter(p => p.category === 'retrieval')
+      },
+      {
+        id: 'trajectory', name: '多模态轨迹预测', nameEn: 'Multimodal Trajectory Prediction',
+        color: '#06B6D4',
+        papers: papers.filter(p => p.category === 'trajectory')
+      }
+    ];
+
+    const codePapersCount = computed(() => papers.filter(p => p.code === 'yes').length);
+    const soonCodePapersCount = computed(() => papers.filter(p => p.code === 'soon').length);
+
+    function togglePaper(id) {
+      if (expandedPapers.has(id)) {
+        expandedPapers.delete(id);
+      } else {
+        expandedPapers.add(id);
+      }
+    }
+
+    // Expand all by default
+    onMounted(() => {
+      papers.forEach(p => expandedPapers.add(p.id));
+    });
+
+    return {
+      mobileMenuOpen,
+      expandedPapers,
+      papers,
+      categories,
+      codePapersCount,
+      soonCodePapersCount,
+      togglePaper
+    };
+  }
+}).mount('#app');
+</script>
+
+</body>
+</html>
