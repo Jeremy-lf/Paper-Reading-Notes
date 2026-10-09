@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arxiv 多模态论文日报 - 2026-10-09</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --vlm: #3B82F6;
+    --understand: #10B981;
+    --retrieval: #F59E0B;
+    --agent: #EF4444;
+    --3d: #8B5CF6;
+    --generation: #EC4899;
+    --audio: #06B6D4;
+    --benchmark: #6366F1;
+    --bg: #F3F4F6;
+    --card: #FFFFFF;
+    --text: #1F2937;
+    --text-secondary: #6B7280;
+    --border: #E5E7EB;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    padding: 0;
+  }
+  .hero {
+    background: linear-gradient(135deg, #1e3a5f 0%, #2d5a8e 40%, #4a7ab5 100%);
+    color: white;
+    padding: 48px 40px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+  }
+  .hero .subtitle {
+    font-size: 1rem;
+    opacity: 0.85;
+    font-weight: 400;
+  }
+  .hero .stats-row {
+    display: flex;
+    gap: 24px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+  .stat-chip {
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 10px;
+    padding: 10px 18px;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .stat-chip .num {
+    font-size: 1.4rem;
+    font-weight: 700;
+  }
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 32px 24px 60px;
+  }
+  .toc {
+    background: var(--card);
+    border-radius: 14px;
+    padding: 24px 28px;
+    margin-bottom: 32px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    border: 1px solid var(--border);
+  }
+  .toc h2 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 14px;
+  }
+  .toc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 8px;
+  }
+  .toc-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text);
+    font-size: 0.9rem;
+    transition: background 0.2s;
+  }
+  .toc-item:hover { background: #F9FAFB; }
+  .toc-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .toc-count {
+    margin-left: auto;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    background: #F3F4F6;
+    padding: 2px 8px;
+    border-radius: 10px;
+  }
+  .category-section {
+    margin-bottom: 36px;
+  }
+  .category-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border);
+  }
+  .category-bar {
+    width: 5px;
+    height: 28px;
+    border-radius: 3px;
+  }
+  .category-header h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+  .category-header .count {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    background: #F3F4F6;
+    padding: 3px 12px;
+    border-radius: 12px;
+  }
+  .paper-card {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 22px 24px;
+    margin-bottom: 14px;
+    border: 1px solid var(--border);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    position: relative;
+    transition: box-shadow 0.2s, transform 0.15s;
+  }
+  .paper-card:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    transform: translateY(-1px);
+  }
+  .paper-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 12px;
+    bottom: 12px;
+    width: 4px;
+    border-radius: 0 3px 3px 0;
+  }
+  .paper-card.vlm::before { background: var(--vlm); }
+  .paper-card.understand::before { background: var(--understand); }
+  .paper-card.retrieval::before { background: var(--retrieval); }
+  .paper-card.agent::before { background: var(--agent); }
+  .paper-card.three-d::before { background: var(--3d); }
+  .paper-card.generation::before { background: var(--generation); }
+  .paper-card.audio::before { background: var(--audio); }
+  .paper-card.benchmark::before { background: var(--benchmark); }
+  .paper-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    line-height: 1.5;
+    margin-bottom: 6px;
+    padding-left: 12px;
+  }
+  .paper-title a {
+    color: var(--text);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .paper-title a:hover { color: #3B82F6; }
+  .paper-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    padding-left: 12px;
+    margin-bottom: 10px;
+  }
+  .paper-authors {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+  }
+  .paper-date {
+    font-size: 0.78rem;
+    color: #9CA3AF;
+    background: #F9FAFB;
+    padding: 2px 8px;
+    border-radius: 6px;
+  }
+  .tag {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 6px;
+    letter-spacing: 0.3px;
+  }
+  .tag-code {
+    background: #DCFCE7;
+    color: #166534;
+  }
+  .tag-no-code {
+    background: #F3F4F6;
+    color: #9CA3AF;
+  }
+  .tag-code a {
+    color: #166534;
+    text-decoration: none;
+  }
+  .tag-code a:hover { text-decoration: underline; }
+  .paper-abstract {
+    font-size: 0.88rem;
+    color: #4B5563;
+    line-height: 1.75;
+    padding-left: 12px;
+    border-left: 2px solid #F3F4F6;
+    margin-left: 4px;
+  }
+  .footer {
+    text-align: center;
+    padding: 32px;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    border-top: 1px solid var(--border);
+    margin-top: 20px;
+  }
+  @media (max-width: 640px) {
+    .hero { padding: 32px 20px; }
+    .hero h1 { font-size: 1.5rem; }
+    .container { padding: 20px 12px 40px; }
+    .paper-card { padding: 16px 16px; }
+    .toc-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>Arxiv Multimodal Papers Daily</h1>
+  <div class="subtitle">2026-10-09 | VLM / MLLM / Multi-Modal AI Research Digest</div>
+  <div class="stats-row">
+    <div class="stat-chip"><span class="num">35</span> 篇论文</div>
+    <div class="stat-chip"><span class="num">8</span> 个方向</div>
+    <div class="stat-chip"><span class="num">1</span> 篇有代码</div>
+    <div class="stat-chip">Oct 7-8, 2026</div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="toc">
+    <h2>Direction Index</h2>
+    <div class="toc-grid">
+      <a class="toc-item" href="#vlm"><span class="toc-dot" style="background:var(--vlm)"></span>VLM/MLLM 视觉语言模型<span class="toc-count">10</span></a>
+      <a class="toc-item" href="#understand"><span class="toc-dot" style="background:var(--understand)"></span>理解与推理<span class="toc-count">5</span></a>
+      <a class="toc-item" href="#retrieval"><span class="toc-dot" style="background:var(--retrieval)"></span>检索与信息抽取<span class="toc-count">5</span></a>
+      <a class="toc-item" href="#agent"><span class="toc-dot" style="background:var(--agent)"></span>Agent 与具身智能<span class="toc-count">6</span></a>
+      <a class="toc-item" href="#3d"><span class="toc-dot" style="background:var(--3d)"></span>3D 视觉语言<span class="toc-count">2</span></a>
+      <a class="toc-item" href="#generation"><span class="toc-dot" style="background:var(--generation)"></span>多模态生成<span class="toc-count">3</span></a>
+      <a class="toc-item" href="#audio"><span class="toc-dot" style="background:var(--audio)"></span>音频多模态<span class="toc-count">1</span></a>
+      <a class="toc-item" href="#benchmark"><span class="toc-dot" style="background:var(--benchmark)"></span>基准评测<span class="toc-count">3</span></a>
+    </div>
+  </div>
+
+  <!-- ========== VLM/MLLM ========== -->
+  <div class="category-section" id="vlm">
+    <div class="category-header">
+      <div class="category-bar" style="background:var(--vlm)"></div>
+      <h2>VLM/MLLM 视觉语言模型</h2>
+      <span class="count">10 papers</span>
+    </div>
+
+    <div class="paper-card vlm">
+      <div class="paper-title"><a href="https://arxiv.org/abs/2610.11366" target="_blank">SpatialOPSD: Self-Distilling Spatial Intelligence from Verified Coding Agent Traces</a></div>
+      <div class="paper-meta">
+        <span class="paper-authors">Rongxue Li, Meng Yang, Yiru Mao, Yongliang Tao, et al.</span>
+        <span class="paper-date">Oct 8</span>
+        <span class="tag tag-no-code">No Code</span>
+      </div>
+      <div class="paper-abstract">空间编码Agent通过外部工具生成验证过的执行轨迹，显著提升MLLM的空间推理能力，但推理开销大。SpatialOPSD提出自蒸馏方案将外部能力内化到模型中，并设计重复感知蒸馏策略缓解数据泄露问题，以更轻量的方式实现空间智能。</div>
+    </div>
+
+    <div class="paper-card vlm">
+      <div class="paper-title"><a href="https://arxiv.org/abs/2610.11363" target="_blank">UniData: Universal Multimodal Instruction Generation Pipeline</a></div>
+      <div class="paper-meta">
+        <span class="paper-authors">Jiaqi Tang, Yi-Feng Wu, Yuting Zhang, Hao Lu, et al.</span>
+        <span class="paper-date">Oct 8</span>
+        <span class="tag tag-no-code">No Code</span>
+      </div>
+      <div class="paper-abstract">MLLM的广泛应用面临高质量多模态指令数据稀缺的挑战。UniData提出通用多模态指令生成流水线，将用户需求转化为多轮、多模态指令，构建了包含2万条数据、覆盖9种模态的UniDataset，大幅降低数据创建成本。</div>
+    </div>
+
+    <div class="paper-card vlm">
+      <div class="paper-title"><a href="https://arxiv.org/abs/2610.11316" target="_blank">MetaEncoder: Exploring the Limit of Bi-Encoders for Multimodal System One Decision Making</a></div>
+      <div class="paper-meta">
+        <span class="paper-authors">Jianpeng Cheng, Guangyu Sun, Aashu Singh, et al.</span>
+        <span class="paper-date">Oct 8</span>
+        <span class="tag tag-no-code">No Code</span>
+      </div>
+      <div class="paper-abstract">System One模型输出约束决策和概率分布而非自由文本。MetaEncoder探索双编码器架构在多模态System One决策中的极限，通过自然语言接口实现高效的多模态匹配与决策。</div>
+    </div>
+
+    <div class="paper-card vlm">
+      <div class="paper-title"><a href="https://arxiv.org/abs/2610.11315" target="_blank">Deflating the Hessian: Rank-4 W4A4 Quantization for Multimodal Diffusion Transformers</a></div>
+      <div class="paper-meta">
+        <span class="paper-authors">Shiwen Wang, Pengxiang Zhao, Xiaoming Yuan</span>
+        <span class="paper-date">Oct 8</span>
+        <span class="tag tag-no-code">No Code</span>
+      </div>
+      <div class="paper-abstract">在扩散Transformer中，低秩分支可以缓解4-bit权重-激活(W4A4)训练后量化损失。本文将每个权重分解为低比特残差和高精度低秩分量，通过Hessian矩阵降秩实现高效多模态扩散模型量化。</div>
+    </div>
+
+    <div class="paper-card vlm">
+      <div class="paper-title"><a href="https://arxiv.org/abs/2610.11251" target="_blank">V-CoLA: Vision Token Compression with Linear Attention</a></div>
+      <div class="paper-meta">
+        <span class="paper-authors">Hao Jiang, Yiru Mao, Tianpeng Bu, et al.</span>
+        <span class="paper-date">Oct 8</span>
+        <span class="tag tag-no-code">No Code</span>
+      </div>
+      <div class="paper-abstract">VLM视觉token带来巨大计算开销。V-CoLA提出面向线性注意力的免训练压缩框架，通过独特性感知的token选择策略，在保持性能的同时大幅减少视觉token数量，加速推理。</div>
+    </div>
+
+    <div class="paper-card vlm">
+      <div class="paper-title"><a href="https://arxiv.org/abs/2610.10990" target="_blank">Omni-Diffusion-Distill: Few-Step Distillation of Unified Multimodal Diffusion Large Language Models</a></div>
+      <div class="paper-meta">
+        <span class="paper-authors">Hong Huang, Chenhongyi Yang, Junzhe Sun, et al.</span>
+        <span class="paper-date">Oct 7</span>
+        <span class="tag tag-no-code">No Code</span>
+      </div>
+      <div class="paper-abstract">统一多模态扩散大语言模型(dLLMs)在单一架构中同时支持图像生成和多模态理解，但迭代解码需要数十到数百次前向传播。Omni-Diffusion-Distill通过少步蒸馏大幅减少推理步数，提升效率。</div>
+    </div>
+
+    <div class="paper-card vlm">
+      <div class="paper-title"><a href="https://arxiv.org/abs/2610.10782" target="_blank">VICO: Visual Environments Co-Evolving for Vision-Language Model Reasoning</a></div>
+      <div class="paper-meta">
+        <span class="paper-authors">Meng Lu, Ligeng Zhu, Olivia Xiao, et al.</span>
+        <span class="paper-date">Oct 7</span>
+        <span class="tag tag-no-code">No Code</span>
+      </div>
+      <div class="paper-abstract">基于可验证奖励的强化学习(RLVR)已成为VLM后训练的标准方法，但通常假设静态训练环境。VICO让Actor与环境重写器共同进化，自动编辑视觉结构并重新校准任务难度，无需人工标注。</div>
+    </div>
+
+    <div class="paper-card vlm">
+      <div class="paper-title"><a href="https://arxiv.org/abs/2610.11469" target="_blank">SAGE: Sink-Aware Guided Emphasis for Visual Grounding in VLM Decoders</a></div>
+      <div class="paper-meta">
+        <span class="paper-authors">Jeonghyo Song, YoungJoon Yoo</span>
+        <span class="paper-date">Oct 8</span>
+        <span class="tag tag-no-code">No Code</span>
+      </div>
+      <div class="paper-abstract">VLM将视觉编码器与LLM配对，但存在注意力病理抑制视觉证据的问题。SAGE利用骨干网络衍生的ROI掩码，将解码器注意力从sink token引导至查询相关区域，改善视觉定位能力。</div>
+    </div>
+
+    <div class="paper-card vlm">
+      <div class="paper-title"><a href="https://arxiv.org/abs/2610.11374" target="_blank">ComCLIP: Rethinking Contrastive Loss in CLIP Post-training</a></div>
+      <div class="paper-meta">
+        <span class="paper-authors">Zidan Wang, Yaqian Li, Xiaokai Zhang, et al.</span>
+        <span class="paper-date">Oct 8</span>
+        <span class="tag tag-code"><a href="https://github.com/showstarpro/ComCLIP" target="_blank">Code</a></span>
+      </div>
+      <div class="paper-abstract">CLIP作为基础VLM和下游模型的视觉编码器，其后训练至关重要。ComCLIP重新审视对比后训练，采用适当温度的InfoNCE损失和冻结文本编码器策略，显著提升CLIP的跨模态对齐效果。</div>
+    </div>
+
+    <div class="paper-card vlm">
+      <div class="paper-title"><a href="https://arxiv.org/abs/2610.11019" target="_blank">Mid-Training Language Models on Raw Video</a></div>
+      <div class="paper-meta">
+        <span class="paper-authors">Jaedong Hwang, Xiaoqian Shen, Ernie Chang, et al.</span>
+        <span class="paper-date">Oct 7</span>
+        <span class="tag tag-no-code">No Code</span>
+      </div>
+      <div class="paper-abstract">多模态大语言模型主要从图文配对数据或标注视频中学习，原始网络视频很少用于进一步训练。本文提出通过下一视觉token预测进行原始视频中间训练，在保持文本性能的同时提升视频和图像基准表现。</div>
+    </div>
+  </div>
+
+  <!-- ========== 理解与推理 ========== -->
+  <div class="category-section" id="understand">
+    <div class="category-header">
+      <div class="category-bar" style="background:var(--understand)"></div>
+      <h2>多模态理解与推理</h2>
+      <span class="count">5 papers</span>
+    </div>
+
+    <div class="paper-card understand">
+      <div class="paper-title"><a href="https://arxiv.org/abs/2610.10563" target="_blank">SLVR: Structured Latent Visual Reasoning via Human-like Reasoning Flows</a></div>
+      <div class="paper-meta">
+        <span class="paper-authors">Albert Gao, Bing Xue, Andrea Zanette</span>
+        <span class="paper-date">Oct 7</span>
+        <span class="tag tag-no-code">No Code</span>
+      </div>
+      <div class="paper-abstract">MLLM常依赖语言先验而非视觉证据进行推理。SLVR将多模态推理组织为有类型的潜在阶段（规划、定位、证据整合），通过结构化监督避免文本思维链的开销，模拟人类推理流。</div>
+    </div>
+
+    <div class="paper-card understand">
+      <div class="paper-title"><a href="https://arxiv.org/abs/2610.10889" target="_blank">SPLIT-RL: Staged Perception-Language Reasoning Training</a></div>
+      <div class="paper-meta">
+        <span class="paper-authors">Raja Kumar, Rajat Koner, Ritwick Chaudhry, et al.</span>
+        <span class="paper-date">Oct 7</span>
+        <span class="tag tag-no-code">No Code</span>
+      </div>
+      <div class="paper-abstract">视觉语言推理需要视觉和语言推理能力。SPLIT-RL在不相交的阶段分别训练视觉推理和语言推理，配合阶段特定奖励和Claim-Level Advantage实现细粒度监督，提升VL推理性能。</div>
+    </div>
+
+    <div class="paper-card understand">
+      <div class="paper-title"><a href="https://arxiv.org/abs/2610.11231" target="_blank">Harness Compilation: Decisions for Small VLMs</a></div>
+      <div class="paper-meta">
+        <span class="paper-authors">Minhao Fan, Yinyi Liu, Jiayu Zhao, et al.</span>
+        <span class="paper-date">Oct 8</span>
+        <span class="tag tag-no-code">No Code</span>
+      </div>
+      <div class="paper-abstract">小型VLM可以阅读外部证据但难以获取。Harness Compilation借鉴编译器思想，利用教师修订来适应冻结小VLM与外部harness之间的工作分工，让小模型也能有效利用外部资源。</div>
+    </div>
+
+    <div class="paper-card understand">
+      <div class="paper-title"><a href="https://arxiv.org/abs/2610.11113" target="_blank">DiscoVL: Disentangled Cross-Modal Representation Learning via Orthogonal Adversarial Regularization</a></div>
+      <div class="paper-meta">
+        <span class="paper-authors">Mengping Dong, Jinbao Li, Fei Li</span>
+        <span class="paper-date">Oct 7</span>
+        <span class="tag tag-no-code">No Code</span>
+      </div>
+      <div class="paper-abstract">预训练VLM在感知任务上表现出色，但适配并非易事。DiscoVL将正交对抗正则化与跨模态对齐结合，解耦跨模态表示学习，提升模型在下游任务上的泛化能力。</div>
+    </div>
+
+    <div class="paper-card understand">
+      <div class="paper-title"><a href="https://arxiv.org/abs/2610.11067" target="_blank">Diffusion Meta-Prompting and Steering for Generalizable Foundation Model Adaptation</a></div>
+      <div class="paper-meta">
+        <span class="paper-authors">Deepak Sridhar, Yi Li, Kartikeya Bhardwaj, et al.</span>
+        <span class="paper-date">Oct 7</span>
+        <span class="tag tag-no-code">No Code</span>
+      </div>
+      <div class="paper-abstract">提示学习适配基础模型，但学习到的提示缺乏泛化性。DMP用扩散模型建模提示分布，并在测试时通过引导实现稳定采样和跨任务泛化，提升基础模型在新任务上的表现。</div>
+    </div>
+  </div>
+
+  <!-- ========== 检索与信息抽取 ========== -->
+  <div class="category-section" id="retrieval">
+    <div class="category-header">
+      <div class="category-bar" style="background:var(--retrieval)"></div>
+      <h2>多模态检索与信息抽取</h2>
+      <span class="count">5 papers</span>
+    </div>
+
+    <div class="paper-card retrieval">
+      <div class="paper-title"><a href="https://arxiv.org/abs/2610.11666" target="_blank">Autoregressive Retriever: Improving Query Understanding from Item Feedback</a></div>
+      <div class="paper-meta">
+        <span class="paper-authors">Jianfei Zhao, Yifan Wang, Feng Zhang, et al.</span>
+        <span class="paper-date">Oct 8</span>
+        <span class="tag tag-no-code">No Code</span>
+      </div>
+      <div class="paper-abstract">通用多模态检索通常编码一次查询并按嵌入相似度排序。这种设计支持高效搜索，但即使检索项可以帮助澄清信息需求，查询表示也不变。自回归检索器利用检索反馈迭代改进查询理解。</div>
+    </div>
+
+    <div class="paper-card retrieval">
+      <div class="paper-title"><a href="https://arxiv.org/abs/2610.11553" target="_blank">EVIE: Evidence-Vector-Informed Embeddings for Visual Document Retrieval</a></div>
+      <div class="paper-meta">
+        <span class="paper-authors">Zifei Wang, Wei Wen, Qiang Ji, et al.</span>
+        <span class="paper-date">Oct 8</span>
+        <span class="tag tag-no-code">No Code</span>
+      </div>
+      <div class="paper-abstract">准确且可扩展的视觉文档检索需要细粒度页面理解和高效索引。EVIE是原生视觉文档检索器，集成证据判断数据治理、双向学习和HAC压缩，同时实现精确度和效率。</div>
+    </div>
+
+    <div class="paper-card retrieval">
+      <div class="paper-title"><a href="https://arxiv.org/abs/2610.11526" target="_blank">MSGAT: Multi-Head Spiking Graph Attention with Similarity-Space Fusion for Image-Text Retrieval</a></div>
+      <div class="paper-meta">
+        <span class="paper-authors">Xintao Zong, Wenxuan Liu, Jianhao Ding, et al.</span>
+        <span class="paper-date">Oct 8</span>
+        <span class="tag tag-no-code">No Code</span>
+      </div>
+      <div class="paper-abstract">脉冲神经网络(SNN)通过稀疏事件驱动计算提供节能计算范式。MSGAT将多头脉冲图注意力与相似性空间融合结合，用于高效图文检索，展现SNN在多模态学习中的巨大潜力。</div>
+    </div>
+
+    <div class="paper-card retrieval">
+      <div class="paper-title"><a href="https://arxiv.org/abs/2610.11230" target="_blank">CORAL: Cross-modal Vector Retrieval via Incremental Graph Construction at Scale</a></div>
+      <div class="paper-meta">
+        <span class="paper-authors">Shixin Wan, Guoyu Hu, Yifan Wu, et al.</span>
+        <span class="paper-date">Oct 8</span>
+        <span class="tag tag-no-code">No Code</span>
+      </div>
+      <div class="paper-abstract">跨模态向量检索广泛应用于搜索引擎和向量数据库等多模态系统。CORAL通过增量图构建实现大规模跨模态向量检索，提升检索精度和效率。</div>
+    </div>
+
+    <div class="paper-card retrieval">
+      <div class="paper-title"><a href="https://arxiv.org/abs/2610.11674" target="_blank">VESSI: VLM-Enhanced Support for Surveillance and Investigations</a></div>
+      <div class="paper-meta">
+        <span class="paper-authors">Saverio Cavasin, Pietro Tedeschi, Mattia Tamiazzo, et al.</span>
+        <span class="paper-date">Oct 8</span>
+        <span class="tag tag-no-code">No Code</span>
+      </div>
+      <div class="paper-abstract">自动化视频监控分析对情报和执法至关重要。传统系统缺乏语义感知能力，限制有意义的事件解读。VESSI提供基于VLM的框架，增强监控视频的智能分析和调查支持。</div>
+    </div>
+  </div>
+
+  <!-- ========== Agent 与具身智能 ========== -->
+  <div class="category-section" id="agent">
+    <div class="category-header">
+      <div class="category-bar" style="background:var(--agent)"></div>
+      <h2>Agent 与具身智能</h2>
+      <span class="count">6 papers</span>
+    </div>
+
+    <div class="paper-card agent">
+      <div class="paper-title"><a href="https://arxiv.org/abs/2610.11354" target="_blank">AdaptEvo: Adaptive Agent Learning with Evolving Supervision</a></div>
+      <div class="paper-meta">
+        <span class="paper-authors">Shijun Wan, Jiancong Xie, Hang Xu, et al.</span>
+        <span class="paper-date">Oct 8</span>
+        <span class="tag tag-no-code">No Code</span>
+      </div>
+      <div class="paper-abstract">规则驱动的上下文决策任务要求模型将指定规则应用于具体案例。AdaptEvo提出自适应Agent学习框架，通过演化监督策略让Agent动态适应不断变化的任务规则和环境。</div>
+    </div>
+
+    <div class="paper-card agent">
+      <div class="paper-title"><a href="https://arxiv.org/abs/2610.11194" target="_blank">OmniDex: Scaling Dexterous Hand Grasping to Diverse Cluttered Scenes</a></div>
+      <div class="paper-meta">
+        <span class="paper-authors">Naiyu Fang, Zhongjin Luo, Yuxin Mo, et al.</span>
+        <span class="paper-date">Oct 7</span>
+        <span class="tag tag-no-code">No Code</span>
+      </div>
+      <div class="paper-abstract">灵巧抓取是具身AI的基础能力，需要大量数据训练鲁棒模型。OmniDex将灵巧手抓取扩展到多样化杂乱场景，通过大规模数据收集和训练实现复杂环境下的可靠抓取。</div>
+    </div>
+
+    <div class="paper-card agent">
+      <div class="paper-title"><a href="https://arxiv.org/abs/2610.11508" target="_blank">WARP-VLA: Wrist-Camera Adaptation for View-Robust Policy Execution</a></div>
+      <div class="paper-meta">
+        <span class="paper-authors">Junmyeong Lee, Dongmin Shin, Min-Gyu Park, et al.</span>
+        <span class="paper-date">Oct 8</span>
+        <span class="tag tag-no-code">No Code</span>
+      </div>
+      <div class="paper-abstract">VLA模型性能对相机配置变化敏感。WARP-VLA使用混合专家(MoE)架构，结合视图特定特征变换的路由器，实现从腕部相机的鲁棒策略部署，解决视角变化带来的性能下降。</div>
+    </div>
+
+    <div class="paper-card agent">
+      <div class="paper-title"><a href="https://arxiv.org/abs/2610.11416" target="_blank">ACT3: Action-Centric Tri-Stream Transformer</a></div>
+      <div class="paper-meta">
+        <span class="paper-authors">Shuang Luo, Yilun Kong, Yunpeng Qing, et al.</span>
+        <span class="paper-date">Oct 8</span>
+        <span class="tag tag-no-code">No Code</span>
+      </div>
+      <div class="paper-abstract">VLA模型提供语义理解但缺乏物理动力学先验。ACT3将语义和动力学信息通过逐层注意力融合到控制动作中，使用三流独立Transformer架构实现更精准的机器人控制。</div>
+    </div>
+
+    <div class="paper-card agent">
+      <div class="paper-title"><a href="https://arxiv.org/abs/2610.11622" target="_blank">LaTraNav: Learning Language-Conditioned Traversability Representations</a></div>
+      <div class="paper-meta">
+        <span class="paper-authors">Senda Chen, Changxu Cheng, Fangdi Li, et al.</span>
+        <span class="paper-date">Oct 8</span>
+        <span class="tag tag-no-code">No Code</span>
+      </div>
+      <div class="paper-abstract">可通行性因机器人能力和偏好而异。LaTraNav将慢速VLM与基于流匹配的规划器结合，通过潜在可通行性表示实现语言条件导航，让机器人根据语言指令适应不同地形。</div>
+    </div>
+
+    <div class="paper-card agent">
+      <div class="paper-title"><a href="https://arxiv.org/abs/2610.10526" target="_blank">Rephrase Before You Act: Mitigating Language Sensitivity in VLAs</a></div>
+      <div class="paper-meta">
+        <span class="paper-authors">Mikey Watts, Yuchen Cui</span>
+        <span class="paper-date">Oct 7</span>
+        <span class="tag tag-no-code">No Code</span>
+      </div>
+      <div class="paper-abstract">VLA模型对指令措辞敏感，而其VLM骨干则不然。本文通过LLM蒸馏改写规则，在不重训练的情况下提升冻结策略在对抗性、VLM生成和人类措辞上的鲁棒性。</div>
+    </div>
+  </div>
+
+  <!-- ========== 3D 视觉语言 ========== -->
+  <div class="category-section" id="3d">
+    <div class="category-header">
+      <div class="category-bar" style="background:var(--3d)"></div>
+      <h2>3D 视觉语言</h2>
+      <span class="count">2 papers</span>
+    </div>
+
+    <div class="paper-card three-d">
+      <div class="paper-title"><a href="https://arxiv.org/abs/2610.11215" target="_blank">GATOR: Generative and Agentic 3D Object Reconstruction From Casual Images</a></div>
+      <div class="paper-meta">
+        <span class="paper-authors">Qirui Wu, Stan Birchfield, Hesam Rabeti, et al.</span>
+        <span class="paper-date">Oct 8</span>
+        <span class="tag tag-no-code">No Code</span>
+      </div>
+      <div class="paper-abstract">从随意图像重建完整、场景对齐的3D物体需要整合稀疏、不确定的观测并推断被遮挡的表面。GATOR提出生成式和Agent式框架，恢复纹理化的3D物体资产。</div>
+    </div>
+
+    <div class="paper-card three-d">
+      <div class="paper-title"><a href="https://arxiv.org/abs/2610.11105" target="_blank">TKCAM: Text and Keyframe to Camera Trajectory Generation</a></div>
+      <div class="paper-meta">
+        <span class="paper-authors">Haozhe Yang, Zhiyang Dou, Zekai Gu, et al.</span>
+        <span class="paper-date">Oct 7</span>
+        <span class="tag tag-no-code">No Code</span>
+      </div>
+      <div class="paper-abstract">生成高质量可控相机运动对AI辅助电影制作、视频合成和3D场景理解至关重要。TKCAM是文本和关键帧条件下的相机运动合成框架，实现可控的相机轨迹生成。</div>
+    </div>
+  </div>
+
+  <!-- ========== 多模态生成 ========== -->
+  <div class="category-section" id="generation">
+    <div class="category-header">
+      <div class="category-bar" style="background:var(--generation)"></div>
+      <h2>多模态生成</h2>
+      <span class="count">3 papers</span>
+    </div>
+
+    <div class="paper-card generation">
+      <div class="paper-title"><a href="https://arxiv.org/abs/2610.11057" target="_blank">Learning What to Trust in Multimodal Learning under Noisy Supervision</a></div>
+      <div class="paper-meta">
+        <span class="paper-authors">Jiashuo Zou, Xiaobo Xia</span>
+        <span class="paper-date">Oct 7</span>
+        <span class="tag tag-no-code">No Code</span>
+      </div>
+      <div class="paper-abstract">多模态分类处理和关联来自多个模态的信息以实现更准确的预测。但在噪声监督下，模型需要学会判断该信任哪个模态。本文提出在噪声条件下学习模态信任度的方法。</div>
+    </div>
+
+    <div class="paper-card generation">
+      <div class="paper-title"><a href="https://arxiv.org/abs/2610.10984" target="_blank">Fluid-Gen-Zero: Grounding Pretrained Video Generators in Physics</a></div>
+      <div class="paper-meta">
+        <span class="paper-authors">Hong Huang, Yuqiu Liu, Chenyu You, et al.</span>
+        <span class="paper-date">Oct 7</span>
+        <span class="tag tag-no-code">No Code</span>
+      </div>
+      <div class="paper-abstract">物理感知流体-物体视频生成需要物理推理和外观合成。Fluid-Gen-Zero将运动委托给物理模拟器，同时通过Agent式规划保持预训练视频生成器的能力，实现物理合理的视频生成。</div>
+    </div>
+
+    <div class="paper-card generation">
+      <div class="paper-title"><a href="https://arxiv.org/abs/2610.11112" target="_blank">False Claims, Credible Images: A Red-Teaming Benchmark for Commercial Image Generators</a></div>
+      <div class="paper-meta">
+        <span class="paper-authors">Zeyu Ye, Yanchun Li, Sibei He, et al.</span>
+        <span class="paper-date">Oct 7</span>
+        <span class="tag tag-no-code">No Code</span>
+      </div>
+      <div class="paper-abstract">图像生成模型现在能生成包含文本、看起来自然的视觉制品，难以与真实证据区分。本文构建了商业图像生成器的红队测试基准，评估模型生成虚假但可信图像的能力。</div>
+    </div>
+  </div>
+
+  <!-- ========== 音频多模态 ========== -->
+  <div class="category-section" id="audio">
+    <div class="category-header">
+      <div class="category-bar" style="background:var(--audio)"></div>
+      <h2>音频多模态</h2>
+      <span class="count">1 paper</span>
+    </div>
+
+    <div class="paper-card audio">
+      <div class="paper-title"><a href="https://arxiv.org/abs/2610.11196" target="_blank">Selective Listening: Mechanism-Guided Control of Audio Influence in Large Audio-Language Models</a></div>
+      <div class="paper-meta">
+        <span class="paper-authors">Yulin Sun, Kele Xu, Yong Dou</span>
+        <span class="paper-date">Oct 8</span>
+        <span class="tag tag-no-code">No Code</span>
+      </div>
+      <div class="paper-abstract">大型音频语言模型(LALMs)利用多模态证据，但任务无关的音频可能改变文本推理决策。本文通过机制引导的选择性听觉，控制音频信息对推理的影响，让模型学会何时该"选择性聆听"。</div>
+    </div>
+  </div>
+
+  <!-- ========== 基准评测 ========== -->
+  <div class="category-section" id="benchmark">
+    <div class="category-header">
+      <div class="category-bar" style="background:var(--benchmark)"></div>
+      <h2>基准评测</h2>
+      <span class="count">3 papers</span>
+    </div>
+
+    <div class="paper-card benchmark">
+      <div class="paper-title"><a href="https://arxiv.org/abs/2610.11312" target="_blank">MedBenchAgent: Systematic Automation of Medical VLM Benchmark Construction</a></div>
+      <div class="paper-meta">
+        <span class="paper-authors">Yulin Fu, Junren Wang, Guangjing Yang, et al.</span>
+        <span class="paper-date">Oct 8</span>
+        <span class="tag tag-no-code">No Code</span>
+      </div>
+      <div class="paper-abstract">医学VLM基准构建随着标注影像和LLM的发展变得越来越可行。MedBenchAgent将基准构建形式化为受约束的编译问题，通过多Agent框架实现自动化基准生成。</div>
+    </div>
+
+    <div class="paper-card benchmark">
+      <div class="paper-title"><a href="https://arxiv.org/abs/2610.10374" target="_blank">TaoD2C-Bench: Benchmarking MLLMs for Industrial UI Code Generation Beyond Visual Fidelity</a></div>
+      <div class="paper-meta">
+        <span class="paper-authors">Chengwei Shi, Yunnong Chen, Tingting Zhou, et al.</span>
+        <span class="paper-date">Oct 7</span>
+        <span class="tag tag-no-code">No Code</span>
+      </div>
+      <div class="paper-abstract">TaoD2C-Bench评估MLLM在工业UI代码生成中的表现，包含2861个设计稿。揭示了视觉还原度与实际需求满足之间的差距，超越单纯的视觉保真度评估。</div>
+    </div>
+
+    <div class="paper-card benchmark">
+      <div class="paper-title"><a href="https://arxiv.org/abs/2610.11129" target="_blank">GameCommBench: A Unified Benchmark and Type-Aware Evaluation for AI-Generated Game Commentary</a></div>
+      <div class="paper-meta">
+        <span class="paper-authors">Qirui Zheng, Zhengteng Lin, Yunyi Xiao, et al.</span>
+        <span class="paper-date">Oct 7</span>
+        <span class="tag tag-no-code">No Code</span>
+      </div>
+      <div class="paper-abstract">游戏解说需要多模态感知、策略推理和上下文知识的开放式生成任务。GameCommBench提供统一基准和类型感知评估方法，系统评估AI游戏解说生成能力。</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    Generated on 2026-10-09 | Arxiv Multimodal Papers Daily Report | 35 papers across 8 directions
+  </div>
+
+</div>
+
+</body>
+</html>
